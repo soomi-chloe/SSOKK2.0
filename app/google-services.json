@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "529691526287",
+    "firebase_url": "https://ssokk20fb.firebaseio.com",
+    "project_id": "ssokk20fb",
+    "storage_bucket": "ssokk20fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529691526287:android:1bb03e08d2c39626c8dcfa",
+        "android_client_info": {
+          "package_name": "com.example.ssokk20ex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529691526287-m4q712pc9677ha5h7nstvmk3ob1i68u7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ssokk20ex",
+            "certificate_hash": "bc1148f4ea3ba28bb31789f0b69f1b310292fd64"
+          }
+        },
+        {
+          "client_id": "529691526287-2nvqi9rokbah3mguiarafvqembs757t8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUOd3Gwn2oW8rzlCCt47_gILeAw2zSFuI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529691526287-2nvqi9rokbah3mguiarafvqembs757t8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
