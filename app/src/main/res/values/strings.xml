@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SSOKK2.0ex</string>
+    <string name="title_record">기록</string>
+    <string name="title_exercise">운동</string>
+    <string name="title_info">정보</string>
+    <string name="title_myPage">마이 페이지</string>
+    <string name="setAccountTxt">계정 관련 설정</string>
+    <string name="setNameTxt">이름 변경</string>
+    <string name="setPWTxt">비밀번호 변경</string>
+    <string name="setAlarmTxt">알람 관련 설정</string>
+    <string name="bloodSugarAlarmTxt">혈당 체크 시간 알림</string>
+    <string name="medicineAlarmTxt">약 복용 시간 알림</string>
+    <string name="exerciseAlarmTxt">운동 시간 알림</string>
+    <string name="signOutTxt">로그아웃</string>
+    <string name="withdrawalTxt">회원탈퇴</string>
+</resources>

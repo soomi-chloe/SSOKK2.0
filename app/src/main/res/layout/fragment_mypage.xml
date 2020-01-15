@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+    <!--tools:context=".MyPage"-->
+
+    <LinearLayout
+        android:id="@+id/profileLayout"
+        android:layout_width="match_parent"
+        android:layout_height="254.3dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="69.7dp"
+        android:layout_marginRight="7dp"
+        android:background="@drawable/mypage_profile_box"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="23dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/userProfileLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/userImg"
+                    android:layout_width="84.7dp"
+                    android:layout_height="84.7dp"
+                    app:srcCompat="@drawable/profile" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="18.3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/userNameTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="이름" />
+
+                    <TextView
+                        android:id="@+id/userContactTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="이메일/아이디" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/recordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bloodSugarRecordTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="23dp"
+                        android:text="혈당 수치 기록 보기"
+                        android:textSize="13.3sp" />
+
+                    <TextView
+                        android:id="@+id/medicineRecordTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="약 복용 시간 기록 보기"
+                        android:textSize="13.3sp" />
+
+                    <TextView
+                        android:id="@+id/weightRecordTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="체중 기록 보기"
+                        android:textSize="13.3sp" />
+
+                    <TextView
+                        android:id="@+id/mealRecordTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13.7dp"
+                        android:text="식사 기록 보기"
+                        android:textSize="13.3sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="207.6dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/bloodSugarRecordBtn"
+                        android:layout_width="8dp"
+                        android:layout_height="15.5dp"
+                        android:layout_marginTop="24.3dp"
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/see_menu" />
+
+                    <ImageButton
+                        android:id="@+id/medicineRecordBtn"
+                        android:layout_width="8dp"
+                        android:layout_height="15.5dp"
+                        android:layout_marginTop="16.7dp"
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/see_menu" />
+
+                    <ImageButton
+                        android:id="@+id/weightRecordBtn"
+                        android:layout_width="8dp"
+                        android:layout_height="15.5dp"
+                        android:layout_marginTop="16.7dp"
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/see_menu" />
+
+                    <ImageButton
+                        android:id="@+id/mealRecordBtn"
+                        android:layout_width="8dp"
+                        android:layout_height="15.5dp"
+                        android:layout_marginTop="16.7dp"
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/see_menu" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/settingsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="10.3dp"
+        android:layout_marginRight="7dp"
+        android:background="@drawable/mypage_set_box"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/titleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="18dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/settingsTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="설정"
+                android:textSize="15.7sp" />
+
+            <ImageView
+                android:id="@+id/settingsIcon"
+                android:layout_width="15.8dp"
+                android:layout_height="15.8dp"
+                android:layout_marginLeft="3.3dp"
+                android:layout_marginTop="3dp"
+                app:srcCompat="@drawable/settings" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/setLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="19.3dp"
+            android:layout_marginRight="31dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="19dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/setAccountTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setAccountTxt"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/setNameTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/setNameTxt"
+                    android:textSize="13.3sp" />
+
+                <TextView
+                    android:id="@+id/setPWTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/setPWTxt"
+                    android:textSize="13.3sp" />
+
+                <TextView
+                    android:id="@+id/setAlarmTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="23dp"
+                    android:text="@string/setAlarmTxt"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/bloodSugarAlarmTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14.7dp"
+                    android:text="@string/bloodSugarAlarmTxt"
+                    android:textSize="13.3sp" />
+
+                <TextView
+                    android:id="@+id/medicineAlarmTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/medicineAlarmTxt"
+                    android:textSize="13.3sp" />
+
+                <TextView
+                    android:id="@+id/exerciseAlarmTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/exerciseAlarmTxt"
+                    android:textSize="13.3sp" />
+
+                <TextView
+                    android:id="@+id/signOutTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25.3dp"
+                    android:text="@string/signOutTxt"
+                    android:textSize="13.3sp" />
+
+                <TextView
+                    android:id="@+id/withdrawalTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14.3dp"
+                    android:text="@string/withdrawalTxt"
+                    android:textColor="@android:color/holo_red_dark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="194dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/bloodSugarAlarmOnTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="134dp"
+                    android:text="켬"
+                    android:textSize="13.3sp" />
+
+                <TextView
+                    android:id="@+id/medicineAlarmOnTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13.7dp"
+                    android:text="켬"
+                    android:textSize="13.3sp" />
+
+                <TextView
+                    android:id="@+id/exerciseAlarmOnTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13.7dp"
+                    android:text="켬"
+                    android:textSize="13.3sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16.9dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/setNameBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="15.5dp"
+                    android:layout_marginTop="33dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/see_menu" />
+
+                <ImageButton
+                    android:id="@+id/setPWBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="15.5dp"
+                    android:layout_marginTop="16.7dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/see_menu" />
+
+                <ImageButton
+                    android:id="@+id/bloodSugarAlarmBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="15.5dp"
+                    android:layout_marginTop="53.3dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/see_menu" />
+
+                <ImageButton
+                    android:id="@+id/medicineAlarmBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="15.5dp"
+                    android:layout_marginTop="16.7dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/see_menu" />
+
+                <ImageButton
+                    android:id="@+id/exerciseAlarmBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="15.5dp"
+                    android:layout_marginTop="16.7dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/see_menu" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
