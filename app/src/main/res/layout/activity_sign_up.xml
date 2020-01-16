@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SignInActivity">
+    tools:context=".SignUpActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -16,46 +16,79 @@
         app:srcCompat="@android:color/background_dark" />
 
     <TextView
-        android:id="@+id/signInTxt"
+        android:id="@+id/signUpTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="85dp"
         android:layout_marginTop="56.7dp"
-        android:text="로그인"
+        android:text="회원가입"
         android:textSize="20sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="29.3dp"
+        android:text="이메일" />
 
     <EditText
         android:id="@+id/emailTxt"
         android:layout_width="248.7dp"
         android:layout_height="33.3dp"
         android:layout_marginLeft="81.7dp"
-        android:layout_marginTop="29.3dp"
+        android:layout_marginTop="8.3dp"
         android:layout_marginRight="81.7dp"
         android:background="@drawable/sign_in_box"
         android:ems="10"
-        android:hint="   이메일"
         android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="20dp"
+        android:text="비밀번호" />
 
     <EditText
         android:id="@+id/pwTxt"
         android:layout_width="248.7dp"
         android:layout_height="33.3dp"
         android:layout_marginLeft="81.7dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8.3dp"
         android:layout_marginRight="81.7dp"
         android:background="@drawable/sign_in_box"
         android:ems="10"
-        android:hint="   비밀번호"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="20dp"
+        android:text="이름" />
+
+    <EditText
+        android:id="@+id/nameTxt"
+        android:layout_width="248.7dp"
+        android:layout_height="33.3dp"
+        android:layout_marginLeft="81.7dp"
+        android:layout_marginTop="8.3dp"
+        android:layout_marginRight="81.7dp"
+        android:background="@drawable/sign_in_box"
+        android:ems="10"
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/signInBtn"
+        android:id="@+id/signUpBtn"
         android:layout_width="248.7dp"
         android:layout_height="33.3dp"
         android:layout_marginLeft="81.7dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/sign_in_btn" />
+        android:background="@drawable/sign_up_btn" />
 
     <LinearLayout
         android:layout_width="wrap_content"
