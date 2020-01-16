@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:orientation="vertical">
-    <!--tools:context=".MyPage"-->
+    android:orientation="vertical"
+    tools:context=".ui.myPage.MyPageFunctions">
 
     <ScrollView
         android:id="@+id/mypage_scrollView"
@@ -116,7 +116,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="207.6dp"
+                        android:layout_marginLeft="152dp"
                         android:orientation="vertical">
 
                         <ImageButton
@@ -248,7 +248,7 @@
 
                         <TextView
                             android:id="@+id/bloodSugarAlarmTxt"
-                            android:layout_width="match_parent"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="14.7dp"
                             android:text="@string/bloodSugarAlarmTxt"
@@ -270,20 +270,24 @@
                             android:text="@string/exerciseAlarmTxt"
                             android:textSize="13.3sp" />
 
-                        <TextView
-                            android:id="@+id/signOutTxt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="25.3dp"
-                            android:text="@string/signOutTxt"
-                            android:textSize="13.3sp" />
+                        <Button
+                            android:id="@+id/signOutBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="-17dp"
+                            android:layout_marginTop="18dp"
+                            android:background="@android:color/transparent"
+                            android:text="로그아웃"
+                            android:textStyle="normal" />
 
-                        <TextView
-                            android:id="@+id/withdrawalTxt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="14.3dp"
-                            android:text="@string/withdrawalTxt"
+                        <Button
+                            android:id="@+id/withdrawalBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="-17dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@android:color/transparent"
+                            android:text="회원탈퇴"
                             android:textColor="@android:color/holo_red_dark" />
 
                     </LinearLayout>
@@ -291,7 +295,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="188dp"
+                        android:layout_marginLeft="128dp"
                         android:orientation="vertical">
 
                         <TextView
