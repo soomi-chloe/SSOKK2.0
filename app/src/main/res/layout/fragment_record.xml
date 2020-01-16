@@ -17,378 +17,364 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/layout_bloodsugar"
             android:layout_width="match_parent"
-            android:layout_height="198dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="69.7dp"
-            android:layout_marginRight="7dp"
-            android:background="@drawable/recode_blood_box"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/layout_bloodsugar"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginTop="11.7dp"
-                android:orientation="horizontal">
+                android:layout_height="198dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="69.7dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/recode_blood_box"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="11.7dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/bloodsugarIcon"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="29.7dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/bloodsugar" />
+
+                    <TextView
+                        android:id="@+id/title_bloodSugar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="2.3dp"
+                        android:layout_weight="0"
+                        android:lineSpacingExtra="2.7sp"
+                        android:text="혈당"
+                        android:textColor="#707070"
+                        android:textSize="18.3sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="104.2dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/splitLine"
+                        android:layout_width="355dp"
+                        android:layout_height="4dp"
+                        android:layout_marginLeft="22dp"
+                        android:layout_marginTop="104dp"
+                        android:layout_marginRight="21dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/split_line" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="57.1dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/btn_beforeMeal_unclicked"
+                        android:layout_width="42.3dp"
+                        android:layout_height="29.7dp"
+                        android:layout_marginLeft="29.7dp"
+                        android:layout_marginTop="13.8dp"
+                        android:layout_marginBottom="13.7dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/before_meal" />
+
+                    <ImageView
+                        android:id="@+id/btn_afterMeal_unclicked"
+                        android:layout_width="42.3dp"
+                        android:layout_height="29.7dp"
+                        android:layout_marginLeft="4.7dp"
+                        android:layout_marginTop="13.8dp"
+                        android:layout_marginBottom="13.7dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/after_meal" />
+
+                    <EditText
+                        android:id="@+id/txt_bloodSugarNumber"
+                        android:layout_width="70dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="26.3dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_weight="0"
+                        android:ems="10"
+                        android:inputType="number" />
+
+                    <TextView
+                        android:id="@+id/unit_bloodSugar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:lineSpacingExtra="3sp"
+                        android:text="mg/dl"
+                        android:textColor="#707070"
+                        android:textSize="22.7sp" />
+
+                    <ImageView
+                        android:id="@+id/btn_inputBloodSugar"
+                        android:layout_width="66.3dp"
+                        android:layout_height="29.7dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="16.8dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/input_btn" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_medicine"
+                android:layout_width="match_parent"
+                android:layout_height="154dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10.3dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/recode_medicine_box"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="11.7dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/medicineIcon"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="29.7dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/medicine" />
+
+                    <TextView
+                        android:id="@+id/title_medicine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="2.3dp"
+                        android:lineSpacingExtra="2.7sp"
+                        android:text="약"
+                        android:textColor="#707070"
+                        android:textSize="18.7sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="59.6dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/dot_firstMedi_taken"
+                        android:layout_width="9dp"
+                        android:layout_height="9.3dp"
+                        android:layout_marginLeft="50.3dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/dot_checked" />
+
+                    <ImageView
+                        android:id="@+id/dot_secondMedi_untaken"
+                        android:layout_width="9dp"
+                        android:layout_height="9.3dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/dot_unchecked" />
+
+                    <ImageView
+                        android:id="@+id/dot_thirdMedi_untaken"
+                        android:layout_width="9dp"
+                        android:layout_height="9.3dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/dot_unchecked" />
+
+                    <ImageView
+                        android:id="@+id/dot_fourthMedi_untaken"
+                        android:layout_width="9dp"
+                        android:layout_height="9.3dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/dot_unchecked" />
+
+                    <ImageView
+                        android:id="@+id/dot_fifthMedi_untaken"
+                        android:layout_width="9dp"
+                        android:layout_height="9.3dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="50.3dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/dot_unchecked" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58.4dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/btn_pm"
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="29.7dp"
+                        android:layout_marginTop="17.1dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/pm" />
+
+                    <TimePicker
+                        android:id="@+id/time_takingMedicine"
+                        android:layout_width="129dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="17.1dp"
+                        android:timePickerMode="spinner"></TimePicker>
+
+                    <ImageView
+                        android:id="@+id/btn_inputMedicine"
+                        android:layout_width="66.3dp"
+                        android:layout_height="29.7dp"
+                        android:layout_marginLeft="63dp"
+                        android:layout_marginTop="16.8dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/input_btn" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_weight"
+                android:layout_width="match_parent"
+                android:layout_height="51.3dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10.3dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/recode_weight_box">
 
                 <ImageView
-                    android:id="@+id/bloodsugarIcon"
+                    android:id="@+id/weightIcon"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="29.7dp"
+                    android:layout_marginTop="13.7dp"
+                    android:layout_marginBottom="12.7dp"
                     android:layout_weight="0"
-                    app:srcCompat="@drawable/bloodsugar" />
+                    app:srcCompat="@drawable/weight" />
 
                 <TextView
-                    android:id="@+id/txt_bloodSugar"
+                    android:id="@+id/title_weight"
                     android:layout_width="wrap_content"
-                    android:layout_height="23dp"
+                    android:layout_height="21dp"
                     android:layout_marginLeft="7dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_weight="0"
+                    android:layout_marginTop="5dp"
                     android:lineSpacingExtra="2.7sp"
-                    android:text="혈당"
+                    android:text="체중"
                     android:textColor="#707070"
                     android:textSize="18.3sp" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="104.2dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/splitLine"
-                    android:layout_width="355dp"
-                    android:layout_height="4dp"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginTop="104dp"
-                    android:layout_marginRight="21dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/split_line" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="57.1dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/btn_beforeMeal_unclicked"
-                    android:layout_width="42.3dp"
-                    android:layout_height="29.7dp"
-                    android:layout_marginLeft="29.7dp"
-                    android:layout_marginTop="13.8dp"
-                    android:layout_marginBottom="13.7dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/before_meal" />
-
-                <ImageView
-                    android:id="@+id/btn_afterMeal_unclicked"
-                    android:layout_width="42.3dp"
-                    android:layout_height="29.7dp"
-                    android:layout_marginLeft="4.7dp"
-                    android:layout_marginTop="13.8dp"
-                    android:layout_marginBottom="13.7dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/after_meal" />
-
                 <EditText
-                    android:id="@+id/txt_bloodSugarNumber"
+                    android:id="@+id/txt_weight"
                     android:layout_width="70dp"
                     android:layout_height="25dp"
-                    android:layout_marginLeft="26.3dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="13.7dp"
                     android:layout_weight="0"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="numberDecimal" />
 
                 <TextView
-                    android:id="@+id/unit_bloodSugar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:lineSpacingExtra="3sp"
-                    android:textColor="#707070"
-                    android:textSize="22.7sp"
-                    tools:text="mg/dl" />
-
-                <ImageView
-                    android:id="@+id/btn_inputBloodSugar"
-                    android:layout_width="66.3dp"
-                    android:layout_height="29.7dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="16.8dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/input_btn" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_medicine"
-            android:layout_width="match_parent"
-            android:layout_height="154dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="10.3dp"
-            android:layout_marginRight="7dp"
-            android:background="@drawable/recode_medicine_box"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginTop="11.7dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/medicineIcon"
+                    android:id="@+id/unitWeight"
                     android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="29.7dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/medicine" />
-
-                <TextView
-                    android:id="@+id/txt_medicine"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginBottom="2.3dp"
-                    android:layout_weight="0"
-                    android:lineSpacingExtra="2.7sp"
-                    android:text="약"
-                    android:textColor="#707070"
-                    android:textSize="18.7sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="59.6dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/dot_firstMedi_taken"
-                    android:layout_width="9dp"
-                    android:layout_height="9.3dp"
-                    android:layout_marginLeft="50.3dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/dot_checked" />
-
-                <ImageView
-                    android:id="@+id/dot_secondMedi_untaken"
-                    android:layout_width="9dp"
-                    android:layout_height="9.3dp"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/dot_unchecked" />
-
-                <ImageView
-                    android:id="@+id/dot_thirdMedi_untaken"
-                    android:layout_width="9dp"
-                    android:layout_height="9.3dp"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/dot_unchecked" />
-
-                <ImageView
-                    android:id="@+id/dot_fourthMedi_untaken"
-                    android:layout_width="9dp"
-                    android:layout_height="9.3dp"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/dot_unchecked" />
-
-                <ImageView
-                    android:id="@+id/dot_fifthMedi_untaken"
-                    android:layout_width="9dp"
-                    android:layout_height="9.3dp"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginRight="50.3dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/dot_unchecked" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="58.4dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/btn_pm"
-                    android:layout_width="40dp"
                     android:layout_height="30dp"
-                    android:layout_marginLeft="29.7dp"
-                    android:layout_marginTop="17.1dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/pm" />
-
-                <TimePicker
-                    android:id="@+id/time_takingMedicine"
-                    android:layout_width="129dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="17.1dp"
-                    android:timePickerMode="spinner"></TimePicker>
+                    android:layout_marginLeft="9.7dp"
+                    android:layout_marginTop="3dp"
+                    android:lineSpacingExtra="3sp"
+                    android:text="kg"
+                    android:textColor="#707070"
+                    android:textSize="22.3sp" />
 
                 <ImageView
-                    android:id="@+id/btn_inputMedicine"
+                    android:id="@+id/btn_inputWeight"
                     android:layout_width="66.3dp"
                     android:layout_height="29.7dp"
                     android:layout_marginLeft="63dp"
-                    android:layout_marginTop="16.8dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="0"
                     app:srcCompat="@drawable/input_btn" />
 
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layout_weight"
-            android:layout_width="match_parent"
-            android:layout_height="51.3dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="10.3dp"
-            android:layout_marginRight="7dp"
-            android:background="@drawable/recode_weight_box">
-
-            <ImageView
-                android:id="@+id/weightIcon"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_marginTop="13.7dp"
-                android:layout_marginBottom="12.7dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/weight" />
-
-
-            <TextView
-                android:id="@+id/titleWeight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:textColor="#707070"
-                android:textSize="18.3sp"
+            <LinearLayout
+                android:id="@+id/layout_meal"
+                android:layout_width="match_parent"
+                android:layout_height="165dp"
                 android:layout_marginLeft="7dp"
-                android:layout_marginTop="5dp"
-                android:lineSpacingExtra="2.7sp"
-                android:text="체중" />
+                android:layout_marginTop="10.2dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/recode_meal_box"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/txt_weight"
-                android:layout_width="70dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="13.7dp"
-                android:layout_weight="0"
-                android:ems="10"
-                android:inputType="numberDecimal" />
-
-            <TextView
-                android:id="@+id/unitWeight"
-                android:layout_width="25dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="9.7dp"
-                android:layout_marginTop="3dp"
-                android:lineSpacingExtra="3sp"
-                android:textColor="#707070"
-                android:textSize="22.3sp"
-                tools:text="kg" />
-
-            <ImageView
-                android:id="@+id/btn_inputWeight"
-                android:layout_width="66.3dp"
-                android:layout_height="29.7dp"
-                android:layout_marginLeft="63dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/input_btn" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_meal"
-            android:layout_width="match_parent"
-            android:layout_height="165dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="10.2dp"
-            android:layout_marginRight="7dp"
-            android:background="@drawable/recode_meal_box"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginTop="11.7dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/mealIcon"
-                    android:layout_width="25dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:layout_marginLeft="29.7dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/meal" />
+                    android:layout_marginTop="11.7dp"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:lineSpacingExtra="2.7sp"
-                    android:textColor="#707070"
-                    android:textSize="18.3sp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginTop="2.3dp"
-                    android:layout_marginBottom="2.4dp"
-                    android:text="식사" />
+                    <ImageView
+                        android:id="@+id/mealIcon"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="29.7dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/meal" />
 
-    <!--            <TextView-->
-    <!--                android:id="@+id/titleMeal"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginLeft="7dp"-->
-    <!--                android:layout_marginTop="2.3dp"-->
-    <!--                android:layout_marginBottom="2.4dp"-->
-    <!--                android:lineSpacingExtra="2.7sp"-->
-    <!--                android:textColor="#707070"-->
-    <!--                android:textSize="18.3sp"-->
-    <!--                tools:text="식사" />-->
+                    <TextView
+                        android:id="@+id/title_meal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="2.4dp"
+                        android:lineSpacingExtra="2.7sp"
+                        android:text="식사"
+                        android:textColor="#707070"
+                        android:textSize="18.3sp" />
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView15"
+                        android:layout_width="101.7dp"
+                        android:layout_height="101.7dp"
+                        android:layout_marginLeft="29.7dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/addbtn_withboxaround" />
+                </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView15"
-                    android:layout_width="101.7dp"
-                    android:layout_height="101.7dp"
-                    android:layout_marginLeft="29.7dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/addbtn_withboxaround" />
-
-            </LinearLayout>
-
         </LinearLayout>
-
     </ScrollView>
 
 </LinearLayout>
