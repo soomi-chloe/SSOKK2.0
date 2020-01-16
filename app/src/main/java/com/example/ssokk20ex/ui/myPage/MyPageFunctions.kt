@@ -2,6 +2,7 @@ package com.example.ssokk20ex.ui.myPage
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ssokk20ex.MainActivity
@@ -15,12 +16,21 @@ class MyPageFunctions : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_mypage)
+        supportActionBar?.hide()
 
         auth = FirebaseAuth.getInstance()
 
+        weightRecordBtn.setOnClickListener {
+            var intent = Intent(this, WeightRecordWeekly::class.java)
+            startActivity(intent)
+        }
         signOutBtn.setOnClickListener {
             Toast.makeText(this, "로그아웃 중입니다", Toast.LENGTH_LONG).show()
             //signOut()
+        }
+
+        button3.setOnClickListener {
+            Log.d("check", "로그아웃")
         }
     }
 
