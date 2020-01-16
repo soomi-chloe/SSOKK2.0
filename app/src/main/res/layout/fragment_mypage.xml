@@ -9,7 +9,7 @@
     <!--tools:context=".MyPage"-->
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/mypage_scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true"
