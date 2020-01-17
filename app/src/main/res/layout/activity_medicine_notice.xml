@@ -8,95 +8,100 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="226.7dp"
+        android:layout_height="600dp"
         android:layout_marginLeft="7dp"
         android:layout_marginTop="69.7dp"
         android:layout_marginRight="7dp"
-        android:background="@drawable/mypage_notice_left_hour_box">
-
-        <ImageView
-            android:id="@+id/leftHour"
-            android:layout_width="181.3dp"
-            android:layout_height="181.3dp"
-            android:src="@drawable/notice_left_hour"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txt_tillNextNotice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="1.7sp"
-            android:text="다음 알림까지"
-            android:textColor="#707070"
-            android:textSize="14.7sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.294" />
-
-        <TextView
-            android:id="@+id/txt_leftHour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="3.3sp"
-            android:text="2시간 10분"
-            android:textColor="#707070"
-            android:textSize="24.7sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_tillNextNotice"
-            app:layout_constraintVertical_bias="0.141" />
-
-        <TextView
-            android:id="@+id/txt_nextNotice_pillName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="1.7sp"
-            android:text="약 이름"
-            android:textColor="#707070"
-            android:textSize="13.3sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.698" />
-
-        <TextView
-            android:id="@+id/txt_nextNotice_pillAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="1.7sp"
-            android:text="2알"
-            android:textColor="#707070"
-            android:textSize="13.3sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.784" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="137dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="10.3dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/mypage_notice_medicine_box"
+        android:background="@drawable/alarm_background"
         android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="226.7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="69.7dp"
+            android:layout_marginRight="7dp">
+
+            <ImageView
+                android:id="@+id/leftHour"
+                android:layout_width="181.3dp"
+                android:layout_height="181.3dp"
+                android:src="@drawable/left_hour_medi"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_tillNextNotice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1.7sp"
+                android:text="다음 알림까지"
+                android:textColor="#707070"
+                android:textSize="14.7sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.294" />
+
+            <TextView
+                android:id="@+id/txt_leftHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="3.3sp"
+                android:text="2시간 10분"
+                android:textColor="#707070"
+                android:textSize="24.7sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_tillNextNotice"
+                app:layout_constraintVertical_bias="0.141" />
+
+            <TextView
+                android:id="@+id/txt_nextNotice_pillName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1.7sp"
+                android:text="약 이름"
+                android:textColor="#707070"
+                android:textSize="13.3sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.698" />
+
+            <TextView
+                android:id="@+id/txt_nextNotice_pillAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1.7sp"
+                android:text="2알"
+                android:textColor="#707070"
+                android:textSize="13.3sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.784" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -251,27 +256,7 @@
                 tools:text="8 : 00 AM" />
 
         </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="75.3dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="10.3dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/mypage_notice_add_icon_box"
-        android:orientation="vertical" >
-
-        <ImageButton
-            android:id="@+id/imageButton6"
-            android:layout_width="74.3dp"
-            android:layout_height="29.7dp"
-            android:layout_marginLeft="162dp"
-            android:layout_marginTop="23dp"
-            android:layout_marginRight="162dp"
-            android:layout_marginBottom="22.3dp"
-            android:padding="0dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/add_medicine" />
-    </LinearLayout>
 </LinearLayout>
