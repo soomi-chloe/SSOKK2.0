@@ -18,6 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".IntroSlide" />
         <activity android:name=".IntroAdapter" />
         <activity android:name=".SignUpActivity" />
@@ -25,6 +26,7 @@
 
         </activity>
         <activity android:name=".ui.myPage.AddMedicineNotice" />
+        <activity android:name=".ui.myPage.AddBloodSugarNotice"></activity>
         <activity android:name=".ui.myPage.MedicineNotice" />
         <activity android:name=".info_test" />
         <activity
