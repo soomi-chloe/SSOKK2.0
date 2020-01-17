@@ -1,5 +1,6 @@
 package com.example.ssokk20ex
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -36,6 +37,11 @@ class SignInActivity : AppCompatActivity() {
         auth?.signInWithEmailAndPassword(emailTxt.text.toString(), pwTxt.text.toString())
             ?.addOnCompleteListener { task ->
                 if(task.isSuccessful) {
+                    val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+                    val editor = pref.edit()
+                    editor.putBoolean("isSignedIn", true)
+                    editor.apply()
+
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 } else {
