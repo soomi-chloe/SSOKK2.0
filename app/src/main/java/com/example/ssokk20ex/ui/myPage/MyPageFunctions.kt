@@ -2,17 +2,15 @@ package com.example.ssokk20ex.ui.myPage
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ssokk20ex.MainActivity
 import com.example.ssokk20ex.R
 import com.example.ssokk20ex.SignInActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_mypage.*
 
-class MyPageFunctions : AppCompatActivity() {
+class MyPageFunctions : AppCompatActivity(){
     var auth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
