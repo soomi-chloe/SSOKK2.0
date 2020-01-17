@@ -6,14 +6,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/skipBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop = "10dp"
+        android:layout_marginRight = "10dp"
+        android:text="@string/skip"
+        android:background="@android:color/transparent"
+        android:layout_gravity="right"/>
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="-70dp"
-        android:foregroundGravity="top" />
+        android:layout_marginTop="-70dp" />
 
     <LinearLayout
         android:id="@+id/bottomContainer"
@@ -22,13 +29,13 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/skipBtn"
+            android:id="@+id/previousBtn"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginBottom="30dp"
             android:background="@android:color/transparent"
-            android:text="@string/skip"
+            android:text="@string/previous"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/nextBtn"
             app:layout_constraintHorizontal_bias="0.0"
@@ -38,9 +45,9 @@
             android:id="@+id/dotsContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/nextBtn" />
@@ -49,8 +56,8 @@
             android:id="@+id/nextBtn"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="60dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginBottom="30dp"
             android:background="@android:color/transparent"
             android:text="@string/next"
             app:layout_constraintBottom_toBottomOf="parent"
