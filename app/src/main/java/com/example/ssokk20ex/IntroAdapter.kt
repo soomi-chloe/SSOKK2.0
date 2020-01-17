@@ -19,7 +19,7 @@ class IntroAdapter(private val introSlides: List<IntroSlide>): RecyclerView.Adap
         viewType: Int
     ): IntroSlideViewHolder {
         return IntroSlideViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.intro_slide02, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.intro_image, parent, false)
         )
     }
 
