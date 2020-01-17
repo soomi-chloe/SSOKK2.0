@@ -1,6 +1,8 @@
 package com.example.ssokk20ex
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -14,7 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide() // 앱바(App Bar) 감추기.
-
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
