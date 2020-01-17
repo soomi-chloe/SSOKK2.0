@@ -28,10 +28,6 @@ class MyPageFunctions : AppCompatActivity() {
             Toast.makeText(this, "로그아웃 중입니다", Toast.LENGTH_LONG).show()
             //signOut()
         }
-
-        button3.setOnClickListener {
-            Log.d("check", "로그아웃")
-        }
     }
 
     private fun signOut() {

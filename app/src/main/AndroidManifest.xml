@@ -11,14 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".SignInActivity">
-
-        </activity>
-        <activity android:name=".ui.myPage.AddMedicineNotice"></activity>
-        <activity android:name=".ui.myPage.MedicineNotice" />
-        <activity android:name=".info_test" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -28,9 +20,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.myPage.MyPageFunctions">
+        <activity android:name=".ui.record.RecordFunctions"></activity>
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".SignInActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".ui.myPage.AddMedicineNotice" />
+        <activity android:name=".ui.myPage.MedicineNotice" />
+        <activity android:name=".info_test" />
+
+        <activity android:name=".ui.myPage.MyPageFunctions"></activity>
     </application>
 
 </manifest>

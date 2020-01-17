@@ -1,5 +1,6 @@
 package com.example.ssokk20ex.ui.record
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,5 +24,11 @@ class RecordFragment : Fragment() {
             ViewModelProviders.of(this).get(RecordViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_record, container, false)
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var intent = Intent(activity, RecordFunctions::class.java)
+        startActivity(intent)
     }
 }
