@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.myPage.AddMedicineNotice"></activity>
+        <activity android:name=".ui.myPage.AddBloodSugarNotice"></activity>
         <activity android:name=".ui.myPage.MedicineNotice" />
         <activity android:name=".info_test" />
         <activity
