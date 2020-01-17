@@ -8,110 +8,110 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="226.7dp"
+        android:layout_height="600dp"
         android:layout_marginLeft="7dp"
         android:layout_marginTop="69.7dp"
         android:layout_marginRight="7dp"
-        android:background="@drawable/mypage_notice_left_hour_box">
-
-        <ImageView
-            android:id="@+id/leftHour"
-            android:layout_width="181.3dp"
-            android:layout_height="181.3dp"
-            android:src="@drawable/notice_left_hour"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txt_tillNextNotice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="1.7sp"
-            android:text="남은 측정 횟수"
-            android:textColor="#707070"
-            android:textSize="14.7sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.294" />
-
-        <TextView
-            android:id="@+id/txt_leftHour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="3.3sp"
-            android:text="2번"
-            android:textColor="#707070"
-            android:textSize="24.7sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.462"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_tillNextNotice"
-            app:layout_constraintVertical_bias="0.141" />
-
-        <TextView
-            android:id="@+id/txt_nextNotice_pillName2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="1.7sp"
-            android:text="/6번"
-            android:textColor="#707070"
-            android:textSize="13.3sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.557"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.531" />
-
-        <TextView
-            android:id="@+id/txt_nextNotice_pillName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="1.7sp"
-            android:text="아침"
-            android:textColor="#707070"
-            android:textSize="13.3sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.698" />
-
-        <TextView
-            android:id="@+id/txt_nextNotice_pillAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="1.7sp"
-            android:text="식후"
-            android:textColor="#707070"
-            android:textSize="13.3sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.784" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="187dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="10.3dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/mypage_notice_medicine_box"
+        android:background="@drawable/alarm_background"
         android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="226.7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="69.7dp"
+            android:layout_marginRight="7dp">
+
+            <ImageView
+                android:id="@+id/leftHour"
+                android:layout_width="181.3dp"
+                android:layout_height="181.3dp"
+                android:src="@drawable/left_hour_blood_sugar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_tillNextNotice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1.7sp"
+                android:text="남은 측정 횟수"
+                android:textColor="#707070"
+                android:textSize="14.7sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.294" />
+
+            <TextView
+                android:id="@+id/txt_leftHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="3.3sp"
+                android:text="2번"
+                android:textColor="#707070"
+                android:textSize="24.7sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.462"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_tillNextNotice"
+                app:layout_constraintVertical_bias="0.141" />
+
+            <TextView
+                android:id="@+id/txt_nextNotice_pillName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1.7sp"
+                android:text="/6번"
+                android:textColor="#707070"
+                android:textSize="13.3sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.557"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.531" />
+
+            <TextView
+                android:id="@+id/txt_nextNotice_pillName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1.7sp"
+                android:text="아침"
+                android:textColor="#707070"
+                android:textSize="13.3sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.698" />
+
+            <TextView
+                android:id="@+id/txt_nextNotice_pillAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1.7sp"
+                android:text="식후"
+                android:textColor="#707070"
+                android:textSize="13.3sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.784" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
