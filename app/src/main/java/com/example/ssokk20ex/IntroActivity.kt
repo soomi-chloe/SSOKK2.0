@@ -1,8 +1,11 @@
 package com.example.ssokk20ex
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -21,8 +24,18 @@ class IntroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+//        if(!pref.getBoolean("isNew", true)) {
+//            if(pref.getBoolean("isSignedIn", false))
+//                startActivity(Intent(this, MainActivity::class.java))
+//            else
+//                startActivity(Intent(this, SignInActivity::class.java))
+//        }
+
         setContentView(R.layout.activity_intro)
         supportActionBar?.hide()
+        previousBtn.visibility = View.INVISIBLE
 
         viewPager.adapter = introAapter
         setDots()
@@ -36,16 +49,28 @@ class IntroActivity : AppCompatActivity() {
             }
         })
 
+        previousBtn.setOnClickListener {
+            if(viewPager.currentItem <= 1 )
+                previousBtn.visibility = View.INVISIBLE
+            else
+                previousBtn.visibility = View.VISIBLE
+
+            viewPager.currentItem -= 1
+        }
+
         nextBtn.setOnClickListener {
-            if(viewPager.currentItem + 1 < introAapter.itemCount)
+            if(viewPager.currentItem + 1 < introAapter.itemCount) {
                 viewPager.currentItem += 1
+                previousBtn.visibility = View.VISIBLE
+            }
             else {
-                var intent = Intent(this, SignInActivity::class.java)
-                startActivity(intent)
+                setNoMoreIntro(pref)
+                startActivity(Intent(this, SignInActivity::class.java))
             }
         }
 
         skipBtn.setOnClickListener {
+            setNoMoreIntro(pref)
             startActivity(Intent(this, SignInActivity::class.java))
         }
     }
@@ -77,5 +102,12 @@ class IntroActivity : AppCompatActivity() {
             else
                 imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.dot_inactive))
         }
+    }
+
+    private fun setNoMoreIntro(pref: SharedPreferences) {
+        val editor = pref.edit()
+
+        editor.putBoolean("isNew", false)
+        editor.apply()
     }
 }

@@ -1,6 +1,8 @@
 package com.example.ssokk20ex.ui.myPage
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -38,6 +40,13 @@ class MyPageFunctions : AppCompatActivity(){
             auth?.signOut()
             finish()
             Toast.makeText(this, "로그아웃 되었습니다", Toast.LENGTH_LONG).show()
+
+            val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+            val editor = pref.edit()
+
+            editor.putBoolean("isSignedIn", false)
+            editor.apply()
+
             var intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
         }
@@ -57,6 +66,14 @@ class MyPageFunctions : AppCompatActivity(){
                 ?.addOnCompleteListener { task ->
                     if(task.isSuccessful()) {
                         Toast.makeText(this, "탈퇴 되었습니다", Toast.LENGTH_LONG).show()
+
+                        val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+                        val editor = pref.edit()
+
+                        editor.putBoolean("isSignedIn", false)
+                        editor.putBoolean("isNew", false)
+                        editor.apply()
+
                         var intent = Intent(this, SignInActivity::class.java)
                         startActivity(intent)
                     } else Toast.makeText(this, "회원탈퇴 도중 문제가 생겼습니다", Toast.LENGTH_SHORT).show()
