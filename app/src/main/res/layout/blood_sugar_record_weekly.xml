@@ -25,30 +25,22 @@
 
             <Button
                 android:id="@+id/bloodSugarStatisticsBtn"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:text="혈당 수치" />
 
             <Button
                 android:id="@+id/bmiStatisticsBtn"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:text="BMI"
                 android:textColor="@android:color/darker_gray" />
 
             <Button
-                android:id="@+id/bsHemoglobinStatisticsBtn"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="당화혈색소"
-                android:textColor="@android:color/darker_gray" />
-
-            <Button
                 android:id="@+id/allRecordBtn"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:text="전체기록"
@@ -91,7 +83,7 @@
                 android:lineSpacingExtra="1.7sp"
                 android:textColor="#707070"
                 android:textSize="13sp"
-                tools:text="1월 첫째 주" />
+                android:text="1월 첫째 주" />
 
             <ImageButton
                 android:id="@+id/selectWeekBtn"
@@ -106,7 +98,7 @@
 
         </LinearLayout>
 
-        <ImageView
+        <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/bsGraph"
             android:layout_width="338.7dp"
             android:layout_height="201.3dp"
@@ -141,7 +133,7 @@
                 android:lineSpacingExtra="1.7sp"
                 android:textColor="#62cca5"
                 android:textSize="13.3sp"
-                tools:text="식전" />
+                android:text="식전" />
 
             <TextView
                 android:id="@+id/txt_lowestBloodSugar"
@@ -152,7 +144,7 @@
                 android:lineSpacingExtra="1sp"
                 android:textColor="#707070"
                 android:textSize="8sp"
-                tools:text="최저값" />
+                android:text="최저값" />
 
             <TextView
                 android:id="@+id/lowestBloodSugar_value"
@@ -163,7 +155,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="14sp"
-                tools:text="124" />
+                android:text="124" />
 
             <TextView
                 android:id="@+id/txt_averageBloodsSugar"
@@ -185,7 +177,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="14sp"
-                tools:text="124" />
+                android:text="124" />
 
             <TextView
                 android:id="@+id/txt_hightestBloodsSugar"
@@ -196,7 +188,7 @@
                 android:lineSpacingExtra="1sp"
                 android:textColor="#707070"
                 android:textSize="8sp"
-                tools:text="최고값" />
+                android:text="최고값" />
 
             <TextView
                 android:id="@+id/highestBloodsSugar_value"
@@ -207,7 +199,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="14sp"
-                tools:text="124" />
+                android:text="124" />
         </LinearLayout>
 
         <ImageView
@@ -244,7 +236,7 @@
                 android:textSize="13.3sp"
                 android:textColor="#ffd386"
                 android:lineSpacingExtra="1.7sp"
-                tools:text="식후" />
+                android:text="식후" />
 
             <TextView
                 android:id="@+id/txt_lowestBloodSugar2"
@@ -255,7 +247,7 @@
                 android:lineSpacingExtra="1sp"
                 android:textColor="#707070"
                 android:textSize="8sp"
-                tools:text="최저값" />
+                android:text="최저값" />
 
             <TextView
                 android:id="@+id/lowestBloodSugar_value2"
@@ -266,7 +258,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="14sp"
-                tools:text="124" />
+                android:text="124" />
 
             <TextView
                 android:id="@+id/txt_averageBloodsSugar2"
@@ -277,7 +269,7 @@
                 android:lineSpacingExtra="1sp"
                 android:textColor="#707070"
                 android:textSize="8sp"
-                tools:text="평균값" />
+                android:text="평균값" />
 
             <TextView
                 android:id="@+id/averageBloodSugar_value2"
@@ -288,7 +280,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="14sp"
-                tools:text="124" />
+                android:text="124" />
 
             <TextView
                 android:id="@+id/txt_hightestBloodsSugar2"
@@ -299,7 +291,7 @@
                 android:lineSpacingExtra="1sp"
                 android:textColor="#707070"
                 android:textSize="8sp"
-                tools:text="최고값" />
+                android:text="최고값" />
 
             <TextView
                 android:id="@+id/highestBloodsSugar_value2"
@@ -310,7 +302,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="14sp"
-                tools:text="124" />
+                android:text="124" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
