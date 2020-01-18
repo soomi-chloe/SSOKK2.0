@@ -1,14 +1,20 @@
 package com.example.ssokk20ex.ui.alarm
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.view.ViewGroup
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.TimePicker
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ssokk20ex.BloodSugarDTO
 import com.example.ssokk20ex.R
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_blood_sugar_notice.*
 
 
@@ -19,13 +25,36 @@ class AddBloodSugarNotice : AppCompatActivity() {
         var isChecked_after: Boolean = true
     }
 
+    private var firestore : FirebaseFirestore? = null
+
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_blood_sugar_notice)
         supportActionBar?.hide()
 
-        updateString()
         OnClickTime()
+
+        txt_aDayN.addTextChangedListener(object: TextWatcher{
+            //입력이 끝났을 때
+            override fun afterTextChanged(s: Editable?) {
+                txt_bunN.setText(findViewById<TextView>(R.id.txt_aDayN).getText().toString())
+            }
+
+            //입력하기 전에
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                if(txt_bunN !=txt_aDayN) {
+                    txt_bunN.setText(findViewById<TextView>(R.id.txt_aDayN).getText().toString())
+                }
+            }
+
+            //입력되는 텍스트에 변화가 있을 때
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(txt_bunN !=txt_aDayN) {
+                    txt_bunN.setText(findViewById<TextView>(R.id.txt_aDayN).getText().toString())
+                }
+            }
+        })
 
         btn_addNotice_beforeMeal.setOnClickListener {
             if(isChecked_after) {
@@ -83,6 +112,11 @@ class AddBloodSugarNotice : AppCompatActivity() {
             if (intPresentAlarmN == intAlarmN){
                 Toast.makeText(this, "마지막 알람입니다", Toast.LENGTH_LONG).show()
             } else {
+                //현재 알람 저장하고
+                addDatabase()
+
+
+                //다음 알람으로 가기
                 intPresentAlarmN++
                 Toast.makeText(this, intPresentAlarmN.toString(), Toast.LENGTH_LONG).show()
                 txt_aDayNum.setText(intPresentAlarmN.toString())
@@ -100,36 +134,62 @@ class AddBloodSugarNotice : AppCompatActivity() {
 
     }
 
-    //총 알람수 없데이트하기
-    private  fun updateString() {
-        val AlarmN = findViewById<TextView>(R.id.txt_aDayN)
-        txt_bunN.setText(AlarmN.getText())
-    }
-
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun OnClickTime() {
         val textView = findViewById<TextView>(R.id.textView)
         val timePicker = findViewById<TimePicker>(R.id.timePicker)
-        timePicker.setOnTimeChangedListener { _, hour, minute -> var hour = hour
-            var am_pm = ""
-            // AM_PM decider logic
-            when {hour == 0 -> { hour += 12
-                am_pm = "AM"
-            }
-                hour == 12 -> am_pm = "PM"
-                hour > 12 -> { hour -= 12
-                    am_pm = "PM"
-                }
-                else -> am_pm = "AM"
-            }
-            if (textView != null) {
-                val hour = if (hour < 10) "0" + hour else hour
-                val min = if (minute < 10) "0" + minute else minute
-                // display format of time
-                val msg = "Time is: $hour : $min $am_pm"
-                textView.text = msg
-                textView.visibility = ViewGroup.VISIBLE
-            }
+        textView.text = "Hour: "+timePicker.hour+ " Minute: "+ timePicker.minute
+        timePicker.setOnTimeChangedListener(TimePicker.OnTimeChangedListener { timePicker, hour, minute ->
+            textView.text = "Hour: "+ hour + " Minute : "+ minute
+        })
         }
+
+    private fun addDatabase() {
+//        if (edtAddBreed.text.isEmpty() || edtAddGender.text.isEmpty() ||
+//            edtAddAge.text.isEmpty() || edtAddPhoto.text.isEmpty()) {
+//            txtAddResult.text = "입력되지 않은 값이 있습니다."
+//            return
+//        }
+        var Meal : String ?= null
+        if(isChecked_before == true){
+            Meal = "before"
+            } else if(isChecked_after==true)
+        {
+            Meal = "after"
+        }
+
+        val timePicker = findViewById<TimePicker>(R.id.timePicker)
+
+        var Time : String ?= null
+
+        timePicker.setOnTimeChangedListener(TimePicker.OnTimeChangedListener { timePicker, hour, minute ->
+            Time = (hour + minute).toString()
+            //textView.text = "Hour: "+ hour + " Minute : "+ minute
+        })
+
+        val BloodSugarDTO = BloodSugarDTO(
+            txt_bunN.text.toString(),
+            txt_aDayNum.text.toString(),
+            Meal,
+            Time)
+
+        //val document = edtAddBreed.text.toString()
+        val document = "bloodSugarAlarm"
+
+        //progressBarAdd.visibility = View.VISIBLE
+        firestore = FirebaseFirestore.getInstance()
+        firestore?.collection("Pet3")?.document(document)
+            ?.set(BloodSugarDTO)?.addOnCompleteListener {
+                    task ->
+                //progressBarAdd.visibility = View.GONE
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Firebase Success", Toast.LENGTH_LONG).show()
+                    //txtAddResult.text = "Insert Success"
+                } else {
+                    Toast.makeText(this, "Firebase Failed", Toast.LENGTH_LONG).show()
+                    //txtAddResult.text = task.exception?.message
+                }
+            }
     }
 
-}
+    }
