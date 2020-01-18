@@ -127,7 +127,7 @@
                     android:layout_height="57.1dp"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/btn_beforeMeal"
                         android:layout_width="42.3dp"
                         android:layout_height="29.7dp"
@@ -135,9 +135,11 @@
                         android:layout_marginTop="13.8dp"
                         android:layout_marginBottom="13.7dp"
                         android:layout_weight="0"
+                        android:padding="0dp"
+                        android:scaleType="centerCrop"
                         app:srcCompat="@drawable/before_meal" />
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/btn_afterMeal"
                         android:layout_width="42.3dp"
                         android:layout_height="29.7dp"
@@ -145,6 +147,8 @@
                         android:layout_marginTop="13.8dp"
                         android:layout_marginBottom="13.7dp"
                         android:layout_weight="0"
+                        android:padding="0dp"
+                        android:scaleType="centerCrop"
                         app:srcCompat="@drawable/after_meal" />
 
                     <EditText
@@ -174,13 +178,15 @@
                         android:textColor="#707070"
                         android:textSize="22.7sp" />
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/btn_inputBloodSugar"
                         android:layout_width="66.3dp"
                         android:layout_height="29.7dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="16.8dp"
                         android:layout_weight="0"
+                        android:padding="0dp"
+                        android:scaleType="centerCrop"
                         app:srcCompat="@drawable/input_btn" />
                 </LinearLayout>
 
@@ -542,13 +548,15 @@
                     android:textColor="#707070"
                     android:textSize="22.3sp" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/btn_inputWeight"
                     android:layout_width="66.3dp"
                     android:layout_height="29.7dp"
                     android:layout_marginLeft="45dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0"
+                    android:padding="0dp"
+                    android:scaleType="centerCrop"
                     app:srcCompat="@drawable/input_btn" />
 
             </LinearLayout>
@@ -613,13 +621,15 @@
                         android:layout_weight="0"
                         app:srcCompat="@drawable/all_record_meal" />
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/add_mealImage"
                         android:layout_width="65dp"
                         android:layout_height="65dp"
                         android:layout_marginLeft="29.7dp"
                         android:layout_marginTop="5dp"
                         android:layout_weight="0"
+                        android:padding="0dp"
+                        android:scaleType="centerCrop"
                         app:srcCompat="@drawable/addbtn_withboxaround" />
                 </LinearLayout>
             </LinearLayout>

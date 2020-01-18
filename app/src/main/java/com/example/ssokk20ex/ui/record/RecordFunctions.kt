@@ -1,13 +1,22 @@
 package com.example.ssokk20ex.ui.record
 
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Camera
 import android.graphics.Color
+import android.media.audiofx.EnvironmentalReverb
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.text.Editable
+import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import com.example.ssokk20ex.R
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
@@ -20,20 +29,31 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_record.*
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.util.jar.Manifest
 
 class RecordFunctions : AppCompatActivity() {
 
     private var firestore : FirebaseFirestore? = null
 
-    private var check1: Int = 0
-    private var check2: Int = 0
+    @RequiresApi(Build.VERSION_CODES.O)
+    var date: LocalDate = LocalDate.now() //날짜 받아오기(document)
+    private var check1: Int = 0 //식전 버튼 체크 안된 상태
+    private var check2: Int = 0 //식후 버튼 체크 안된 상태
     private var chart_bloodSugar: LineChart? = null
     private val entries = ArrayList<Entry>()
     private var lineChart: LineChart?= null
     private var xValue: String = ""
+    private var array = booleanArrayOf(true, true, true, true, true)
+
+    var currentPath: String? = null
+    val TAKE_PICTURE = 1
 
     var xAxisValues: List<String> = java.util.ArrayList(
         listOf(
@@ -46,6 +66,8 @@ class RecordFunctions : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_record)
         supportActionBar?.hide()
+        firestore = FirebaseFirestore.getInstance()
+
 
         //1. 혈당 - 식전 버튼
         btn_beforeMeal.setOnClickListener {
@@ -71,38 +93,93 @@ class RecordFunctions : AppCompatActivity() {
         chartSet()
 
         //2. 약
-
+        btn_todayPill1.setOnClickListener {
+            pillClicked(btn_todayPill1, 0)
+        }
+        btn_todayPill2.setOnClickListener {
+            pillClicked(btn_todayPill2, 1)
+        }
+        btn_todayPill3.setOnClickListener {
+            pillClicked(btn_todayPill3, 2)
+        }
+        btn_todayPill4.setOnClickListener {
+            pillClicked(btn_todayPill4, 3)
+        }
+        btn_todayPill5.setOnClickListener {
+            pillClicked(btn_todayPill5, 4)
+        }
 
         //3. 체중 - 입력 버튼
         btn_inputWeight.setOnClickListener {
             addWeightData() //체중 데이터 저장
         }
 
-
+        //4. 식사 사진
+//        add_mealImage.setOnClickListener {
+//            dispatchCameraIntent()
+//        }
     }
+
+//    fun dispatchCameraIntent(){
+//        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//        if(intent.resolveActivity(packageManager) != null){
+//            var photoFile: File? = null
+//            try{
+//                photoFile = createImage()
+//            }
+//            catch(e: IOException){ }
+//            if(photoFile != null){
+//                var photoUri = FileProvider.getUriForFile(this,
+//                    "com.coutocode.caneraexample.fileprovider", photoFile)
+//                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
+//                startActivityForResult(intent, TAKE_PICTURE)
+//            }
+//        }
+//    }
+//
+//    fun createImage(): File{
+//        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Data())
+//        val imageName = "JPEG_" + timeStamp + "_"
+//        var storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+//        var image = File.createTempFile(imageName, ".jpg", storageDir)
+//        currentPath = image.absolutePath
+//        return image
+//    }
 
     //혈당 수치 데이터 저장
     @RequiresApi(Build.VERSION_CODES.O)
     private fun addBloodSugarData(){
 
-        val date_bloodSugar: LocalDate = LocalDate.now() //날짜 받아오기(document)
-        val bloodSugar = txt_bloodSugarNumber.text.toString() //입력받은 혈당수치(data)
+        var bloodSugar = txt_bloodSugarNumber.text.toString() //입력받은 혈당수치(data)
 
         //아무것도 적지 않고 입력버튼을 누른 경우
-        if(txt_bloodSugarNumber.text.toString().isEmpty()){
+        if(txt_bloodSugarNumber.text.isEmpty()){
             Toast.makeText(this, "혈당 수치를 입력해주세요", Toast.LENGTH_LONG).show()
         }
-        else {
-            firestore = FirebaseFirestore.getInstance()
-            firestore?.collection("record")?.document(date_bloodSugar.toString())
-                ?.set(bloodSugar)?.addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
-                    } else {
-                        Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
-                    }
+
+        firestore?.collection("record")?.document(date.toString())
+            ?.set(bloodSugar)
+            ?.addOnCompleteListener {
+                    task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
                 }
-        }
+            }
+
+
+
+//        val docRef = firestore?.collection("record")?.document("date")
+//        docRef?.get()
+//            ?.addOnSuccessListener { document ->
+//                if(document != null){
+//                    Log.d("exist", "not null")
+//                } else{
+//                    Log.d("noexist", "is null")
+//                }
+//            }
+//            ?.addOnFailureListener { exception -> Log.d("is error", "got failed with", exception) }
 
     }
 
@@ -234,11 +311,25 @@ class RecordFunctions : AppCompatActivity() {
     }
 
 
+    // 알약 아이콘
+    private fun pillClicked(btn: ImageButton, index: Int){
+        if(array[index] == false){
+            btn.setImageResource(R.drawable.record_medi_unchecked)
+            array[index] = true
+        }
+        else{
+            btn.setImageResource(R.drawable.record_medi_checked)
+            array[index] = false
+        }
+    }
+
+
+
+
     //체중 데이터 저장
     @RequiresApi(Build.VERSION_CODES.O)
     private fun addWeightData(){
 
-        var date_weight: LocalDate = LocalDate.now() //날짜 받아오기(document)
         var weight = txt_weight.text.toString() //입력받은 체중값(data)
 
         //아무것도 적지 않고 입력버튼을 누른 경우
@@ -246,8 +337,7 @@ class RecordFunctions : AppCompatActivity() {
             Toast.makeText(this, "체중을 입력해주세요", Toast.LENGTH_LONG).show()
         }
 
-        firestore = FirebaseFirestore.getInstance()
-        firestore?.collection("record")?.document(date_weight.toString())
+        firestore?.collection("record")?.document(date.toString())
             ?.set(weight)?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
