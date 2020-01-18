@@ -40,7 +40,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="약이름" />
+                android:text="약이름" />
 
         </LinearLayout>
 
@@ -58,7 +58,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="하루" />
+                android:text="하루" />
 
             <EditText
                 android:id="@+id/editTxt_aDayNum"
@@ -76,7 +76,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="번" />
+                android:text="번" />
 
             <EditText
                 android:id="@+id/editTxt_aDayNum2"
@@ -94,7 +94,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="알씩" />
+                android:text="알씩" />
 
             <ImageButton
                 android:id="@+id/btn_addNotice_beforeMeal"
@@ -125,7 +125,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="30분 이내" />
+                android:text="30분 이내" />
 
             <ImageButton
                 android:id="@+id/btn_addNotice_see"

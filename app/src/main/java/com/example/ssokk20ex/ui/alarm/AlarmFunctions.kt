@@ -20,5 +20,10 @@ class AlarmFunctions : AppCompatActivity() {
         tab_pill.setOnClickListener {
             startActivity(Intent(this, MedicineNotice::class.java))
         }
+
+        btn_fixMedicineNotice.setOnClickListener {
+            startActivity(Intent(this, AddMedicineNotice::class.java))
+        }
+
     }
 }
