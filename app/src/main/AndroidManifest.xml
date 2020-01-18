@@ -3,7 +3,7 @@
     package="com.example.ssokk20ex">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
 
     <application
         android:allowBackup="true"
@@ -12,10 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.statistics.StatisticsFunctions_monthly"
-            android:theme="@style/noAnimTheme"></activity>
-        <activity android:name=".ui.statistics.StatisticsFunctionsWeight_monthly"
-            android:theme="@style/noAnimTheme"/>
+        <activity android:name=".RecordBloodSugarDTO"></activity>
+        <activity
+            android:name=".ui.statistics.StatisticsFunctions_monthly"
+            android:theme="@style/noAnimTheme" />
+        <activity
+            android:name=".ui.statistics.StatisticsFunctionsWeight_monthly"
+            android:theme="@style/noAnimTheme" />
         <activity
             android:name=".ui.statistics.StatisticsFunctionsWeight"
             android:theme="@style/noAnimTheme" />
@@ -25,13 +28,17 @@
         <activity android:name=".IntroAdapter" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SignInActivity" />
-        <activity android:name=".ui.alarm.AddMedicineNotice"
+        <activity
+            android:name=".ui.alarm.AddMedicineNotice"
             android:theme="@style/noAnimTheme" />
-        <activity android:name=".ui.alarm.AddBloodSugarNotice"
+        <activity
+            android:name=".ui.alarm.AddBloodSugarNotice"
             android:theme="@style/noAnimTheme" />
-        <activity android:name=".ui.alarm.MedicineNotice"
+        <activity
+            android:name=".ui.alarm.MedicineNotice"
             android:theme="@style/noAnimTheme" />
-        <activity android:name=".ui.alarm.AlarmFunctions"
+        <activity
+            android:name=".ui.alarm.AlarmFunctions"
             android:theme="@style/noAnimTheme" />
         <activity android:name=".info_test" />
         <activity

@@ -1,49 +1,31 @@
 package com.example.ssokk20ex.ui.record
 
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Camera
 import android.graphics.Color
-import android.media.audiofx.EnvironmentalReverb
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
-import android.text.Editable
-import android.util.Log
-import android.view.View
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
 import com.example.ssokk20ex.R
+import com.example.ssokk20ex.RecordBloodSugarDTO
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IAxisValueFormatter
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_record.*
-import java.io.File
-import java.io.IOException
-import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.util.jar.Manifest
+import java.time.format.DateTimeFormatter
+import kotlin.collections.ArrayList
 
 class RecordFunctions : AppCompatActivity() {
-
-    private var firestore : FirebaseFirestore? = null
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    var date: LocalDate = LocalDate.now() //날짜 받아오기(document)
     private var check1: Int = 0 //식전 버튼 체크 안된 상태
     private var check2: Int = 0 //식후 버튼 체크 안된 상태
     private var chart_bloodSugar: LineChart? = null
@@ -51,6 +33,7 @@ class RecordFunctions : AppCompatActivity() {
     private var lineChart: LineChart?= null
     private var xValue: String = ""
     private var array = booleanArrayOf(true, true, true, true, true)
+    private var firestore : FirebaseFirestore? = null
 
     var currentPath: String? = null
     val TAKE_PICTURE = 1
@@ -66,7 +49,6 @@ class RecordFunctions : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_record)
         supportActionBar?.hide()
-        firestore = FirebaseFirestore.getInstance()
 
 
         //1. 혈당 - 식전 버튼
@@ -79,14 +61,54 @@ class RecordFunctions : AppCompatActivity() {
             afterMeal()
         }
 
+        var n : Int = 1
+
         //1. 혈당 - 입력 버튼
         btn_inputBloodSugar.setOnClickListener {
-            //그래프에 수치값 찍어주기
+
+            if(n==7){n=1}
+
+            //수치가 없을 경우
+            if(txt_bloodSugarNumber.text.isEmpty()){
+                Toast.makeText(this, "혈당 수치를 입력해주세요", Toast.LENGTH_LONG).show()
+            }
+            //수치가 있을 경우
+            else {
+                //데이터 저장
+
+                var bloodSugar = findViewById<TextView>(R.id.txt_bloodSugarNumber)
+                var date= LocalDate.now()
+                var strnow = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                var document = strnow + "-"+n
+//        textView2.setText(Strnow)
+//        var n : Int = 1
+//        n++
+
+                    val RecordBloodSugarDTO = RecordBloodSugarDTO(
+                        strnow.toString(),
+                        n.toString(),
+                        bloodSugar.text.toString()
+                    )
+
+                    firestore = FirebaseFirestore.getInstance()
+                    firestore?.collection("record_bloodSugar")?.document(document)
+                        ?.set(RecordBloodSugarDTO)
+                        ?.addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                n=n+1
+                                Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
+                            } else {
+                                Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
+                            }
+                }
+
+                //그래프에 수치값 찍어주기
             val  value = Integer.parseInt(txt_bloodSugarNumber.text.toString()).toFloat()
             chartAdd(value)
-            txt_bloodSugarNumber.setText(null) //수치적는 란 초기화
 
-            addBloodSugarData() //데이터 저장
+            txt_bloodSugarNumber.setText(null) //수치적는 란 초기화
+            }
+
         }
 
         //1. 혈당 - 그래프
@@ -145,43 +167,6 @@ class RecordFunctions : AppCompatActivity() {
 //        currentPath = image.absolutePath
 //        return image
 //    }
-
-    //혈당 수치 데이터 저장
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun addBloodSugarData(){
-
-        var bloodSugar = txt_bloodSugarNumber.text.toString() //입력받은 혈당수치(data)
-
-        //아무것도 적지 않고 입력버튼을 누른 경우
-        if(txt_bloodSugarNumber.text.isEmpty()){
-            Toast.makeText(this, "혈당 수치를 입력해주세요", Toast.LENGTH_LONG).show()
-        }
-
-        firestore?.collection("record")?.document(date.toString())
-            ?.set(bloodSugar)
-            ?.addOnCompleteListener {
-                    task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
-                } else {
-                    Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
-                }
-            }
-
-
-
-//        val docRef = firestore?.collection("record")?.document("date")
-//        docRef?.get()
-//            ?.addOnSuccessListener { document ->
-//                if(document != null){
-//                    Log.d("exist", "not null")
-//                } else{
-//                    Log.d("noexist", "is null")
-//                }
-//            }
-//            ?.addOnFailureListener { exception -> Log.d("is error", "got failed with", exception) }
-
-    }
 
 
     //오늘의 혈당 그래프 - 추가
@@ -331,13 +316,15 @@ class RecordFunctions : AppCompatActivity() {
     private fun addWeightData(){
 
         var weight = txt_weight.text.toString() //입력받은 체중값(data)
+        val document = LocalDate.now()
 
         //아무것도 적지 않고 입력버튼을 누른 경우
         if(txt_bloodSugarNumber.text.isEmpty()){
             Toast.makeText(this, "체중을 입력해주세요", Toast.LENGTH_LONG).show()
         }
 
-        firestore?.collection("record")?.document(date.toString())
+        firestore = FirebaseFirestore.getInstance()
+        firestore?.collection("record_weight")?.document(document.toString())
             ?.set(weight)?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
