@@ -163,7 +163,9 @@ class AddBloodSugarNotice : AppCompatActivity() {
         var Time : String ?= null
 
         timePicker.setOnTimeChangedListener(TimePicker.OnTimeChangedListener { timePicker, hour, minute ->
-            Time = (hour + minute).toString()
+            var hour = hour
+            var minute = minute
+            Time = hour.toString()+minute.toString()
             //textView.text = "Hour: "+ hour + " Minute : "+ minute
         })
 
@@ -174,11 +176,11 @@ class AddBloodSugarNotice : AppCompatActivity() {
             Time)
 
         //val document = edtAddBreed.text.toString()
-        val document = "bloodSugarAlarm"
+        val document = "txt_aDayNum.text.toString()"
 
         //progressBarAdd.visibility = View.VISIBLE
         firestore = FirebaseFirestore.getInstance()
-        firestore?.collection("Alarm")?.document(document)
+        firestore?.collection("bloodSugarAlarm")?.document(document)
             ?.set(BloodSugarDTO)?.addOnCompleteListener {
                     task ->
                 //progressBarAdd.visibility = View.GONE
