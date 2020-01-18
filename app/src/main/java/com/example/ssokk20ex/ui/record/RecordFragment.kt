@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.ssokk20ex.R
 
 class RecordFragment : Fragment() {
-
     private lateinit var recordViewModel: RecordViewModel
 
     override fun onCreateView(
