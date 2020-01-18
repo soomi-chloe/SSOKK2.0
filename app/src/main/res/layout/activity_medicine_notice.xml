@@ -23,7 +23,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/tab_blood_sugar"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
                 android:text="혈당 체크 시간" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/tab_pill"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
@@ -172,7 +172,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="약 이름" />
+                android:text="약 이름" />
 
             <ImageButton
                 android:id="@+id/btn_fixMedicineNotice"
@@ -212,7 +212,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="3회" />
+                android:text="3회" />
 
             <TextView
                 android:id="@+id/txt_devision1"
@@ -223,7 +223,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="X" />
+                android:text="X" />
 
             <TextView
                 android:id="@+id/txt_howManyPill"
@@ -235,7 +235,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="2알" />
+                android:text="2알" />
 
             <TextView
                 android:id="@+id/txt_devision2"
@@ -247,7 +247,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="X" />
+                android:text="X" />
 
             <ImageView
                 android:id="@+id/medicineTime_beforeMeal"
@@ -286,7 +286,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="8 : 00 AM" />
+                android:text="8 : 00 AM" />
 
             <TextView
                 android:id="@+id/txt_startingTime2"
@@ -297,7 +297,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="8 : 00 AM" />
+                android:text="8 : 00 AM" />
 
             <TextView
                 android:id="@+id/txt_startingTime3"
@@ -308,7 +308,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="8 : 00 AM" />
+                android:text="8 : 00 AM" />
 
         </LinearLayout>
 

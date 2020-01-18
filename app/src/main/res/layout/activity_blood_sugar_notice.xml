@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
@@ -22,7 +21,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/tab_blood_sugar"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
@@ -34,7 +33,7 @@
                 android:text="혈당 체크 시간" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/tab_pill"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
