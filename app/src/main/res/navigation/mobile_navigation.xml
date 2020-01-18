@@ -21,11 +21,11 @@
         android:id="@+id/navigation_info"
         android:name="com.example.ssokk20ex.ui.info.InfoFragment"
         android:label="@string/title_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_mypage" />
 
     <fragment
         android:id="@+id/navigation_myPage"
         android:name="com.example.ssokk20ex.ui.myPage.MyPageFragment"
         android:label="@string/title_myPage"
-        tools:layout="@layout/fragment_mypage" />
+        tools:layout="@layout/fragment_info" />
 </navigation>
