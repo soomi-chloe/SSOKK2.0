@@ -3,6 +3,7 @@
     package="com.example.ssokk20ex">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
 
     <application
         android:allowBackup="true"
@@ -11,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StatisticsFunctions_monthly"></activity>
-        <activity android:name=".StatisticsFunctionsWeight_monthly" />
+        <activity android:name=".ui.statistics.StatisticsFunctions_monthly"
+            android:theme="@style/noAnimTheme"></activity>
+        <activity android:name=".ui.statistics.StatisticsFunctionsWeight_monthly"
+            android:theme="@style/noAnimTheme"/>
         <activity
             android:name=".ui.statistics.StatisticsFunctionsWeight"
             android:theme="@style/noAnimTheme" />
