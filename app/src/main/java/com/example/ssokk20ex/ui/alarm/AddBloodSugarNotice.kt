@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.TimePicker
@@ -16,6 +15,7 @@ import com.example.ssokk20ex.BloodSugarDTO
 import com.example.ssokk20ex.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_blood_sugar_notice.*
+import kotlinx.android.synthetic.main.activity_info_test.*
 
 
 class AddBloodSugarNotice : AppCompatActivity() {
@@ -138,9 +138,9 @@ class AddBloodSugarNotice : AppCompatActivity() {
     private fun OnClickTime() {
         val textView = findViewById<TextView>(R.id.textView)
         val timePicker = findViewById<TimePicker>(R.id.timePicker)
-        textView.text = "Hour: "+timePicker.hour+ " Minute: "+ timePicker.minute
         timePicker.setOnTimeChangedListener(TimePicker.OnTimeChangedListener { timePicker, hour, minute ->
-            textView.text = "Hour: "+ hour + " Minute : "+ minute
+            var hour = hour
+            textView.text = hour.toString() + minute.toString()
         })
         }
 
@@ -150,38 +150,40 @@ class AddBloodSugarNotice : AppCompatActivity() {
 //            txtAddResult.text = "입력되지 않은 값이 있습니다."
 //            return
 //        }
-        var Meal : String ?= null
+        var meal : String ?= null
         if(isChecked_before == true){
-            Meal = "before"
+            meal = "before"
             } else if(isChecked_after==true)
         {
-            Meal = "after"
+            meal = "after"
         }
 
-        val timePicker = findViewById<TimePicker>(R.id.timePicker)
+        //val timePicker = findViewById<TimePicker>(R.id.timePicker)
 
-        var Time : String ?= null
+        var bloodSugarDTO : BloodSugarDTO ?= null
 
-        timePicker.setOnTimeChangedListener(TimePicker.OnTimeChangedListener { timePicker, hour, minute ->
-            var hour = hour
-            var minute = minute
-            Time = hour.toString()+minute.toString()
-            //textView.text = "Hour: "+ hour + " Minute : "+ minute
-        })
+//        timePicker.setOnTimeChangedListener(TimePicker.OnTimeChangedListener { timePicker, hour, minute ->
+//            //hourC = hour
+//            //textView.text = "Hour: "+ hour + " Minute : "+ minute
+//            textView.text = hour.toString() + minute.toString()
+//
+//        })
+       // if(textView.text.toString() == "TextView")
 
-        val BloodSugarDTO = BloodSugarDTO(
+
+        bloodSugarDTO = BloodSugarDTO(
             txt_bunN.text.toString(),
             txt_aDayNum.text.toString(),
-            Meal,
-            Time)
+            meal,
+            textView.text.toString())
 
         //val document = edtAddBreed.text.toString()
-        val document = "txt_aDayNum.text.toString()"
+        val document = txt_aDayNum.text.toString()
 
         //progressBarAdd.visibility = View.VISIBLE
         firestore = FirebaseFirestore.getInstance()
         firestore?.collection("bloodSugarAlarm")?.document(document)
-            ?.set(BloodSugarDTO)?.addOnCompleteListener {
+            ?.set(bloodSugarDTO)?.addOnCompleteListener {
                     task ->
                 //progressBarAdd.visibility = View.GONE
                 if (task.isSuccessful) {
