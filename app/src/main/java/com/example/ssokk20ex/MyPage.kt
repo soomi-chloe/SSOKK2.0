@@ -1,23 +1,20 @@
-package com.example.ssokk20ex.ui.myPage
+package com.example.ssokk20ex
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ssokk20ex.R
-import com.example.ssokk20ex.SignInActivity
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_mypage.*
+import kotlinx.android.synthetic.main.activity_mypage.*
 
-class MyPageFunctions : AppCompatActivity(){
+class MyPage : AppCompatActivity(){
     var auth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_mypage)
+        setContentView(R.layout.activity_mypage)
         supportActionBar?.hide()
 
         auth = FirebaseAuth.getInstance()

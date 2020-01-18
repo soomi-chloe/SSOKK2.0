@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_myPage"
-        android:name="com.example.ssokk20ex.ui.myPage.MyPageFragment"
+        android:name="com.example.ssokk20ex.ui.alarm.AlarmFragment"
         android:label="@string/title_alarm"
-        tools:layout="@layout/fragment_mypage" />
+        tools:layout="@layout/activity_blood_sugar_notice" />
 
     <fragment
         android:id="@+id/navigation_exercise"
@@ -27,6 +27,6 @@
         android:id="@+id/navigation_info"
         android:name="com.example.ssokk20ex.ui.info.InfoFragment"
         android:label="@string/title_info"
-        tools:layout="@layout/fragment_mypage" />
+        tools:layout="@layout/fragment_info" />
 
 </navigation>

@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
+    <!--tools:context=".MainActivity"-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:lineSpacingExtra="1.7sp"
                 android:textColor="#707070"
                 android:textSize="13.3sp"
-                tools:text="혈당 체크 시간" />
+                android:text="혈당 체크 시간" />
 
             <Button
                 android:id="@+id/button2"
@@ -42,7 +42,7 @@
                 android:lineSpacingExtra="1.7sp"
                 android:textColor="#cbcbcb"
                 android:textSize="13.3sp"
-                tools:text="약 복용 시간" />
+                android:text="약 복용 시간" />
 
         </LinearLayout>
 
@@ -175,7 +175,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="혈당" />
+                android:text="혈당" />
 
             <ImageButton
                 android:id="@+id/btn_fixMedicineNotice"
@@ -214,7 +214,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="하루 6번" />
+                android:text="하루 6번" />
 
         </LinearLayout>
 
@@ -243,7 +243,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="8 : 00 AM" />
+                android:text="8 : 00 AM" />
 
             <TextView
                 android:id="@+id/txt_startingTime2"
@@ -255,7 +255,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="8 : 00 AM" />
+                android:text="8 : 00 AM" />
 
             <TextView
                 android:id="@+id/txt_startingTime3"
@@ -267,7 +267,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="8 : 00 AM" />
+                android:text="8 : 00 AM" />
 
         </LinearLayout>
 
@@ -296,7 +296,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="8 : 00 AM" />
+                android:text="8 : 00 AM" />
 
             <TextView
                 android:id="@+id/txt_startingTime5"
@@ -308,7 +308,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="8 : 00 AM" />
+                android:text="8 : 00 AM" />
 
             <TextView
                 android:id="@+id/txt_startingTime6"
@@ -320,7 +320,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="8 : 00 AM" />
+                android:text="8 : 00 AM" />
 
         </LinearLayout>
     </LinearLayout>

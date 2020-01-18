@@ -1,4 +1,4 @@
-package com.example.ssokk20ex.ui.myPage
+package com.example.ssokk20ex.ui.alarm
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,26 +9,24 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.ssokk20ex.R
 
-class MyPageFragment : Fragment() {
+class AlarmFragment : Fragment() {
 
-    private lateinit var myPageViewModel: MyPageViewModel
+    private lateinit var alarmViewModel: AlarmViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        myPageViewModel =
-            ViewModelProviders.of(this).get(MyPageViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_mypage, container, false)
-
+        alarmViewModel =
+            ViewModelProviders.of(this).get(AlarmViewModel::class.java)
+        val root = inflater.inflate(R.layout.activity_blood_sugar_notice, container, false)
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var intent = Intent(activity, MyPageFunctions::class.java)
-        startActivity(intent)
+        startActivity(Intent(activity, AlarmFunctions::class.java))
     }
 }

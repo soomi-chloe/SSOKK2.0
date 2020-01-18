@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
+    <!--tools:context=".MainActivity"-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                 android:lineSpacingExtra="1.7sp"
                 android:textColor="#cbcbcb"
                 android:textSize="13.3sp"
-                tools:text="혈당 체크 시간" />
+                android:text="혈당 체크 시간" />
 
             <Button
                 android:id="@+id/button2"
@@ -43,7 +43,7 @@
                 android:lineSpacingExtra="1.7sp"
                 android:textColor="#707070"
                 android:textSize="13.3sp"
-                tools:text="약 복용 시간" />
+                android:text="약 복용 시간" />
 
         </LinearLayout>
 

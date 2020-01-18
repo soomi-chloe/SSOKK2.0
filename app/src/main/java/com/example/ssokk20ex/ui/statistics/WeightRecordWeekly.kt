@@ -1,4 +1,4 @@
-package com.example.ssokk20ex.ui.myPage
+package com.example.ssokk20ex.ui.statistics
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

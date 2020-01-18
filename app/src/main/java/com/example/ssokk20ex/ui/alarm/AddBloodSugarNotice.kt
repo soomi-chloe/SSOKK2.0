@@ -1,4 +1,4 @@
-package com.example.ssokk20ex.ui.myPage
+package com.example.ssokk20ex.ui.alarm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
