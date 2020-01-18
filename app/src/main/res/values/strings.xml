@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">SSOKK2.0ex</string>
     <string name="title_record">기록</string>
-    <string name="title_exercise">알람</string>
-    <string name="title_info">통계</string>
-    <string name="title_myPage">정보</string>
+    <string name="title_statistics">통계</string>
+    <string name="title_info">정보</string>
+    <string name="title_alarm">알림</string>
     <string name="setAccountTxt">계정 관련 설정</string>
     <string name="setNameTxt">이름 변경</string>
     <string name="setPWTxt">비밀번호 변경</string>

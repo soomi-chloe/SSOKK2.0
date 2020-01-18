@@ -18,67 +18,42 @@
         android:background="@drawable/all_record_box"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_marginLeft="29.7dp"
-            android:layout_marginTop="27.7dp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15.7sp"
-            android:textColor="#707070"
-            android:lineSpacingExtra="2sp"
-            tools:text="전체 기록" />
+            android:orientation="horizontal">
 
-        <!--    <LinearLayout-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="31dp"-->
-        <!--        android:layout_marginTop="23dp"-->
-        <!--        android:orientation="horizontal">-->
-        <!---->
-        <!--        <ImageButton-->
-        <!--            android:id="@+id/btn_monthLeft"-->
-        <!--            android:layout_width="8.2dp"-->
-        <!--            android:layout_height="13.8dp"-->
-        <!--            android:layout_marginLeft="34dp"-->
-        <!--            android:layout_marginTop="1.1dp"-->
-        <!--            android:layout_weight="0"-->
-        <!--            android:padding="0dp"-->
-        <!--            android:scaleType="centerCrop"-->
-        <!--            app:srcCompat="@drawable/all_record_left" />-->
+            <Button
+                android:id="@+id/bloodSugarStatisticsBtn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="혈당 수치"
+                android:textColor="@android:color/darker_gray"/>
 
-        <!--        <TextView-->
-        <!--            android:id="@+id/txt_whatMonth"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginLeft="117dp"-->
-        <!--            android:layout_marginRight="161dp"-->
-        <!--            android:gravity="center_horizontal"-->
-        <!--            android:lineSpacingExtra="1.7sp"-->
-        <!--            android:textColor="#707070"-->
-        <!--            android:textSize="15sp"-->
-        <!--            tools:text="2020년 1월" />-->
+            <Button
+                android:id="@+id/bmiStatisticsBtn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="BMI"
+                android:textColor="@android:color/darker_gray" />
 
-        <!--        <ImageButton-->
-        <!--            android:id="@+id/btn_monthRight"-->
-        <!--            android:layout_width="8.2dp"-->
-        <!--            android:layout_height="13.8dp"-->
-        <!--            android:layout_marginLeft="-40dp"-->
-        <!--            android:layout_marginTop="1.1dp"-->
-        <!--            android:layout_weight="0"-->
-        <!--            android:padding="0dp"-->
-        <!--            android:scaleType="centerCrop"-->
-        <!--            app:srcCompat="@drawable/all_record_right" />-->
+            <Button
+                android:id="@+id/bsHemoglobinStatisticsBtn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="당화혈색소"
+                android:textColor="@android:color/darker_gray" />
 
-        <!--    </LinearLayout>-->
-
-        <!--    <ImageView-->
-        <!--        android:id="@+id/allRecord_calendar"-->
-        <!--        android:layout_width="338.7dp"-->
-        <!--        android:layout_height="206.7dp"-->
-        <!--        android:layout_marginLeft="29.7dp"-->
-        <!--        android:layout_marginTop="5dp"-->
-        <!--        android:layout_marginRight="29.7dp"-->
-        <!--        app:srcCompat="@drawable/my_exercise_done" />-->
+            <Button
+                android:id="@+id/allRecordBtn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="전체기록" />
+        </LinearLayout>
 
         <CalendarView
             android:id="@+id/calendarView"
@@ -86,7 +61,11 @@
             android:layout_height="300dp"
             android:layout_marginLeft="29.7dp"
             android:layout_marginTop="-10dp"
-            android:layout_marginRight="29.7dp" />
+            android:layout_marginRight="29.7dp"
+            android:theme="@style/CalendarView"
+            android:weekDayTextAppearance="@style/CalendarWeekText"
+            android:dateTextAppearance="@style/CalendarDateText"
+            android:unfocusedMonthDateColor="@android:color/darker_gray"/>
 
 
         <LinearLayout
