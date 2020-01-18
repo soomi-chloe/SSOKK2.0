@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="500dp"
+        android:layout_height="430dp"
         android:layout_marginLeft="7dp"
         android:layout_marginTop="69.7dp"
         android:layout_marginRight="7dp"
@@ -46,16 +46,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="52.4dp"
-            android:layout_weight="0"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_weight="0">
 
             <TextView
                 android:id="@+id/txt_aDayNum"
-                android:layout_marginLeft="29.7dp"
-                android:layout_marginTop="22.7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="29.7dp"
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
@@ -63,26 +62,46 @@
 
             <EditText
                 android:id="@+id/editTxt_aDayNum"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:ems="10"
+                android:inputType="number"
+                android:text="3" />
+
+            <TextView
+                android:id="@+id/txt_aDayNum_bun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                tools:text="번" />
+
+            <EditText
+                android:id="@+id/editTxt_aDayNum2"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number"
+                android:text="2" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="79dp"
-            android:layout_weight="0"
-            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txt_aDayNum_al"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                tools:text="알씩" />
 
             <ImageButton
                 android:id="@+id/btn_addNotice_beforeMeal"
                 android:layout_width="42.3dp"
                 android:layout_height="29.7dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_marginTop="24.65dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="8dp"
                 android:layout_weight="0"
                 android:padding="0dp"
                 android:scaleType="centerCrop"
@@ -93,21 +112,40 @@
                 android:layout_width="42.3dp"
                 android:layout_height="29.7dp"
                 android:layout_marginLeft="4.7dp"
-                android:layout_marginTop="24.65dp"
+                android:layout_marginTop="8dp"
                 android:padding="0dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/after_meal" />
+
+            <TextView
+                android:id="@+id/txt_in_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                tools:text="30분 이내" />
+
+            <ImageButton
+                android:id="@+id/btn_addNotice_see"
+                android:layout_width="11.9dp"
+                android:layout_height="7dp"
+                android:layout_marginLeft="6.8dp"
+                android:layout_marginTop="20dp"
+                android:padding="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/see_menu_under" />
 
         </LinearLayout>
 
         <TimePicker
             android:id="@+id/timePicker"
             style="@style/Base.Theme.MaterialComponents.Light.DarkActionBar"
-            android:layout_width="231dp"
+            android:layout_width="match_parent"
             android:layout_height="79dp"
-            android:layout_marginLeft="22.7dp"
-            android:timePickerMode="spinner">
-        </TimePicker>
+            android:layout_marginTop="15dp"
+            android:timePickerMode="spinner"></TimePicker>
 
         <ImageView
             android:id="@+id/split"
@@ -120,10 +158,9 @@
         <TimePicker
             android:id="@+id/timePicker2"
             style="@style/Base.Theme.MaterialComponents.Light.DarkActionBar"
-            android:layout_width="231dp"
+            android:layout_width="match_parent"
             android:layout_height="79dp"
-            android:layout_marginLeft="22.7dp"
-            android:timePickerMode="spinner"/>
+            android:timePickerMode="spinner" />
 
         <ImageView
             android:id="@+id/split2"
@@ -136,67 +173,15 @@
         <TimePicker
             android:id="@+id/timePicker3"
             style="@style/Base.Theme.MaterialComponents.Light.DarkActionBar"
-            android:layout_width="231dp"
+            android:layout_width="match_parent"
             android:layout_height="79dp"
-            android:layout_marginLeft="22.7dp"
-            android:timePickerMode="spinner"/>
+            android:timePickerMode="spinner" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btn_img_before_present_bun"
-                android:layout_width="7dp"
-                android:layout_height="11.9dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_marginTop="12.55dp"
-                android:layout_weight="0"
-                android:padding="0dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/left_arrow" />
-
-            <TextView
-                android:id="@+id/txt_before_present_bun"
-                android:layout_marginLeft="9.3dp"
-                android:layout_marginTop="8.65dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="2sp"
-                android:textColor="#707070"
-                android:textSize="16sp"
-                tools:text="이전" />
-
-            <TextView
-                android:id="@+id/txt_after_present_bun"
-                android:layout_marginLeft="245.3dp"
-                android:layout_marginTop="8.65dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="2sp"
-                android:textColor="#707070"
-                android:textSize="16sp"
-                tools:text="다음" />
-
-            <ImageButton
-                android:id="@+id/btn_img_after_present_bun"
-                android:layout_width="7dp"
-                android:layout_height="11.9dp"
-                android:layout_marginLeft="9.2dp"
-                android:layout_marginTop="12.55dp"
-                android:layout_weight="0"
-                android:padding="0dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/right_arrow" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <ImageButton
