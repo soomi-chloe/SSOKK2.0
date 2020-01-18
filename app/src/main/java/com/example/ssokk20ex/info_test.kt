@@ -16,6 +16,7 @@ class info_test : AppCompatActivity(){
         setContentView(R.layout.activity_info_test)
 
         btn.setOnClickListener {
+
             getInfo()
         }
     }
