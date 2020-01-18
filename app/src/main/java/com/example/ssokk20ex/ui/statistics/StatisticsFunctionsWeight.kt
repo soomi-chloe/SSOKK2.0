@@ -2,8 +2,8 @@ package com.example.ssokk20ex.ui.statistics
 
 import android.content.Intent
 import android.graphics.Color
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.example.ssokk20ex.R
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
@@ -13,58 +13,63 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import kotlinx.android.synthetic.main.blood_sugar_record_weekly.*
+import kotlinx.android.synthetic.main.weight_record_weekly.*
+import kotlinx.android.synthetic.main.weight_record_weekly.allRecordBtn
+import kotlinx.android.synthetic.main.weight_record_weekly.bloodSugarStatisticsBtn
 
-class StatisticsFunctions : AppCompatActivity() {
+class StatisticsFunctionsWeight : AppCompatActivity() {
     private val entries = ArrayList<Entry>()
-    var chartBS : LineChart? = null
+    var isChecked_monthly: Boolean = true
+    var isChecked_weekly: Boolean = true
+    var chart :LineChart? = null
 
     var xAxisValues: List<String> = java.util.ArrayList(
         listOf(
-            "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"
+            "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"
         )
     )
-    var isChecked_weekly: Boolean = true
-    var isChecked_monthly: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.blood_sugar_record_weekly)
+        setContentView(R.layout.weight_record_weekly)
         supportActionBar?.hide()
 
-        chartBS = findViewById<LineChart>(R.id.bsGraph)
+        chart = findViewById<LineChart>(R.id.bmiGraph)
 
-        drawBmiChartBS()
+        drawBmiChart()
 
-        weeklyBtn.setOnClickListener {
+        weeklyBtn_bmi.setOnClickListener {
             if (isChecked_monthly) {
-                weeklyBtn.setImageResource(R.drawable.weekly_clicked)
-                monthlyBtn.setImageResource(R.drawable.monthly)
+                weeklyBtn_bmi.setImageResource(R.drawable.weekly_clicked)
+                monthlyBtn_bmi.setImageResource(R.drawable.monthly)
                 isChecked_weekly = true
                 isChecked_monthly = false
+                erase()
+                drawBmiChart()
             }
-            drawBmiChartBS()
         }
 
-        monthlyBtn.setOnClickListener {
+        monthlyBtn_bmi.setOnClickListener {
             if (isChecked_weekly) {
-                weeklyBtn.setImageResource(R.drawable.weekly)
-                monthlyBtn.setImageResource(R.drawable.monthly_clicked)
+                weeklyBtn_bmi.setImageResource(R.drawable.weekly)
+                monthlyBtn_bmi.setImageResource(R.drawable.monthly_clicked)
                 isChecked_weekly = false
                 isChecked_monthly = true
+                erase()
+                drawBmiChart()
             }
-            drawBmiChartBS()
         }
 
-        bmiStatisticsBtn.setOnClickListener {
-            startActivity(Intent(this, StatisticsFunctionsWeight::class.java))
+        bloodSugarStatisticsBtn.setOnClickListener {
+            startActivity(Intent(this, StatisticsFunctions::class.java))
         }
 
         allRecordBtn.setOnClickListener {
-            startActivity(Intent(this, StatisticsFunctions_AllRecord::class.java))
+            startActivity(Intent(this,StatisticsFunctions_AllRecord::class.java))
         }
     }
 
-    private fun drawBmiChartBS() {
+    private fun drawBmiChart() {
         entries.add(Entry(0f, 39f))
         entries.add(Entry(1f, 38f))
         entries.add(Entry(2f, 33f))
@@ -75,24 +80,28 @@ class StatisticsFunctions : AppCompatActivity() {
         dataSet.setCircleColor(Color.parseColor("#FFA1B4DC"))
         dataSet.color = Color.parseColor("#FFA1B4DC")
         val lineData = LineData(dataSet)
-        chartBS!!.data = lineData
+        chart!!.data = lineData
 
-        val xAxis: XAxis = chartBS!!.xAxis
+        val xAxis: XAxis = chart!!.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.granularity = 1f
         xAxis.setDrawGridLines(false)
         xAxis.valueFormatter = IndexAxisValueFormatter(xAxisValues)
 
-        val yAxisLeft: YAxis = chartBS!!.axisLeft
+        val yAxisLeft: YAxis = chart!!.axisLeft
         yAxisLeft.granularity = 1f
         yAxisLeft.setDrawGridLines(false)
 
-        val yAxisRight: YAxis = chartBS!!.axisRight
+        val yAxisRight: YAxis = chart!!.axisRight
         yAxisRight.isEnabled = false
 
-        chartBS!!.legend.isEnabled = false
-        chartBS!!.description.isEnabled = false
+        chart!!.legend.isEnabled = false
+        chart!!.description.isEnabled = false
 
-        chartBS!!.invalidate()
+        chart!!.invalidate()
+    }
+
+    private fun erase() {
+
     }
 }
