@@ -1,11 +1,14 @@
-package com.example.ssokk20ex.ui.statistics
+package com.example.ssokk20ex
 
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.ssokk20ex.R
-import com.example.ssokk20ex.StatisticsFunctionsWeight_monthly
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctions
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctionsWeight
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctionsWeight.Companion.isChecked_monthly_weight
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctionsWeight.Companion.isChecked_weekly_weight
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctions_AllRecord
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
@@ -13,22 +16,19 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import kotlinx.android.synthetic.main.blood_sugar_record_weekly.*
+import kotlinx.android.synthetic.main.blood_sugar_record_weekly.allRecordBtn
+import kotlinx.android.synthetic.main.blood_sugar_record_weekly.bloodSugarStatisticsBtn
 import kotlinx.android.synthetic.main.weight_record_weekly.*
-import kotlinx.android.synthetic.main.weight_record_weekly.allRecordBtn
-import kotlinx.android.synthetic.main.weight_record_weekly.bloodSugarStatisticsBtn
 
-class StatisticsFunctionsWeight : AppCompatActivity() {
+class StatisticsFunctionsWeight_monthly : AppCompatActivity() {
+
     private val entries = ArrayList<Entry>()
-    companion object {
-        var isChecked_monthly_weight: Boolean = true
-        var isChecked_weekly_weight: Boolean = true
-    }
-
-    var chart :LineChart? = null
+    var chart : LineChart? = null
 
     var xAxisValues: List<String> = java.util.ArrayList(
         listOf(
-            "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"
+            "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"
         )
     )
 
@@ -41,12 +41,12 @@ class StatisticsFunctionsWeight : AppCompatActivity() {
 
         drawBmiChart()
 
-        monthlyBtn_bmi.setOnClickListener {
-            weeklyBtn_bmi.setImageResource(R.drawable.weekly)
-            monthlyBtn_bmi.setImageResource(R.drawable.monthly_clicked)
-            isChecked_weekly_weight = false
-            isChecked_monthly_weight = true
-            startActivity(Intent(this, StatisticsFunctionsWeight_monthly::class.java))
+        weeklyBtn.setOnClickListener {
+            weeklyBtn.setImageResource(R.drawable.weekly_clicked)
+            monthlyBtn.setImageResource(R.drawable.monthly)
+            isChecked_weekly_weight = true
+            isChecked_monthly_weight = false
+            startActivity(Intent(this, StatisticsFunctionsWeight::class.java))
         }
 
         bloodSugarStatisticsBtn.setOnClickListener {
