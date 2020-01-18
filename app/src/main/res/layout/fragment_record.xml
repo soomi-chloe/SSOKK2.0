@@ -74,7 +74,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp" />
+                        android:layout_marginRight="15dp">
+
+                    </com.github.mikephil.charting.charts.LineChart>
+
                 </LinearLayout>
 
                 <ImageView
@@ -190,162 +193,264 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="59.6dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="18dp"
-                        android:layout_marginTop="7.3dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/txt_whatTime1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="29.7dp"
-                            android:gravity="center_horizontal"
-                            android:lineSpacingExtra="4.3sp"
-                            android:text="7:30 AM"
-                            android:textColor="#f16161"
-                            android:textSize="13.7sp" />
-
-                        <TextView
-                            android:id="@+id/txt_whatTime2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="18.7dp"
-                            android:gravity="center_horizontal"
-                            android:lineSpacingExtra="4.3sp"
-                            android:text="12:30 PM"
-                            android:textColor="#f16161"
-                            android:textSize="13.7sp" />
-
-                        <TextView
-                            android:id="@+id/txt_whatTime3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="18.7dp"
-                            android:gravity="center_horizontal"
-                            android:lineSpacingExtra="4.3sp"
-                            android:text="3:30 PM"
-                            android:textColor="#cbcbcb"
-                            android:textSize="13.3sp" />
-
-                        <TextView
-                            android:id="@+id/txt_whatTime4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="18.7dp"
-                            android:gravity="center_horizontal"
-                            android:lineSpacingExtra="4.3sp"
-                            android:text="5:30 PM"
-                            android:textColor=" #cbcbcb"
-                            android:textSize="13.7sp" />
-
-                        <TextView
-                            android:id="@+id/txt_whatTime5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="18.7dp"
-                            android:gravity="center_horizontal"
-                            android:lineSpacingExtra="4.3sp"
-                            android:text="9:00 PM"
-                            android:textColor=" #cbcbcb"
-                            android:textSize="13.7sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="9.4dp"
-                        android:layout_marginTop="7dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/dot_firstMedi_taken"
-                            android:layout_width="9dp"
-                            android:layout_height="9.3dp"
-                            android:layout_marginLeft="50.3dp"
-                            android:layout_weight="0"
-                            app:srcCompat="@drawable/dot_checked" />
-
-                        <ImageView
-                            android:id="@+id/dot_secondMedi_untaken"
-                            android:layout_width="9dp"
-                            android:layout_height="9.3dp"
-                            android:layout_marginLeft="63dp"
-                            android:layout_weight="0"
-                            app:srcCompat="@drawable/dot_unchecked" />
-
-                        <ImageView
-                            android:id="@+id/dot_thirdMedi_untaken"
-                            android:layout_width="9dp"
-                            android:layout_height="9.3dp"
-                            android:layout_marginLeft="63dp"
-                            android:layout_weight="0"
-                            app:srcCompat="@drawable/dot_unchecked" />
-
-                        <ImageView
-                            android:id="@+id/dot_fourthMedi_untaken"
-                            android:layout_width="9dp"
-                            android:layout_height="9.3dp"
-                            android:layout_marginLeft="63dp"
-                            android:layout_weight="0"
-                            app:srcCompat="@drawable/dot_unchecked" />
-
-                        <ImageView
-                            android:id="@+id/dot_fifthMedi_untaken"
-                            android:layout_width="9dp"
-                            android:layout_height="9.3dp"
-                            android:layout_marginLeft="63dp"
-                            android:layout_marginRight="50.3dp"
-                            android:layout_weight="0"
-                            app:srcCompat="@drawable/dot_unchecked" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/splitLine2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="21dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/split_line" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="58.4dp"
+                    android:layout_height="72dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="18.3dp"
+                    android:layout_marginRight="25dp"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/btn_pm"
-                        android:layout_width="40dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="29.7dp"
-                        android:layout_marginTop="17.1dp"
-                        android:layout_weight="0"
-                        app:srcCompat="@drawable/pm" />
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="71dp"
+                        android:orientation="vertical">
 
-                    <TimePicker
-                        android:id="@+id/time_takingMedicine"
-                        android:layout_width="129dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="50dp"
-                        android:layout_marginTop="17.1dp"
-                        android:timePickerMode="spinner"></TimePicker>
+                        <ImageButton
+                            android:id="@+id/btn_todayPill1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="#FFFFFF"
+                            android:padding="0dp"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/record_medi_unchecked" />
 
-                    <ImageView
-                        android:id="@+id/btn_inputMedicine"
-                        android:layout_width="66.3dp"
-                        android:layout_height="29.7dp"
-                        android:layout_marginLeft="63dp"
-                        android:layout_marginTop="16.8dp"
-                        android:layout_weight="0"
-                        app:srcCompat="@drawable/input_btn" />
+                        <ImageView
+                            android:id="@+id/first_pill1"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="15dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/first_pill2"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginTop="-10.8dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/first_pill3"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="3.7dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/first_pill4"
+                            android:layout_width="match_parent"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginTop="-10.8dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="71dp"
+                        android:layout_marginLeft="48dp"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btn_todayPill2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="0"
+                            android:background="#FFFFFF"
+                            android:padding="0sp"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/record_medi_unchecked" />
+
+                        <ImageView
+                            android:id="@+id/second_pill1"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="0"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/second_pill2"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginTop="-10.8dp"
+                            android:layout_weight="0"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/second_pill3"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="3.7dp"
+                            android:layout_weight="0"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/second_pill4"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginTop="-10.8dp"
+                            android:layout_weight="0"
+                            app:srcCompat="@drawable/record_orange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="71dp"
+                        android:layout_marginLeft="48dp"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btn_todayPill4"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="#FFFFFF"
+                            android:padding="0dp"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/record_medi_unchecked" />
+
+                        <ImageView
+                            android:id="@+id/fourth_pill1"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="15dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/fourth_pill2"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginTop="-10.8dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/fourh_pill3"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="3.7dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/fourth_pill4"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginTop="-10.8dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="71dp"
+                        android:layout_marginLeft="48dp"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btn_todayPill5"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="#FFFFFF"
+                            android:padding="0dp"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/record_medi_unchecked" />
+
+                        <ImageView
+                            android:id="@+id/fifth_pill1"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="15dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/fifth_pill2"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginTop="-10.8dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/fifth_pill3"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="3.7dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/fifth_pill4"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginTop="-10.8dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="71dp"
+                        android:layout_marginLeft="48dp"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btn_todayPill3"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="#FFFFFF"
+                            android:padding="0dp"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/record_medi_unchecked" />
+
+                        <ImageView
+                            android:id="@+id/third_pill1"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="15dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/third_pill2"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginTop="-10.8dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/third_pill3"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="3.7dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                        <ImageView
+                            android:id="@+id/third_pill4"
+                            android:layout_width="10.7dp"
+                            android:layout_height="10.7dp"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginTop="-10.8dp"
+                            app:srcCompat="@drawable/record_orange" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -458,7 +563,25 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/imageView15"
+                        android:id="@+id/mealImage1"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_marginLeft="29.7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/all_record_meal" />
+
+                    <ImageView
+                        android:id="@+id/mealImage2"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_marginLeft="29.7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/all_record_meal" />
+
+                    <ImageView
+                        android:id="@+id/add_mealImage"
                         android:layout_width="65dp"
                         android:layout_height="65dp"
                         android:layout_marginLeft="29.7dp"
