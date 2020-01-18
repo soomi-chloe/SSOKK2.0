@@ -16,16 +16,26 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import kotlinx.android.synthetic.main.fragment_record.*
 
 
 class RecordFunctions : AppCompatActivity() {
 
-    var check1: Int = 0
-    var check2: Int = 0
+    private var check1: Int = 0
+    private var check2: Int = 0
     private var chart_bloodSugar: LineChart? = null
-    val entries = ArrayList<Entry>()
-    var lineChart: LineChart?= null
+    private val entries = ArrayList<Entry>()
+    private var lineChart: LineChart?= null
+    private var xValue: String = ""
+
+    var xAxisValues: List<String> = java.util.ArrayList(
+        listOf(
+
+        )
+    )
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,17 +56,15 @@ class RecordFunctions : AppCompatActivity() {
         btn_inputBloodSugar.setOnClickListener {
             //그래프에 수치값 찍어주기
             val  value = Integer.parseInt(txt_bloodSugarNumber.text.toString()).toFloat()
-            // chartAdd(value)
+            chartAdd(value)
             txt_bloodSugarNumber.setText(null) //수치적는 란 초기화
         }
 
         //1. 혈당 - 그래프
         chartSet()
 
-        //1. 혈당 - 혈당수치 editText)
-        var bloodSugar: Editable? = txt_bloodSugarNumber.text
-
         //2. 약
+
 
         //3. 체중 - 입력 버튼
         btn_inputWeight.setOnClickListener {
@@ -71,7 +79,7 @@ class RecordFunctions : AppCompatActivity() {
 
     //오늘의 혈당 그래프 - 추가
     private fun chartAdd(value : Float) {
-        val entricount = entries.count().toFloat()
+        val entricount = entries.count().toFloat() //이걸 식전, 식후로 만들기
         entries.add(Entry(entricount, value))
 
         val lineDataSet = LineDataSet(entries, "오늘의 혈당 수치")
@@ -94,9 +102,7 @@ class RecordFunctions : AppCompatActivity() {
     private fun chartSet() {
         lineChart = findViewById<LineChart>(R.id.chart_bloodSugar)
 
-        entries.add(Entry(1f, 1f))
-        entries.add(Entry(2f, 2f))
-        entries.add(Entry(3f, 1f))
+        entries.add(Entry())
 
         val lineDataSet = LineDataSet(entries, "오늘의 혈당 수치")
         lineDataSet.lineWidth = 1f
@@ -112,30 +118,42 @@ class RecordFunctions : AppCompatActivity() {
         val lineData = LineData(lineDataSet)
         lineChart?.data = lineData
 
-        val xValsDateLabel = ArrayList<String>()
+//        val xValsDateLabel = ArrayList<String>()
 
-        val xValsOriginalMillis = ArrayList<Long>()
-        xValsOriginalMillis.add(1554875423736L)
-        xValsOriginalMillis.add(1555285494836L)
-        xValsOriginalMillis.add(1555295494896L)
+//        val xValsOriginalMillis = ArrayList<Long>()
+//        xValsOriginalMillis.add(1554875423736L)
+//        xValsOriginalMillis.add(1555285494836L)
+//        xValsOriginalMillis.add(1555295494896L)
+//
+//        for (i in xValsOriginalMillis) {
+//            val mm = i / 60 % 60
+//            val hh = i / (60 * 60) % 24
+//            val mDateTime = "$hh:$mm"
+//            xValsDateLabel.add(mDateTime)
+//        }
 
-        for (i in xValsOriginalMillis) {
-            val mm = i / 60 % 60
-            val hh = i / (60 * 60) % 24
-            val mDateTime = "$hh:$mm"
-            xValsDateLabel.add(mDateTime)
-        }
+//        //식전일 때
+//        if(check1 == 1 || check2 == 0){
+//            xValue = "식전"
+//        }
+//
+//        //식후일 때
+//        else if(check1 == 0 || check2 == 1){
+//            xValue = "식후"
+//        }
 
-        val xAxis: XAxis? = lineChart?.xAxis
+        val xAxis: XAxis? = lineChart!!.xAxis
         xAxis?.position = XAxis.XAxisPosition.BOTTOM
+        xAxis?.granularity = 1f
         xAxis?.textColor = Color.BLACK
         xAxis?.enableGridDashedLine(8f, 24f, 0f)
-        xAxis?.setValueFormatter { value, axis ->
-            if(xValsDateLabel.size-1 < value)
-                "0"
-            else
-                xValsDateLabel.get(value.toInt())
-        }
+        xAxis?.valueFormatter = IndexAxisValueFormatter(xAxisValues)
+//        xAxis?.setValueFormatter { value, axis ->
+//            if(xValsDateLabel.size-1 < value)
+//                "0"
+//            else
+//                xValsDateLabel.get(value.toInt())
+//        }
 
         val yLAxis: YAxis? = lineChart?.axisLeft
         yLAxis?.textColor = Color.BLACK
@@ -167,6 +185,7 @@ class RecordFunctions : AppCompatActivity() {
             btn_beforeMeal.setImageResource(R.drawable.before_meal)
             check1 = 0
         }
+        btn_afterMeal.setImageResource(R.drawable.after_meal)
     }
 
     //식후 버튼
@@ -181,5 +200,6 @@ class RecordFunctions : AppCompatActivity() {
             btn_afterMeal.setImageResource(R.drawable.after_meal)
             check2 = 0
         }
+        btn_beforeMeal.setImageResource(R.drawable.before_meal)
     }
 }

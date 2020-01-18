@@ -6,15 +6,15 @@
         android:icon="@drawable/ic_create_24px"
         android:title="@string/title_record" />
 
-    <item
-        android:id="@+id/navigation_myPage"
-        android:icon="@drawable/ic_person_24px"
-        android:title="@string/title_alarm" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_myPage"-->
+<!--        android:icon="@drawable/ic_person_24px"-->
+<!--        android:title="@string/title_alarm" />-->
 
-    <item
-        android:id="@+id/navigation_exercise"
-        android:icon="@drawable/ic_fitness_center_24px"
-        android:title="@string/title_statistics" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_exercise"-->
+<!--        android:icon="@drawable/ic_fitness_center_24px"-->
+<!--        android:title="@string/title_statistics" />-->
 
     <item
         android:id="@+id/navigation_info"
