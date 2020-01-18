@@ -26,7 +26,7 @@
             android:lineSpacingExtra="2sp"
             android:textColor="#707070"
             android:textSize="16sp"
-            tools:text="하루 6번" />
+            android:text="하루 6번" />
 
         <ImageView
             android:id="@+id/split1"
@@ -53,7 +53,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="2번" />
+                android:text="2번" />
 
             <TextView
                 android:id="@+id/txt_bun"
@@ -62,7 +62,7 @@
                 android:textSize="12sp"
                 android:textColor="#707070"
                 android:lineSpacingExtra="1.7sp"
-                tools:text="/ 6번"
+                android:text="/ 6번"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="0" />
@@ -133,7 +133,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="이전" />
+                android:text="이전" />
 
             <TextView
                 android:id="@+id/txt_after_present_bun"
@@ -144,7 +144,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                tools:text="다음" />
+                android:text="다음" />
 
             <ImageButton
                 android:id="@+id/btn_img_after_present_bun"

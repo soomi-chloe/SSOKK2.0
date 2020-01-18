@@ -22,10 +22,14 @@
         <activity android:name=".IntroAdapter" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SignInActivity" />
-        <activity android:name=".ui.alarm.AddMedicineNotice" />
-        <activity android:name=".ui.alarm.AddBloodSugarNotice" />
-        <activity android:name=".ui.alarm.MedicineNotice" />
-        <activity android:name=".ui.alarm.AlarmFunctions" />
+        <activity android:name=".ui.alarm.AddMedicineNotice"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name=".ui.alarm.AddBloodSugarNotice"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name=".ui.alarm.MedicineNotice"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name=".ui.alarm.AlarmFunctions"
+            android:theme="@style/noAnimTheme" />
         <activity android:name=".info_test" />
         <activity
             android:name=".MainActivity"

@@ -177,7 +177,7 @@
                 android:text="혈당" />
 
             <ImageButton
-                android:id="@+id/btn_fixMedicineNotice"
+                android:id="@+id/btn_fixBloodSugarNotice"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginLeft="243dp"

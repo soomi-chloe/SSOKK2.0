@@ -21,8 +21,8 @@ class AlarmFunctions : AppCompatActivity() {
             startActivity(Intent(this, MedicineNotice::class.java))
         }
 
-        btn_fixMedicineNotice.setOnClickListener {
-            startActivity(Intent(this, AddMedicineNotice::class.java))
+        btn_fixBloodSugarNotice.setOnClickListener {
+            startActivity(Intent(this, AddBloodSugarNotice::class.java))
         }
 
     }
