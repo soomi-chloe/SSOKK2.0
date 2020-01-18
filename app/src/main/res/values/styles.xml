@@ -6,7 +6,17 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
     </style>
 
+    <style name="CustomDatePickerDialog"
+        parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:dialogTheme">@style/MyDialogTheme</item>
+    </style>
+
+    <style name="MyDialogTheme"
+        parent="Theme.AppCompat.Light.Dialog">
+    </style>
+
+
 </resources>
+

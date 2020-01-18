@@ -1,352 +1,338 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_recordPage"
+
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+
     android:orientation="vertical"
-    >
-    <!--tools:context=".DoWorkout"-->
+    android:background="@drawable/background">
+
+
+
+    <TextView
+
+        android:id="@+id/txt_numberOfVideo2"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="29.7dp"
+
+        android:layout_marginTop="15.3dp"
+
+        android:lineSpacingExtra="1.7sp"
+
+        android:textColor="#707070"
+
+        android:textSize="10sp"
+
+        android:text="동영상 개수 표시" />
+
+
 
     <LinearLayout
-        android:id="@+id/layout_bloodsugar"
+
+        android:id="@+id/layout_exerciseType1"
+
         android:layout_width="match_parent"
-        android:layout_height="198dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="69.7dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/recode_blood_box"
-        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginTop="11.7dp"
-            android:orientation="horizontal">
+        android:layout_height="113.3dp"
 
-            <TextView
-                android:id="@+id/txt_muscle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15.3sp"
-                android:layout_marginLeft="29.7dp"
-                android:textColor="#707070"
-                android:lineSpacingExtra="2sp"
-                tools:text="근력 운동"
-                />
+        android:layout_marginTop="14.7dp"
 
-        </LinearLayout>
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="104.2dp"
-            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/splitLine"
-                android:layout_width="355dp"
-                android:layout_height="4dp"
-                android:layout_marginLeft="22dp"
-                android:layout_marginTop="104dp"
-                android:layout_marginRight="21dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/split_line" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="57.1dp"
-            android:orientation="horizontal">
+        <VideoView
 
-            <ImageView
-                android:id="@+id/btn_beforeMeal_unclicked"
-                android:layout_width="42.3dp"
-                android:layout_height="29.7dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_marginTop="13.8dp"
-                android:layout_marginBottom="13.7dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/before_meal" />
+            android:id="@+id/videoView1"
 
-            <ImageView
-                android:id="@+id/btn_afterMeal_unclicked"
-                android:layout_width="42.3dp"
-                android:layout_height="29.7dp"
-                android:layout_marginLeft="4.7dp"
-                android:layout_marginTop="13.8dp"
-                android:layout_marginBottom="13.7dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/after_meal" />
+            android:layout_width="113.3dp"
 
-            <EditText
-                android:id="@+id/txt_bloodSugarNumber"
-                android:layout_width="70dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="26.3dp"
-                android:layout_marginTop="25dp"
-                android:layout_weight="0"
-                android:ems="10"
-                android:inputType="number" />
+            android:layout_height="113.3dp"
 
-            <TextView
-                android:id="@+id/unit_bloodSugar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:lineSpacingExtra="3sp"
-                android:textColor="#707070"
-                android:textSize="22.7sp"
-                tools:text="mg/dl" />
-
-            <ImageView
-                android:id="@+id/btn_inputBloodSugar"
-                android:layout_width="66.3dp"
-                android:layout_height="29.7dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="16.8dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/input_btn" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_medicine"
-        android:layout_width="match_parent"
-        android:layout_height="154dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="10.3dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/recode_medicine_box"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginTop="11.7dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/medicineIcon"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/medicine" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
-                android:layout_marginTop="2.3dp"
-                android:layout_marginBottom="2.3dp"
-                android:lineSpacingExtra="2.7sp"
-                android:textColor="#707070"
-                android:textSize="18.7sp"
-                tools:text="약" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="59.6dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/dot_firstMedi_taken"
-                android:layout_width="9dp"
-                android:layout_height="9.3dp"
-                android:layout_marginLeft="50.3dp"
-                android:layout_marginTop="25dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/dot_after_meal" />
-
-            <ImageView
-                android:id="@+id/dot_secondMedi_untaken"
-                android:layout_width="9dp"
-                android:layout_height="9.3dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="25dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/dot_unchecked" />
-
-            <ImageView
-                android:id="@+id/dot_thirdMedi_untaken"
-                android:layout_width="9dp"
-                android:layout_height="9.3dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="25dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/dot_unchecked" />
-
-            <ImageView
-                android:id="@+id/dot_fourthMedi_untaken"
-                android:layout_width="9dp"
-                android:layout_height="9.3dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="25dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/dot_unchecked" />
-
-            <ImageView
-                android:id="@+id/dot_fifthMedi_untaken"
-                android:layout_width="9dp"
-                android:layout_height="9.3dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="50.3dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/dot_unchecked" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="58.4dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/btn_pm"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_marginTop="17.1dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/pm" />
-
-            <TimePicker
-                android:id="@+id/time_takingMedicine"
-                android:layout_width="129dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="17.1dp"
-                android:timePickerMode="spinner"></TimePicker>
-
-            <ImageView
-                android:id="@+id/btn_inputMedicine"
-                android:layout_width="66.3dp"
-                android:layout_height="29.7dp"
-                android:layout_marginLeft="63dp"
-                android:layout_marginTop="16.8dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/input_btn" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_weight"
-        android:layout_width="match_parent"
-        android:layout_height="51.3dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="10.3dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/recode_weight_box">
-
-        <ImageView
-            android:id="@+id/weightIcon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
             android:layout_marginLeft="29.7dp"
-            android:layout_marginTop="13.7dp"
-            android:layout_marginBottom="12.7dp"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/weight" />
+
+            android:layout_weight="0" />
+
+
 
         <TextView
+
+            android:id="@+id/txt_nameOfExercise1"
+
             android:layout_width="wrap_content"
-            android:layout_height="20.3dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="7dp"
-            android:lineSpacingExtra="2.7sp"
-            android:textColor="#707070"
-            android:textSize="18.3sp"
-            tools:text="체중" />
 
-        <EditText
-            android:id="@+id/txt_weight"
-            android:layout_width="70dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="13.7dp"
-            android:layout_weight="0"
-            android:ems="10"
-            android:inputType="numberDecimal" />
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="36.7dp"
+
+            android:layout_marginTop="38dp"
+
+            android:lineSpacingExtra="1.7sp"
+
+            android:textColor="#707070"
+
+            android:textSize="13.3sp"
+
+            android:text="운동 이름" />
+
+
 
         <TextView
-            android:id="@+id/unitWeight"
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="9.7dp"
-            android:layout_marginTop="3dp"
-            android:lineSpacingExtra="3sp"
-            android:textColor="#707070"
-            android:textSize="22.3sp"
-            tools:text="kg" />
 
-        <ImageView
-            android:id="@+id/btn_inputWeight"
-            android:layout_width="66.3dp"
-            android:layout_height="29.7dp"
-            android:layout_marginLeft="63dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/input_btn" />
+            android:id="@+id/txt_explainExercise1"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="-50dp"
+
+            android:layout_marginTop="62.7dp"
+
+            android:lineSpacingExtra="1.7sp"
+
+            android:textColor="#707070"
+
+            android:textSize="11.3sp"
+
+            android:text="운동 설명" />
+
+
 
     </LinearLayout>
 
+
+
     <LinearLayout
-        android:id="@+id/layout_meal"
+
+        android:id="@+id/layout_exerciseType2"
+
         android:layout_width="match_parent"
-        android:layout_height="165dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="10.2dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/recode_meal_box"
-        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginTop="11.7dp"
-            android:orientation="horizontal">
+        android:layout_height="113.3dp"
 
-            <ImageView
-                android:id="@+id/mealIcon"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/meal" />
+        android:layout_marginTop="23.3dp"
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
-                android:layout_marginTop="2.3dp"
-                android:layout_marginBottom="2.4dp"
-                android:lineSpacingExtra="2.7sp"
-                android:textColor="#707070"
-                android:textSize="18.3sp"
-                tools:text="식사" />
+        android:orientation="horizontal">
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imageView15"
-                android:layout_width="101.7dp"
-                android:layout_height="101.7dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_marginTop="14dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/addbtn_withboxaround" />
-        </LinearLayout>
+        <VideoView
+
+            android:id="@+id/videoView2"
+
+            android:layout_width="113.3dp"
+
+            android:layout_height="113.3dp"
+
+            android:layout_marginLeft="29.7dp"
+
+            android:layout_weight="0" />
+
+
+
+        <TextView
+
+            android:id="@+id/txt_nameOfExercise2"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="36.7dp"
+
+            android:layout_marginTop="38dp"
+
+            android:lineSpacingExtra="1.7sp"
+
+            android:textColor="#707070"
+
+            android:textSize="13.3sp"
+
+            android:text="운동 이름" />
+
+
+
+        <TextView
+
+            android:id="@+id/txt_explainExercise2"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="-50dp"
+
+            android:layout_marginTop="62.7dp"
+
+            android:lineSpacingExtra="1.7sp"
+
+            android:textColor="#707070"
+
+            android:textSize="11.3sp"
+
+            android:text="운동 설명" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+
+        android:id="@+id/layout_exerciseType3"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="113.3dp"
+
+        android:layout_marginTop="23.3dp"
+
+        android:orientation="horizontal">
+
+
+
+        <VideoView
+
+            android:id="@+id/videoView3"
+
+            android:layout_width="113.3dp"
+
+            android:layout_height="113.3dp"
+
+            android:layout_marginLeft="29.7dp"
+
+            android:layout_weight="0" />
+
+
+
+        <TextView
+
+            android:id="@+id/txt_nameOfExercise3"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="36.7dp"
+
+            android:layout_marginTop="38dp"
+
+            android:lineSpacingExtra="1.7sp"
+
+            android:textColor="#707070"
+
+            android:textSize="13.3sp"
+
+            android:text="운동 이름" />
+
+
+
+        <TextView
+
+            android:id="@+id/txt_explainExercise3"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="-50dp"
+
+            android:layout_marginTop="62.7dp"
+
+            android:lineSpacingExtra="1.7sp"
+
+            android:textColor="#707070"
+
+            android:textSize="11.3sp"
+
+            android:text="운동 설명" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+
+        android:id="@+id/layout_exerciseType4"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="113.3dp"
+
+        android:layout_marginTop="23.3dp"
+
+        android:layout_weight="0"
+
+        android:orientation="horizontal">
+
+
+
+        <VideoView
+
+            android:id="@+id/videoView4"
+
+            android:layout_width="113.3dp"
+
+            android:layout_height="113.3dp"
+
+            android:layout_marginLeft="29.7dp"
+
+            android:layout_weight="0" />
+
+
+
+        <TextView
+
+            android:id="@+id/txt_nameOfExercise4"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="36.7dp"
+
+            android:layout_marginTop="38dp"
+
+            android:lineSpacingExtra="1.7sp"
+
+            android:textColor="#707070"
+
+            android:textSize="13.3sp"
+
+            android:text="운동 이름" />
+
+
+
+        <TextView
+
+            android:id="@+id/txt_explainExercise4"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="-50dp"
+
+            android:layout_marginTop="62.7dp"
+
+            android:lineSpacingExtra="1.7sp"
+
+            android:textColor="#707070"
+
+            android:textSize="11.3sp"
+
+            android:text="운동 설명" />
+
     </LinearLayout>
 
 </LinearLayout>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="69.7dp"
+        android:layout_marginRight="7dp"
+        android:background="@drawable/alarm_background"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="226.7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="69.7dp"
+            android:layout_marginRight="7dp">
+
+            <ImageView
+                android:id="@+id/leftHour"
+                android:layout_width="181.3dp"
+                android:layout_height="181.3dp"
+                android:src="@drawable/left_hour_medi"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_tillNextNotice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1.7sp"
+                android:text="다음 알림까지"
+                android:textColor="#707070"
+                android:textSize="14.7sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.294" />
+
+            <TextView
+                android:id="@+id/txt_leftHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="3.3sp"
+                android:text="2시간 10분"
+                android:textColor="#707070"
+                android:textSize="24.7sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_tillNextNotice"
+                app:layout_constraintVertical_bias="0.141" />
+
+            <TextView
+                android:id="@+id/txt_nextNotice_pillName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1.7sp"
+                android:text="약 이름"
+                android:textColor="#707070"
+                android:textSize="13.3sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.698" />
+
+            <TextView
+                android:id="@+id/txt_nextNotice_pillAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1.7sp"
+                android:text="2알"
+                android:textColor="#707070"
+                android:textSize="13.3sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.784" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginTop="22.7dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/title_nameOfMedi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="29.7dp"
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                tools:text="약 이름" />
+
+            <ImageButton
+                android:id="@+id/btn_fixMedicineNotice"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="243dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="0"
+                android:padding="0dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/fix" />
+
+            <ImageButton
+                android:id="@+id/btn_deleteMedicineNotice"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="0"
+                android:padding="0dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/delete" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:layout_marginTop="13.3dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_howManyTimes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="29.7dp"
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                tools:text="3회" />
+
+            <TextView
+                android:id="@+id/txt_devision1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                tools:text="X" />
+
+            <TextView
+                android:id="@+id/txt_howManyPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_weight="0"
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                tools:text="2알" />
+
+            <TextView
+                android:id="@+id/txt_devision2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_weight="0"
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                tools:text="X" />
+
+            <ImageView
+                android:id="@+id/medicineTime_beforeMeal"
+                android:layout_width="42.3dp"
+                android:layout_height="29.7dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="0"
+                android:padding="0dp"
+                app:srcCompat="@drawable/before_meal_clicked" />
+
+            <TextView
+                android:id="@+id/txt_eatBefore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="2sp"
+                android:text="30분 이내"
+                android:textColor="#707070"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginTop="13.3dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_startingTime1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="29.7dp"
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                tools:text="8 : 00 AM" />
+
+            <TextView
+                android:id="@+id/txt_startingTime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="29.7dp"
+                android:layout_weight="0"
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                tools:text="8 : 00 AM" />
+
+            <TextView
+                android:id="@+id/txt_startingTime3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="29.7dp"
+                android:layout_weight="0"
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                tools:text="8 : 00 AM" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

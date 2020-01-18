@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,97 +7,72 @@
     android:orientation="vertical">
     <!--tools:context=".Info"-->
 
-    <LinearLayout
-        android:id="@+id/layout_info1"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="112dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="69.7dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/info_button"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btn_bloodsugar_know"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:background="@drawable/info_button"
-            android:lineSpacingExtra="2.7sp"
-            android:text="당뇨병 상식"
-            android:textColor="#707070"
-            android:textSize="17.7sp" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/layout_info2"
-        android:layout_width="match_parent"
-        android:layout_height="112dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="10.3dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/info_button"
-        android:orientation="vertical">
+            <Button
+                android:id="@+id/btn_bloodsugar_guard"
+                android:layout_width="wrap_content"
+                android:layout_height="112.3dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="69.7dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/info_button"
+                android:lineSpacingExtra="2.7sp"
+                android:text="보호자"
+                android:textColor="#707070"
+                android:textSize="17.7sp" />
 
-        <Button
-            android:id="@+id/btn_bloodsugar_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:background="@drawable/info_button"
-            android:lineSpacingExtra="2.7sp"
-            android:text="식단 추천"
-            android:textColor="#707070"
-            android:textSize="17.7sp" />
+            <Button
+                android:id="@+id/btn_bloodsugar_know"
+                android:layout_width="match_parent"
+                android:layout_height="112.3dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10.3dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/info_button"
+                android:lineSpacingExtra="2.7sp"
+                android:text="당뇨병 상식"
+                android:textColor="#707070"
+                android:textSize="17.7sp" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btn_bloodsugar_menu"
+                android:layout_width="match_parent"
+                android:layout_height="112.3dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10.3dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/info_button"
+                android:lineSpacingExtra="2.7sp"
+                android:text="식단 추천"
+                android:textColor="#707070"
+                android:textSize="17.7sp" />
 
-    <LinearLayout
-        android:id="@+id/layout_info3"
-        android:layout_width="match_parent"
-        android:layout_height="112dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="10.3dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/info_button"
-        android:orientation="vertical">
+            <Button
+                android:id="@+id/btn_bloodsugar_feature"
+                android:layout_width="match_parent"
+                android:layout_height="112.3dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10.3dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/info_button"
+                android:lineSpacingExtra="2.7sp"
+                android:text="당뇨병 유형별 특징 및 주의점"
+                android:textColor="#707070"
+                android:textSize="17.7sp" />
 
-        <Button
-            android:id="@+id/btn_bloodsugar_feature"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:background="@drawable/info_button"
-            android:lineSpacingExtra="2.7sp"
-            android:text="당뇨병 유형별 특징 및 주의점"
-            android:textColor="#707070"
-            android:textSize="17.7sp" />
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/layout_info4"
-        android:layout_width="match_parent"
-        android:layout_height="112dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="10.3dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/info_button"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btn_bloodsugar_guard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:background="@drawable/info_button"
-            android:lineSpacingExtra="2.7sp"
-            android:text="보호자"
-            android:textColor="#707070"
-            android:textSize="17.7sp" />
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
