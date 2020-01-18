@@ -18,35 +18,61 @@
         android:background="@drawable/bloodsugar_static_box"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/title_weightStatic"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="29.7dp"
-            android:layout_marginTop="27.7dp"
-            android:lineSpacingExtra="2sp"
-            android:textColor="#707070"
-            android:textSize="15.7sp"
-            tools:text="혈당 수치 통계" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bloodSugarStatisticsBtn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="혈당 수치" />
+
+            <Button
+                android:id="@+id/bmiStatisticsBtn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="BMI"
+                android:textColor="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/bsHemoglobinStatisticsBtn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="당화혈색소"
+                android:textColor="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/allRecordBtn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="전체기록"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="31dp"
-            android:layout_marginTop="26.7dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/weeklyBtn"
                 android:layout_width="66.4dp"
                 android:layout_height="29.8dp"
                 android:layout_marginLeft="29.6dp"
                 android:layout_weight="0"
                 android:padding="0dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/weekly" />
+                app:srcCompat="@drawable/weekly_clicked" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/monthlyBtn"
                 android:layout_width="66.4dp"
                 android:layout_height="29.8dp"
                 android:layout_marginLeft="11.4dp"
@@ -68,7 +94,7 @@
                 tools:text="1월 첫째 주" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/selectWeekBtn"
                 android:layout_width="11.9dp"
                 android:layout_height="7dp"
                 android:layout_marginLeft="8.2dp"
@@ -77,10 +103,11 @@
                 android:padding="0dp"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/see_menu_under" />
+
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/bsGraph"
             android:layout_width="338.7dp"
             android:layout_height="201.3dp"
             android:layout_marginLeft="29.7dp"
@@ -184,7 +211,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="29.8dp"
