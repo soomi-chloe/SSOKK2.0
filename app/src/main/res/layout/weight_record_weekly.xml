@@ -18,16 +18,34 @@
         android:background="@drawable/weight_static_box"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/title_weightStatic"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="29.7dp"
-            android:layout_marginTop="27.7dp"
-            android:lineSpacingExtra="2sp"
-            android:textColor="#707070"
-            android:textSize="15.7sp"
-            tools:text="체중 통계" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bloodSugarStatisticsBtn"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="혈당 수치"
+                android:textColor="@android:color/darker_gray"/>
+
+            <Button
+                android:id="@+id/bmiStatisticsBtn"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="BMI" />
+
+            <Button
+                android:id="@+id/allRecordBtn"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="전체기록"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,17 +54,17 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/weeklyBtn_bmi"
                 android:layout_width="66.4dp"
                 android:layout_height="29.8dp"
                 android:layout_marginLeft="29.6dp"
                 android:layout_weight="0"
                 android:padding="0dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/weekly" />
+                app:srcCompat="@drawable/weekly_clicked" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/monthlyBtn_bmi"
                 android:layout_width="66.4dp"
                 android:layout_height="29.8dp"
                 android:layout_marginLeft="11.4dp"
@@ -65,10 +83,10 @@
                 android:lineSpacingExtra="1.7sp"
                 android:textColor="#707070"
                 android:textSize="13sp"
-                tools:text="1월 첫째 주" />
+                android:text="1월 첫째 주" />
 
-            <ImageButton
-                android:id="@+id/imageButton3"
+            <Spinner
+                android:id="@+id/dropdownBtn"
                 android:layout_width="11.9dp"
                 android:layout_height="7dp"
                 android:layout_marginLeft="8.2dp"
@@ -76,11 +94,13 @@
                 android:layout_weight="0"
                 android:padding="0dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/see_menu_under" />
+                android:background="@drawable/see_menu_under"
+                android:spinnerMode="dropdown"/>
+
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView4"
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/bmiGraph"
             android:layout_width="338.7dp"
             android:layout_height="201.3dp"
             android:layout_marginLeft="29.7dp"
@@ -115,7 +135,7 @@
                 android:lineSpacingExtra="1.7sp"
                 android:textColor="#4ab1ff"
                 android:textSize="13.3sp"
-                tools:text="체중" />
+                android:text="체중" />
 
             <TextView
                 android:id="@+id/txt_lowestWeight"
@@ -126,7 +146,7 @@
                 android:lineSpacingExtra="1sp"
                 android:textColor="#707070"
                 android:textSize="8sp"
-                tools:text="최저값" />
+                android:text="최저값" />
 
             <TextView
                 android:id="@+id/lowestWeight_value"
@@ -137,7 +157,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="14sp"
-                tools:text="124" />
+                android:text="124" />
 
             <TextView
                 android:id="@+id/txt_averageWeight"
@@ -148,7 +168,7 @@
                 android:lineSpacingExtra="1sp"
                 android:textColor="#707070"
                 android:textSize="8sp"
-                tools:text="평균값" />
+                android:text="평균값" />
 
             <TextView
                 android:id="@+id/averageWeight_value"
@@ -159,7 +179,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="14sp"
-                tools:text="124" />
+                android:text="124" />
 
             <TextView
                 android:id="@+id/txt_hightestWeight"
@@ -170,7 +190,7 @@
                 android:textSize="8sp"
                 android:textColor="#707070"
                 android:lineSpacingExtra="1sp"
-                tools:text="최고값"/>
+                android:text="최고값"/>
 
             <TextView
                 android:id="@+id/highestWeubg_value"
@@ -181,7 +201,7 @@
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="14sp"
-                tools:text="124" />
+                android:text="124" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
