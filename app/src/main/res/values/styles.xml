@@ -17,6 +17,19 @@
         parent="Theme.AppCompat.Light.Dialog">
     </style>
 
+    <style name="CalendarView" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/intro_dot</item>
+        <item name="colorPrimary">@color/intro_dot</item>
+    </style>
+
+    <style name="CalendarDateText">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:weekNumberColor">@android:color/black</item>
+    </style>
+
+    <style name="CalendarWeekText">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
 
 </resources>
 
