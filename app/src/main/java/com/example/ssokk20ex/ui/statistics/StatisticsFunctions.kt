@@ -35,28 +35,17 @@ class StatisticsFunctions : AppCompatActivity() {
         setContentView(R.layout.blood_sugar_record_weekly)
         supportActionBar?.hide()
 
+        weeklyBtn.setImageResource(R.drawable.weekly_clicked)
+        monthlyBtn.setImageResource(R.drawable.monthly)
+
         chartBS = findViewById<LineChart>(R.id.bsGraph)
 
         drawBmiChartBS()
 
-        weeklyBtn.setOnClickListener {
-            if (isChecked_monthly) {
-                weeklyBtn.setImageResource(R.drawable.weekly_clicked)
-                monthlyBtn.setImageResource(R.drawable.monthly)
-                isChecked_weekly = true
-                isChecked_monthly = false
-            }
-            drawBmiChartBS()
-        }
-
         monthlyBtn.setOnClickListener {
-            if (isChecked_weekly) {
-                weeklyBtn.setImageResource(R.drawable.weekly)
-                monthlyBtn.setImageResource(R.drawable.monthly_clicked)
-                isChecked_weekly = false
-                isChecked_monthly = true
-            }
-            drawBmiChartBS()
+            isChecked_weekly = false
+            isChecked_monthly = true
+            startActivity(Intent(this, StatisticsFunctions_monthly::class.java))
         }
 
         bmiStatisticsBtn.setOnClickListener {

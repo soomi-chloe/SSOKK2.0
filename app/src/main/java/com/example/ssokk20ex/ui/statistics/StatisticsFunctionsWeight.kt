@@ -5,7 +5,6 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.ssokk20ex.R
-import com.example.ssokk20ex.StatisticsFunctionsWeight_monthly
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
@@ -20,8 +19,8 @@ import kotlinx.android.synthetic.main.weight_record_weekly.bloodSugarStatisticsB
 class StatisticsFunctionsWeight : AppCompatActivity() {
     private val entries = ArrayList<Entry>()
     companion object {
-        var isChecked_monthly_weight: Boolean = true
-        var isChecked_weekly_weight: Boolean = true
+        var isChecked_monthly_weight: Boolean?=null
+        var isChecked_weekly_weight: Boolean?=null
     }
 
     var chart :LineChart? = null
@@ -37,13 +36,14 @@ class StatisticsFunctionsWeight : AppCompatActivity() {
         setContentView(R.layout.weight_record_weekly)
         supportActionBar?.hide()
 
+        weeklyBtn_bmi.setImageResource(R.drawable.weekly_clicked)
+        monthlyBtn_bmi.setImageResource(R.drawable.monthly)
+
         chart = findViewById<LineChart>(R.id.bmiGraph)
 
         drawBmiChart()
 
         monthlyBtn_bmi.setOnClickListener {
-            weeklyBtn_bmi.setImageResource(R.drawable.weekly)
-            monthlyBtn_bmi.setImageResource(R.drawable.monthly_clicked)
             isChecked_weekly_weight = false
             isChecked_monthly_weight = true
             startActivity(Intent(this, StatisticsFunctionsWeight_monthly::class.java))
