@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_record"
-        android:icon="@drawable/ic_poll_24px"
+        android:icon="@drawable/ic_create_24px"
         android:title="@string/title_record" />
 
     <item
@@ -18,7 +18,6 @@
 
     <item
         android:id="@+id/navigation_info"
-        android:icon="@drawable/ic_extension_24px"
+        android:icon="@drawable/ic_bar_chart_24px"
         android:title="@string/title_info" />
-
 </menu>
