@@ -178,7 +178,7 @@ class AddBloodSugarNotice : AppCompatActivity() {
 
         //progressBarAdd.visibility = View.VISIBLE
         firestore = FirebaseFirestore.getInstance()
-        firestore?.collection("Pet3")?.document(document)
+        firestore?.collection("Alarm")?.document(document)
             ?.set(BloodSugarDTO)?.addOnCompleteListener {
                     task ->
                 //progressBarAdd.visibility = View.GONE
