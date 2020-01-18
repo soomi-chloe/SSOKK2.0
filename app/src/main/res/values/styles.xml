@@ -16,5 +16,8 @@
     <style name="MyDialogTheme"
         parent="Theme.AppCompat.Light.Dialog">
     </style>
-</resources>
 
+    <style name="noAnimTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+</resources>

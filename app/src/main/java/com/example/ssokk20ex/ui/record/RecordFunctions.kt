@@ -89,19 +89,21 @@ class RecordFunctions : AppCompatActivity() {
         val bloodSugar = txt_bloodSugarNumber.text.toString() //입력받은 혈당수치(data)
 
         //아무것도 적지 않고 입력버튼을 누른 경우
-        if(txt_bloodSugarNumber.text.isEmpty()){
+        if(txt_bloodSugarNumber.text.toString().isEmpty()){
             Toast.makeText(this, "혈당 수치를 입력해주세요", Toast.LENGTH_LONG).show()
         }
-
-        firestore = FirebaseFirestore.getInstance()
-        firestore?.collection("record")?.document(date_bloodSugar.toString())
-            ?.set(bloodSugar)?.addOnCompleteListener { document ->
-                if (document.isSuccessful) {
-                    Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
-                } else {
-                    Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
+        else {
+            firestore = FirebaseFirestore.getInstance()
+            firestore?.collection("record")?.document(date_bloodSugar.toString())
+                ?.set(bloodSugar)?.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
+                    }
                 }
-            }
+        }
+
     }
 
 

@@ -1,10 +1,14 @@
-package com.example.ssokk20ex.ui.statistics
+package com.example.ssokk20ex
 
 import android.content.Intent
 import android.graphics.Color
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ssokk20ex.R
+import android.os.Bundle
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctions
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctions.Companion.isChecked_monthly
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctions.Companion.isChecked_weekly
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctionsWeight
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctions_AllRecord
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
@@ -14,14 +18,9 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import kotlinx.android.synthetic.main.blood_sugar_record_weekly.*
 
-class StatisticsFunctions : AppCompatActivity() {
+class StatisticsFunctions_monthly : AppCompatActivity() {
+
     private val entries = ArrayList<Entry>()
-
-    companion object {
-        var isChecked_monthly: Boolean = true
-        var isChecked_weekly: Boolean = true
-    }
-
     var chartBS : LineChart? = null
 
     var xAxisValues: List<String> = java.util.ArrayList(
@@ -40,23 +39,11 @@ class StatisticsFunctions : AppCompatActivity() {
         drawBmiChartBS()
 
         weeklyBtn.setOnClickListener {
-            if (isChecked_monthly) {
-                weeklyBtn.setImageResource(R.drawable.weekly_clicked)
-                monthlyBtn.setImageResource(R.drawable.monthly)
-                isChecked_weekly = true
-                isChecked_monthly = false
-            }
-            drawBmiChartBS()
-        }
-
-        monthlyBtn.setOnClickListener {
-            if (isChecked_weekly) {
-                weeklyBtn.setImageResource(R.drawable.weekly)
-                monthlyBtn.setImageResource(R.drawable.monthly_clicked)
-                isChecked_weekly = false
-                isChecked_monthly = true
-            }
-            drawBmiChartBS()
+            weeklyBtn.setImageResource(R.drawable.weekly_clicked)
+            monthlyBtn.setImageResource(R.drawable.monthly)
+            isChecked_weekly = true
+            isChecked_monthly = false
+            startActivity(Intent(this, StatisticsFunctions::class.java))
         }
 
         bmiStatisticsBtn.setOnClickListener {

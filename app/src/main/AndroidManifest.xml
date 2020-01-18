@@ -11,22 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.statistics.StatisticsFunctionsWeight">
-
-        </activity>
+        <activity android:name=".StatisticsFunctions_monthly"></activity>
+        <activity android:name=".StatisticsFunctionsWeight_monthly" />
+        <activity
+            android:name=".ui.statistics.StatisticsFunctionsWeight"
+            android:theme="@style/noAnimTheme" />
         <activity android:name=".ui.record.RecordFunctions" />
         <activity android:name=".IntroActivity" />
         <activity android:name=".IntroSlide" />
         <activity android:name=".IntroAdapter" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignInActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+        <activity android:name=".SignInActivity" />
         <activity android:name=".ui.alarm.AddMedicineNotice" />
         <activity android:name=".ui.alarm.AddBloodSugarNotice" />
         <activity android:name=".ui.alarm.MedicineNotice" />
@@ -34,12 +29,20 @@
         <activity android:name=".info_test" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".MyPage" />
-        <activity android:name=".ui.statistics.StatisticsFunctions">
-        </activity>
-        <activity android:name=".ui.statistics.StatisticsFunctions_AllRecord" />
+        <activity
+            android:name=".ui.statistics.StatisticsFunctions"
+            android:theme="@style/noAnimTheme" />
+        <activity
+            android:name=".ui.statistics.StatisticsFunctions_AllRecord"
+            android:theme="@style/noAnimTheme" />
     </application>
 
 </manifest>
