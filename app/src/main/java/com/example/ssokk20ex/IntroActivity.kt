@@ -46,6 +46,8 @@ class IntroActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 setCurrentDot(position)
+                if(position <= 0) previousBtn.visibility = View.INVISIBLE
+                else previousBtn.visibility = View.VISIBLE
             }
         })
 
