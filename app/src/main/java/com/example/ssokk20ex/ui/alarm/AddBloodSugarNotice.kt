@@ -1,5 +1,6 @@
 package com.example.ssokk20ex.ui.alarm
 
+import android.annotation.TargetApi
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -14,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.ssokk20ex.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_blood_sugar_notice.*
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class AddBloodSugarNotice : AppCompatActivity() {
@@ -25,6 +29,7 @@ class AddBloodSugarNotice : AppCompatActivity() {
 
     private var firestore : FirebaseFirestore? = null
 
+    @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,51 +79,46 @@ class AddBloodSugarNotice : AppCompatActivity() {
             }
         }
 
-        //< 아이콘 이전 화면
-        btn_img_before_present_bun.setOnClickListener {
+        btn_before_present_bun.setOnClickListener {
             val presentAlarmN = findViewById<TextView>(R.id.txt_aDayNum)
             var intPresentAlarmN: Int = Integer.valueOf(presentAlarmN.getText().toString())
+
+            btn_after_present_bun.setImageResource(R.drawable.right_page_active)
             if (intPresentAlarmN == 1){
                 Toast.makeText(this, "첫 알람입니다", Toast.LENGTH_LONG).show()
             } else {
+                if (intPresentAlarmN == 2)
+                    btn_before_present_bun.setImageResource(R.drawable.left_page)
+
                 intPresentAlarmN--
                 Toast.makeText(this, intPresentAlarmN.toString(), Toast.LENGTH_LONG).show()
                 txt_aDayNum.setText(intPresentAlarmN.toString())
             }
+            //현재 알람 저장하고
+            addDatabase()
         }
 
-        //'이전' 텍스트 이전 화면
-        txt_before_present_bun.setOnClickListener {
-            val presentAlarmN = findViewById<TextView>(R.id.txt_aDayNum)
-            var intPresentAlarmN: Int = Integer.valueOf(presentAlarmN.getText().toString())
-            if (intPresentAlarmN == 1){
-                Toast.makeText(this, "첫 알람입니다", Toast.LENGTH_LONG).show()
-            } else {
-                intPresentAlarmN--
-                Toast.makeText(this, intPresentAlarmN.toString(), Toast.LENGTH_LONG).show()
-                txt_aDayNum.setText(intPresentAlarmN.toString())
-            }
-        }
-
-        //'다음' 텍스트 다음 화면
-        txt_after_present_bun.setOnClickListener {
+        btn_after_present_bun.setOnClickListener {
             val AlarmN = findViewById<EditText>(R.id.txt_aDayN)
             val presentAlarmN = findViewById<TextView>(R.id.txt_aDayNum)
             var intAlarmN: Int = Integer.valueOf(AlarmN.getText().toString())
             var intPresentAlarmN: Int = Integer.valueOf(presentAlarmN.getText().toString())
 
+            btn_before_present_bun.setImageResource(R.drawable.left_page_active)
+
             if (intPresentAlarmN == intAlarmN){
                 Toast.makeText(this, "마지막 알람입니다", Toast.LENGTH_LONG).show()
             } else {
-                //현재 알람 저장하고
-                addDatabase()
-
+                if (intPresentAlarmN == intAlarmN-1)
+                    btn_after_present_bun.setImageResource(R.drawable.right_page)
 
                 //다음 알람으로 가기
                 intPresentAlarmN++
                 Toast.makeText(this, intPresentAlarmN.toString(), Toast.LENGTH_LONG).show()
                 txt_aDayNum.setText(intPresentAlarmN.toString())
             }
+            //현재 알람 저장하고
+            addDatabase()
         }
 
         btn_cancel.setOnClickListener {
@@ -128,6 +128,8 @@ class AddBloodSugarNotice : AppCompatActivity() {
         btn_save.setOnClickListener {
             startActivity(Intent(this, AlarmFunctions::class.java))
             Toast.makeText(this, "알람이 저장되었습니다", Toast.LENGTH_LONG).show()
+            //현재 알람 저장하고
+            addDatabase()
         }
 
     }
@@ -142,12 +144,10 @@ class AddBloodSugarNotice : AppCompatActivity() {
         })
         }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun addDatabase() {
-//        if (edtAddBreed.text.isEmpty() || edtAddGender.text.isEmpty() ||
-//            edtAddAge.text.isEmpty() || edtAddPhoto.text.isEmpty()) {
-//            txtAddResult.text = "입력되지 않은 값이 있습니다."
-//            return
-//        }
+        var date = LocalDateTime.now()
+        var strDate = date.format(DateTimeFormatter.ofPattern("yy-MM-dd H:mm"))
         var meal : String ?= null
         if(isChecked_before == true){
             meal = "before"
@@ -156,20 +156,8 @@ class AddBloodSugarNotice : AppCompatActivity() {
             meal = "after"
         }
 
-        //val timePicker = findViewById<TimePicker>(R.id.timePicker)
-
-        var bloodSugarDTO : BloodSugarDTO?= null
-
-//        timePicker.setOnTimeChangedListener(TimePicker.OnTimeChangedListener { timePicker, hour, minute ->
-//            //hourC = hour
-//            //textView.text = "Hour: "+ hour + " Minute : "+ minute
-//            textView.text = hour.toString() + minute.toString()
-//
-//        })
-       // if(textView.text.toString() == "TextView")
-
-
-        bloodSugarDTO = BloodSugarDTO(
+        var bloodSugarDTO = BloodSugarDTO(
+            strDate,
             txt_bunN.text.toString(),
             txt_aDayNum.text.toString(),
             meal,
@@ -177,7 +165,7 @@ class AddBloodSugarNotice : AppCompatActivity() {
         )
 
         //val document = edtAddBreed.text.toString()
-        val document = txt_aDayNum.text.toString()
+        val document = strDate
 
         //progressBarAdd.visibility = View.VISIBLE
         firestore = FirebaseFirestore.getInstance()
