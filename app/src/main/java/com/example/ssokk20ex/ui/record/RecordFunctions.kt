@@ -20,7 +20,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.startActivityForResult
 import com.example.ssokk20ex.R
+
 import com.example.ssokk20ex.RecordBloodSugarDTO
+
+import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
@@ -88,6 +91,7 @@ class RecordFunctions : AppCompatActivity() {
 
         //1. 혈당 - 입력 버튼
         btn_inputBloodSugar.setOnClickListener {
+
             //그래프에 수치값 찍어주기
             val  value = Integer.parseInt(txt_bloodSugarNumber.text.toString()).toFloat()
             chartAdd(value)
@@ -102,10 +106,14 @@ class RecordFunctions : AppCompatActivity() {
                 Toast.makeText(this, "혈당 수치를 입력해주세요", Toast.LENGTH_LONG).show()
             }
 
+
             //수치가 있을 경우 - 데이터 저장
             else {
                 closeKeyboard()  //키보드 내리기
 
+
+            //수치가 있을 경우 - 데이터 저장
+            else {
                 var bloodSugar = findViewById<TextView>(R.id.txt_bloodSugarNumber)
                 var date= LocalDate.now()
                 var strnow = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
@@ -128,11 +136,16 @@ class RecordFunctions : AppCompatActivity() {
                         } else {
                             Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
                         }
+
                     }
+
+                }
+
 
                 //그래프에 수치값 찍어주기
                 val  value = Integer.parseInt(txt_bloodSugarNumber.text.toString()).toFloat()
                 chartAdd(value)
+
                 txt_bloodSugarNumber.setText(null) //수치적는 란 초기화
             }
         }
@@ -159,7 +172,32 @@ class RecordFunctions : AppCompatActivity() {
 
         //3. 체중 - 입력 버튼
         btn_inputWeight.setOnClickListener {
-            addWeightData() //체중 데이터 저장
+            //체중 수치를 적지 않는 경우
+            if(txt_weight.text.isEmpty()){
+                Toast.makeText(this, "체중을 입력해주세요", Toast.LENGTH_LONG).show()
+            }
+
+            //체중 수치를 적은 경우
+            else{
+                var weight = findViewById<TextView>(R.id.txt_weight) //입력받은 체중값
+                var date= LocalDate.now()
+                var document = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+                val data =
+                    RecordWeughtDTO(weight.text.toString())
+
+                firestore = FirebaseFirestore.getInstance()
+                firestore?.collection("record_weight")?.document(document.toString())
+                    ?.set(data)
+                    ?.addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                txt_weight.setText(null) //수치적는 란 초기화
+            }
         }
 
         //체중 수치를 적지 않는 경우
@@ -193,6 +231,7 @@ class RecordFunctions : AppCompatActivity() {
 
         storage = FirebaseStorage.getInstance()
         storageReference = storage!!.reference
+
 
         //4. 식사 사진
         btn_addMealImage.setOnClickListener {
@@ -410,6 +449,7 @@ class RecordFunctions : AppCompatActivity() {
             array[index] = false
         }
     }
+
 
 
     //체중 데이터 저장

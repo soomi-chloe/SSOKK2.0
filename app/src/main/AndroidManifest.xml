@@ -21,6 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".RecordBloodSugarDTO" />
+        <activity android:name=".RecordWeightDTO"></activity>
+        <activity android:name=".ui.record.RecordBloodSugarDTO" />
         <activity
             android:name=".ui.statistics.StatisticsFunctions_monthly"
             android:theme="@style/noAnimTheme" />
