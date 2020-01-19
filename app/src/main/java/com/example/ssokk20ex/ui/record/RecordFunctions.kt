@@ -78,7 +78,7 @@ class RecordFunctions : AppCompatActivity() {
 
                 var bloodSugar = findViewById<TextView>(R.id.txt_bloodSugarNumber)
                 var date= LocalDate.now()
-                var strnow = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                var strnow = date.format(DateTimeFormatter.ofPattern("yyyy-M-d"))
                 var document = strnow + "-"+n
 //        textView2.setText(Strnow)
 //        var n : Int = 1
