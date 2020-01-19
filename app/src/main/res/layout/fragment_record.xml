@@ -596,44 +596,123 @@
                         android:textColor="#707070"
                         android:textSize="18.3sp" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/mealImage1"
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:layout_marginLeft="29.7dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="0"
-                        app:srcCompat="@drawable/all_record_meal" />
-
-                    <ImageView
-                        android:id="@+id/mealImage2"
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:layout_marginLeft="29.7dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="0"
-                        app:srcCompat="@drawable/all_record_meal" />
-
-                    <ImageButton
-                        android:id="@+id/add_mealImage"
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:layout_marginLeft="29.7dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="0"
+                    <Button
+                        android:id="@+id/test_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:padding="0dp"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/addbtn_withboxaround" />
+                        android:text="Button" />
+
                 </LinearLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/btn_addMealImage"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_marginLeft="29.7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0"
+                            android:padding="0dp"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/addbtn_withboxaround" />
+
+                        <ImageView
+                            android:id="@+id/mealImage1"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_marginLeft="29.7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0"
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/all_record_meal" />
+
+                        <ImageView
+                            android:id="@+id/mealImage2"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_marginLeft="29.7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0"
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/all_record_meal" />
+
+                        <ImageView
+                            android:id="@+id/mealImage3"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_marginLeft="29.7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0"
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/all_record_meal" />
+
+                        <ImageView
+                            android:id="@+id/mealImage4"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_marginLeft="29.7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0"
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/all_record_meal" />
+
+                        <ImageView
+                            android:id="@+id/mealImage5"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_marginLeft="29.7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0"
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/all_record_meal" />
+
+                        <ImageView
+                            android:id="@+id/mealImage6"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_marginLeft="29.7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0"
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/all_record_meal" />
+
+                        <ImageView
+                            android:id="@+id/mealImage7"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_marginLeft="29.7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0"
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/all_record_meal" />
+
+                        <ImageView
+                            android:id="@+id/mealImage8"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_marginLeft="29.7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0"
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/all_record_meal" />
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
             </LinearLayout>
+
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

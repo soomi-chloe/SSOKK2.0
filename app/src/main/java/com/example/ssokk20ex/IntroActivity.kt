@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_intro.*
 class IntroActivity : AppCompatActivity() {
     private val introAapter = IntroAdapter(
         listOf(
+            IntroSlide(R.drawable.intro01),
             IntroSlide(R.drawable.intro02),
             IntroSlide(R.drawable.intro03)
         )
