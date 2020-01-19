@@ -20,9 +20,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.startActivityForResult
 import com.example.ssokk20ex.R
-
-import com.example.ssokk20ex.RecordBloodSugarDTO
-
+import com.example.ssokk20ex.ui.record.RecordBloodSugarDTO
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Description
@@ -106,14 +104,10 @@ class RecordFunctions : AppCompatActivity() {
                 Toast.makeText(this, "혈당 수치를 입력해주세요", Toast.LENGTH_LONG).show()
             }
 
-
             //수치가 있을 경우 - 데이터 저장
             else {
-                closeKeyboard()  //키보드 내리기
+                closeKeyboard()
 
-
-            //수치가 있을 경우 - 데이터 저장
-            else {
                 var bloodSugar = findViewById<TextView>(R.id.txt_bloodSugarNumber)
                 var date= LocalDate.now()
                 var strnow = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
@@ -138,9 +132,6 @@ class RecordFunctions : AppCompatActivity() {
                         }
 
                     }
-
-                }
-
 
                 //그래프에 수치값 찍어주기
                 val  value = Integer.parseInt(txt_bloodSugarNumber.text.toString()).toFloat()
@@ -200,38 +191,10 @@ class RecordFunctions : AppCompatActivity() {
             }
         }
 
-        //체중 수치를 적지 않는 경우
-        if(txt_weight.text.isEmpty()){
-            Toast.makeText(this, "체중을 입력해주세요", Toast.LENGTH_LONG).show()
-        }
 
-        //체중 수치를 적은 경우
-        else{
-            closeKeyboard()  //키보드 내리기
-
-            var weight = findViewById<TextView>(R.id.txt_weight) //입력받은 체중값
-            var date= LocalDate.now()
-            var document = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-
-            val data =
-                RecordWeightDTO(weight.text.toString())
-
-            firestore = FirebaseFirestore.getInstance()
-            firestore?.collection("record_weight")?.document(document.toString())
-                ?.set(data)
-                ?.addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
-                    } else {
-                        Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
-                    }
-                }
-            txt_weight.setText(null) //수치적는 란 초기화
-        }
 
         storage = FirebaseStorage.getInstance()
         storageReference = storage!!.reference
-
 
         //4. 식사 사진
         btn_addMealImage.setOnClickListener {
@@ -452,26 +415,26 @@ class RecordFunctions : AppCompatActivity() {
 
 
 
-    //체중 데이터 저장
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun addWeightData(){
-
-        var weight = txt_weight.text.toString() //입력받은 체중값(data)
-
-        //아무것도 적지 않고 입력버튼을 누른 경우
-        if(txt_bloodSugarNumber.text.isEmpty()){
-            Toast.makeText(this, "체중을 입력해주세요", Toast.LENGTH_LONG).show()
-        }
-
-        firestore?.collection("record")?.document(date.toString())
-            ?.set(weight)?.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
-                } else {
-                    Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
-                }
-            }
-    }
+//    //체중 데이터 저장
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    private fun addWeightData(){
+//
+//        var weight = txt_weight.text.toString() //입력받은 체중값(data)
+//
+//        //아무것도 적지 않고 입력버튼을 누른 경우
+//        if(txt_bloodSugarNumber.text.isEmpty()){
+//            Toast.makeText(this, "체중을 입력해주세요", Toast.LENGTH_LONG).show()
+//        }
+//
+//        firestore?.collection("record")?.document(date.toString())
+//            ?.set(weight)?.addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
+//                } else {
+//                    Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
+//                }
+//            }
+//    }
 
     //사진,앨범 다이얼로그
     private fun showPictureDialog(){
