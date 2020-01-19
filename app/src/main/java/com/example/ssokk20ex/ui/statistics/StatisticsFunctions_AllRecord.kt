@@ -6,6 +6,7 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -38,22 +39,21 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
         running = true
         var stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
 
-        //if(stepSensor != null)
-            //sensorManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI)
-        sensorManager?.registerListener(this, sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
-        //else Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+        if(stepSensor != null)
+            sensorManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_NORMAL)
+        else Toast.makeText(this, "만보기 오류", Toast.LENGTH_SHORT).show()
     }
 
-//    override fun onPause() {
-//        super.onPause()
-//        running = false
-//        sensorManager?.unregisterListener(this)
-//    }
+    override fun onPause() {
+        super.onPause()
+        running = false
+        sensorManager?.unregisterListener(this)
+    }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {}
 
     override fun onSensorChanged(event: SensorEvent) {
         if(running)
-            stepsTxt.setText(""+event.values[0]+" 걸음")
+            stepsTxt.setText(""+event.values[0].toInt()+" 걸음")
     }
 }

@@ -84,29 +84,29 @@ class RecordFunctions : AppCompatActivity() {
 //        var n : Int = 1
 //        n++
 
-                    val RecordBloodSugarDTO = RecordBloodSugarDTO(
-                        strnow.toString(),
-                        n.toString(),
-                        bloodSugar.text.toString()
-                    )
+                val RecordBloodSugarDTO = RecordBloodSugarDTO(
+                    strnow.toString(),
+                    n.toString(),
+                    bloodSugar.text.toString()
+                )
 
-                    firestore = FirebaseFirestore.getInstance()
-                    firestore?.collection("record_bloodSugar")?.document(document)
-                        ?.set(RecordBloodSugarDTO)
-                        ?.addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                n=n+1
-                                Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
-                            } else {
-                                Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
-                            }
-                }
+                firestore = FirebaseFirestore.getInstance()
+                firestore?.collection("record_bloodSugar")?.document(document)
+                    ?.set(RecordBloodSugarDTO)
+                    ?.addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            n=n+1
+                            Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
+                        }
+                    }
 
                 //그래프에 수치값 찍어주기
-            val  value = Integer.parseInt(txt_bloodSugarNumber.text.toString()).toFloat()
-            chartAdd(value)
+                val  value = Integer.parseInt(txt_bloodSugarNumber.text.toString()).toFloat()
+                chartAdd(value)
 
-            txt_bloodSugarNumber.setText(null) //수치적는 란 초기화
+                txt_bloodSugarNumber.setText(null) //수치적는 란 초기화
             }
 
         }

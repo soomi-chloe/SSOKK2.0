@@ -19,30 +19,31 @@ import kotlinx.android.synthetic.main.blood_sugar_record_weekly.*
 class StatisticsFunctions_monthly : AppCompatActivity() {
 
     private val entries = ArrayList<Entry>()
-    var chartBS : LineChart? = null
+            var chartBS : LineChart? = null
+            val stat = StatisticsFunctions()
 
-    var xAxisValues: List<String> = java.util.ArrayList(
-        listOf(
-            "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"
-        )
-    )
+            var xAxisValues: List<String> = java.util.ArrayList(
+                listOf(
+                    "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"
+                )
+            )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.blood_sugar_record_weekly)
-        supportActionBar?.hide()
+            override fun onCreate(savedInstanceState: Bundle?) {
+                super.onCreate(savedInstanceState)
+                setContentView(R.layout.blood_sugar_record_weekly)
+                supportActionBar?.hide()
 
-        weeklyBtn.setImageResource(R.drawable.weekly)
-        monthlyBtn.setImageResource(R.drawable.monthly_clicked)
+                weeklyBtn.setImageResource(R.drawable.weekly)
+                monthlyBtn.setImageResource(R.drawable.monthly_clicked)
 
-        chartBS = findViewById<LineChart>(R.id.bsGraph)
+                chartBS = findViewById<LineChart>(R.id.bsGraph)
 
-        drawBmiChartBS()
+                drawBmiChartBS()
 
-        weeklyBtn.setOnClickListener {
-            isChecked_weekly = true
-            isChecked_monthly = false
-            startActivity(Intent(this, StatisticsFunctions::class.java))
+                weeklyBtn.setOnClickListener {
+                    isChecked_weekly = true
+                    isChecked_monthly = false
+                    startActivity(Intent(this, StatisticsFunctions::class.java))
         }
 
         bmiStatisticsBtn.setOnClickListener {
@@ -55,15 +56,19 @@ class StatisticsFunctions_monthly : AppCompatActivity() {
     }
 
     private fun drawBmiChartBS() {
-        entries.add(Entry(0f, 39f))
-        entries.add(Entry(1f, 38f))
+        entries.add(Entry(0f, stat.getAvg("2020-01-19")))
+        entries.add(Entry(1f, stat.getAvg("2020-01-19")))
         entries.add(Entry(2f, 33f))
+        entries.add(Entry(3f, 0f))
+        entries.add(Entry(4f, 0f))
+        entries.add(Entry(5f, 0f))
+        entries.add(Entry(6f, 0f))
 
-        val dataSet = LineDataSet(entries, "BMI")
+        val dataSet = LineDataSet(entries, "Blood Sugar")
         dataSet.lineWidth = 2f
         dataSet.circleRadius = 3f
-        dataSet.setCircleColor(Color.parseColor("#FFA1B4DC"))
-        dataSet.color = Color.parseColor("#FFA1B4DC")
+        dataSet.setCircleColor(Color.parseColor("#f16161"))
+        dataSet.color = Color.parseColor("#f16161")
         val lineData = LineData(dataSet)
         chartBS!!.data = lineData
 
