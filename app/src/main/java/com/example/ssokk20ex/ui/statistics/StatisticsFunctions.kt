@@ -2,14 +2,12 @@ package com.example.ssokk20ex.ui.statistics
 
 import android.content.Intent
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ssokk20ex.R
-import com.example.ssokk20ex.RecordBloodSugarDTO
+import com.example.ssokk20ex.ui.record.RecordBloodSugarDTO
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
@@ -18,14 +16,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.type.Date
 import kotlinx.android.synthetic.main.blood_sugar_record_weekly.*
-import kotlinx.coroutines.*
-import java.lang.Float.parseFloat
-import java.lang.reflect.Array.get
-import java.time.DayOfWeek
-import java.time.LocalDate
-import kotlin.coroutines.CoroutineContext
 
 class StatisticsFunctions : AppCompatActivity(){
     private val entries = ArrayList<Entry>()
