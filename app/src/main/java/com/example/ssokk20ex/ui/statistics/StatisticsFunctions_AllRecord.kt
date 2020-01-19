@@ -8,12 +8,15 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ssokk20ex.R
+import com.example.ssokk20ex.RecordBloodSugarDTO
 import com.example.ssokk20ex.ui.statistics.StatisticsFunctions.Companion.bsList
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.all_records.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -24,7 +27,7 @@ import java.time.format.DateTimeFormatter
 class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
     var sensorManager: SensorManager? = null
     var running: Boolean = false
-
+    var weightList = ArrayList<String>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +45,15 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
                 bsStatArray[index].text = bsList.get(index).bloodSugar
                 index++
             }
+        }
+
+        for(i in 0..weightList.size-1) {
+            //if(weightList.get(i) == date) {
+                //txt_weightOfDay.text = weightList.get(i).recordWeight
+                //break
+            //}
+            //else
+                //txt_weightOfDay.text = "-"
         }
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager?
@@ -91,5 +103,20 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
     override fun onSensorChanged(event: SensorEvent) {
         if(running)
             stepsTxt.setText(""+event.values[0].toInt()+" 걸음")
+    }
+
+    private fun getWeight() {
+        val firestore = FirebaseFirestore.getInstance()
+        firestore.collection("record_weight").get()
+            .addOnCompleteListener{ task ->
+                if(task.isSuccessful) {
+                    for(dc in task.result!!.documents) {
+                        //weightList.add(dc.toObject(RecordWeightDTO::class.java)!!)
+                    }
+                    Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
+                }
+                else
+                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
+            }
     }
 }

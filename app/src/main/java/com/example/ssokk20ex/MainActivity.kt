@@ -40,13 +40,11 @@ class MainActivity : AppCompatActivity() {
 
     fun getBloodSugarRecord() {
         val firestore = FirebaseFirestore.getInstance()
-        //firestore.collection("record_bloodSugar").get()
         firestore.collection("record_bloodSugar").get()
             .addOnCompleteListener{ task ->
                 if(task.isSuccessful) {
                     for(dc in task.result!!.documents) {
                         StatisticsFunctions.bsList.add(dc.toObject(RecordBloodSugarDTO::class.java)!!)
-                        Log.d("test", dc.toObject(RecordBloodSugarDTO::class.java).toString())
                     }
                     Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
                 }

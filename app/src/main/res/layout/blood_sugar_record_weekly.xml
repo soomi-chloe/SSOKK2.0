@@ -197,7 +197,7 @@
                 android:lineSpacingExtra="1sp"
                 android:textColor="#707070"
                 android:textSize="8sp"
-                tools:text="평균값" />
+                android:text="평균값" />
 
             <TextView
                 android:id="@+id/averageBloodSugar_value"
