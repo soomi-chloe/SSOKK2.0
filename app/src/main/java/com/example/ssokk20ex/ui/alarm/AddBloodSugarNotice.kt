@@ -11,11 +11,9 @@ import android.widget.TimePicker
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ssokk20ex.BloodSugarDTO
 import com.example.ssokk20ex.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_blood_sugar_notice.*
-import kotlinx.android.synthetic.main.activity_info_test.*
 
 
 class AddBloodSugarNotice : AppCompatActivity() {
@@ -160,7 +158,7 @@ class AddBloodSugarNotice : AppCompatActivity() {
 
         //val timePicker = findViewById<TimePicker>(R.id.timePicker)
 
-        var bloodSugarDTO : BloodSugarDTO ?= null
+        var bloodSugarDTO : BloodSugarDTO?= null
 
 //        timePicker.setOnTimeChangedListener(TimePicker.OnTimeChangedListener { timePicker, hour, minute ->
 //            //hourC = hour
@@ -175,7 +173,8 @@ class AddBloodSugarNotice : AppCompatActivity() {
             txt_bunN.text.toString(),
             txt_aDayNum.text.toString(),
             meal,
-            textView.text.toString())
+            textView.text.toString()
+        )
 
         //val document = edtAddBreed.text.toString()
         val document = txt_aDayNum.text.toString()
