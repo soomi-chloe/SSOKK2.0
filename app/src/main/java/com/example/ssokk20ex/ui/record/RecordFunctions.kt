@@ -85,17 +85,10 @@ class RecordFunctions : AppCompatActivity() {
             afterMeal()
         }
 
-        var n:Int = 1
+        var n : Int = 1
 
         //1. 혈당 - 입력 버튼
         btn_inputBloodSugar.setOnClickListener {
-
-            //그래프에 수치값 찍어주기
-            val  value = Integer.parseInt(txt_bloodSugarNumber.text.toString()).toFloat()
-            chartAdd(value)
-            txt_bloodSugarNumber.setText(null) //수치적는 란 초기화
-
-            addBloodSugarData() //데이터 저장
 
             if(n==7){n=1}
 
@@ -251,43 +244,6 @@ class RecordFunctions : AppCompatActivity() {
             val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
         }
-    }
-
-    //혈당 수치 데이터 저장
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun addBloodSugarData(){
-
-        var bloodSugar = txt_bloodSugarNumber.text.toString() //입력받은 혈당수치(data)
-
-        //아무것도 적지 않고 입력버튼을 누른 경우
-        if(txt_bloodSugarNumber.text.isEmpty()){
-            Toast.makeText(this, "혈당 수치를 입력해주세요", Toast.LENGTH_LONG).show()
-        }
-
-        firestore?.collection("record")?.document(date.toString())
-            ?.set(bloodSugar)
-            ?.addOnCompleteListener {
-                    task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
-                } else {
-                    Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
-                }
-            }
-
-
-
-        //        val docRef = firestore?.collection("record")?.document("date")
-        //        docRef?.get()
-        //            ?.addOnSuccessListener { document ->
-        //                if(document != null){
-        //                    Log.d("exist", "not null")
-        //                } else{
-        //                    Log.d("noexist", "is null")
-        //                }
-        //            }
-        //            ?.addOnFailureListener { exception -> Log.d("is error", "got failed with", exception) }
-
     }
 
 
