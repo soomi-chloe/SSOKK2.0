@@ -22,7 +22,7 @@ class StatisticsFunctionsWeight : AppCompatActivity() {
         var isChecked_monthly_weight: Boolean?=null
         var isChecked_weekly_weight: Boolean?=null
     }
-
+    val stat = StatisticsFunctions()
     var chart :LineChart? = null
 
     var xAxisValues: List<String> = java.util.ArrayList(
@@ -59,15 +59,19 @@ class StatisticsFunctionsWeight : AppCompatActivity() {
     }
 
     private fun drawBmiChart() {
-        entries.add(Entry(0f, 39f))
-        entries.add(Entry(1f, 38f))
-        entries.add(Entry(2f, 33f))
+        entries.add(Entry(0f, stat.getAvg("2020-01-19")))
+        entries.add(Entry(1f, 0f))
+        entries.add(Entry(2f, 0f))
+        entries.add(Entry(3f, 0f))
+        entries.add(Entry(4f, 0f))
+        entries.add(Entry(5f, 0f))
+        entries.add(Entry(6f, 0f))
 
         val dataSet = LineDataSet(entries, "BMI")
         dataSet.lineWidth = 2f
         dataSet.circleRadius = 3f
-        dataSet.setCircleColor(Color.parseColor("#FFA1B4DC"))
-        dataSet.color = Color.parseColor("#FFA1B4DC")
+        dataSet.setCircleColor(Color.parseColor("#f16161"))
+        dataSet.color = Color.parseColor("#f16161")
         val lineData = LineData(dataSet)
         chart!!.data = lineData
 

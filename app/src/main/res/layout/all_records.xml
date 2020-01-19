@@ -104,7 +104,7 @@
                         android:lineSpacingExtra="1.7sp"
                         android:textColor="#707070"
                         android:textSize="12sp"
-                        android:text="124" />
+                        android:text="-" />
 
                     <ImageView
                         android:id="@+id/typeOf_bloodSugar2"
@@ -125,7 +125,7 @@
                         android:lineSpacingExtra="1.7sp"
                         android:textColor="#707070"
                         android:textSize="12sp"
-                        android:text="124" />
+                        android:text="-" />
 
                     <ImageView
                         android:id="@+id/typeOf_bloodSugar3"
@@ -147,7 +147,7 @@
                         android:lineSpacingExtra="1.7sp"
                         android:textColor="#707070"
                         android:textSize="12sp"
-                        android:text="124" />
+                        android:text="-" />
 
                     <ImageView
                         android:id="@+id/typeOf_bloodSugar4"
@@ -169,7 +169,7 @@
                         android:lineSpacingExtra="1.7sp"
                         android:textColor="#707070"
                         android:textSize="12sp"
-                        android:text="124" />
+                        android:text="-" />
 
                     <ImageView
                         android:id="@+id/typeOf_bloodSugar5"
@@ -191,7 +191,7 @@
                         android:lineSpacingExtra="1.7sp"
                         android:textColor="#707070"
                         android:textSize="12sp"
-                        android:text="124" />
+                        android:text="-" />
 
                     <ImageView
                         android:id="@+id/typeOf_bloodSugar6"
@@ -213,7 +213,7 @@
                         android:lineSpacingExtra="1.7sp"
                         android:textColor="#707070"
                         android:textSize="12sp"
-                        android:text="124" />
+                        android:text="-" />
 
                 </LinearLayout>
 

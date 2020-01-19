@@ -2,9 +2,14 @@ package com.example.ssokk20ex.ui.statistics
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ssokk20ex.R
+import com.example.ssokk20ex.RecordBloodSugarDTO
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
@@ -12,14 +17,24 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.type.Date
 import kotlinx.android.synthetic.main.blood_sugar_record_weekly.*
+import kotlinx.coroutines.*
+import java.lang.Float.parseFloat
+import java.lang.reflect.Array.get
+import java.time.DayOfWeek
+import java.time.LocalDate
+import kotlin.coroutines.CoroutineContext
 
-class StatisticsFunctions : AppCompatActivity() {
+class StatisticsFunctions : AppCompatActivity(){
     private val entries = ArrayList<Entry>()
+    //val bsList : MutableList<RecordBloodSugarDTO> = ArrayList()
 
     companion object {
         var isChecked_monthly: Boolean = true
         var isChecked_weekly: Boolean = true
+        val bsList : MutableList<RecordBloodSugarDTO> = ArrayList()
     }
 
     var chartBS : LineChart? = null
@@ -32,6 +47,7 @@ class StatisticsFunctions : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.blood_sugar_record_weekly)
         supportActionBar?.hide()
 
@@ -58,15 +74,21 @@ class StatisticsFunctions : AppCompatActivity() {
     }
 
     private fun drawBmiChartBS() {
-        entries.add(Entry(0f, 39f))
-        entries.add(Entry(1f, 38f))
-        entries.add(Entry(2f, 33f))
+        entries.add(Entry(0f, getAvg("2020-01-19")))
+        entries.add(Entry(1f, 0f))
+        entries.add(Entry(2f, 0f))
+        entries.add(Entry(3f, 0f))
+        entries.add(Entry(4f, 0f))
+        entries.add(Entry(5f, 0f))
+        entries.add(Entry(6f, 0f))
+        Log.d("test", bsList.get(0).recordDate.toString())
 
-        val dataSet = LineDataSet(entries, "BMI")
+        val dataSet = LineDataSet(entries, "Blood Sugar")
         dataSet.lineWidth = 2f
         dataSet.circleRadius = 3f
-        dataSet.setCircleColor(Color.parseColor("#FFA1B4DC"))
-        dataSet.color = Color.parseColor("#FFA1B4DC")
+        dataSet.setCircleColor(Color.parseColor("#f16161"))
+        dataSet.color = Color.parseColor("#f16161")
+        dataSet.setDrawCircleHole(false)
         val lineData = LineData(dataSet)
         chartBS!!.data = lineData
 
@@ -88,4 +110,34 @@ class StatisticsFunctions : AppCompatActivity() {
 
         chartBS!!.invalidate()
     }
+
+    fun getBloodSugarRecord() {
+        val firestore = FirebaseFirestore.getInstance()
+        firestore.collection("record_bloodSugar").get()
+            .addOnCompleteListener{ task ->
+                if(task.isSuccessful) {
+                    for(dc in task.result!!.documents) {
+                        bsList.add(dc.toObject(RecordBloodSugarDTO::class.java)!!)
+                    }
+                    Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
+                }
+                else
+                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    public fun getAvg(date : String) : Float {
+        var avg: Float = 0f
+        var count : Int = 0
+
+        for(i in 0..bsList.size-1) {
+            if(bsList.get(i).recordDate == date) {
+                avg += bsList.get(i).bloodSugar.toString().toFloat()
+                count++
+            }
+        }
+        avg /= count
+        return avg
+    }
+
 }

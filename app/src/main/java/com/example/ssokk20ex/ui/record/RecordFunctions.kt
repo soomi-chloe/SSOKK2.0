@@ -1,14 +1,28 @@
 package com.example.ssokk20ex.ui.record
 
+import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
+import android.view.View
+import android.app.Activity
+import android.app.ProgressDialog
+import android.content.Context
+import android.net.Uri
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat.startActivityForResult
 import com.example.ssokk20ex.R
+
+import com.example.ssokk20ex.RecordBloodSugarDTO
+
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Description
@@ -17,14 +31,20 @@ import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.fragment_record.*
 import java.time.LocalDate
+import java.io.IOException
 import java.time.format.DateTimeFormatter
+import java.util.*
 import kotlin.collections.ArrayList
 
 class RecordFunctions : AppCompatActivity() {
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    var date: LocalDate = LocalDate.now() //날짜 받아오기(document)
     private var check1: Int = 0 //식전 버튼 체크 안된 상태
     private var check2: Int = 0 //식후 버튼 체크 안된 상태
     private var chart_bloodSugar: LineChart? = null
@@ -32,22 +52,29 @@ class RecordFunctions : AppCompatActivity() {
     private var lineChart: LineChart?= null
     private var xValue: String = ""
     private var array = booleanArrayOf(true, true, true, true, true)
+    private var filePath: Uri? = null
+    private var storage: FirebaseStorage? = null
+    private var storageReference: StorageReference? = null
     private var firestore : FirebaseFirestore? = null
+    private val GALLERY = 1
+    private val CAMERA = 2
+    private var PICK_IMAGE_REQUEST = 1234
 
-    var currentPath: String? = null
-    val TAKE_PICTURE = 1
+//    var currentPath: String? = null
+//    val TAKE_PICTURE = 1
 
-    var xAxisValues: List<String> = java.util.ArrayList(
-        listOf(
-
-        )
-    )
+//    var xAxisValues: List<String> = java.util.ArrayList(
+//        listOf(
+//
+//        )
+//    )
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_record)
         supportActionBar?.hide()
+        firestore = FirebaseFirestore.getInstance()
 
 
         //1. 혈당 - 식전 버튼
@@ -60,16 +87,30 @@ class RecordFunctions : AppCompatActivity() {
             afterMeal()
         }
 
-        var n : Int = 1
+        var n:Int = 1
 
         //1. 혈당 - 입력 버튼
         btn_inputBloodSugar.setOnClickListener {
+
+            //그래프에 수치값 찍어주기
+            val  value = Integer.parseInt(txt_bloodSugarNumber.text.toString()).toFloat()
+            chartAdd(value)
+            txt_bloodSugarNumber.setText(null) //수치적는 란 초기화
+
+            addBloodSugarData() //데이터 저장
+
             if(n==7){n=1}
 
             //수치가 없을 경우
             if(txt_bloodSugarNumber.text.isEmpty()){
                 Toast.makeText(this, "혈당 수치를 입력해주세요", Toast.LENGTH_LONG).show()
             }
+
+
+            //수치가 있을 경우 - 데이터 저장
+            else {
+                closeKeyboard()  //키보드 내리기
+
 
             //수치가 있을 경우 - 데이터 저장
             else {
@@ -95,7 +136,11 @@ class RecordFunctions : AppCompatActivity() {
                         } else {
                             Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
                         }
+
+                    }
+
                 }
+
 
                 //그래프에 수치값 찍어주기
                 val  value = Integer.parseInt(txt_bloodSugarNumber.text.toString()).toFloat()
@@ -155,43 +200,137 @@ class RecordFunctions : AppCompatActivity() {
             }
         }
 
+        //체중 수치를 적지 않는 경우
+        if(txt_weight.text.isEmpty()){
+            Toast.makeText(this, "체중을 입력해주세요", Toast.LENGTH_LONG).show()
+        }
+
+        //체중 수치를 적은 경우
+        else{
+            closeKeyboard()  //키보드 내리기
+
+            var weight = findViewById<TextView>(R.id.txt_weight) //입력받은 체중값
+            var date= LocalDate.now()
+            var document = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+            val data =
+                RecordWeightDTO(weight.text.toString())
+
+            firestore = FirebaseFirestore.getInstance()
+            firestore?.collection("record_weight")?.document(document.toString())
+                ?.set(data)
+                ?.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
+                    }
+                }
+            txt_weight.setText(null) //수치적는 란 초기화
+        }
+
+        storage = FirebaseStorage.getInstance()
+        storageReference = storage!!.reference
+
 
         //4. 식사 사진
-//        add_mealImage.setOnClickListener {
-//            dispatchCameraIntent()
-//        }
+        btn_addMealImage.setOnClickListener {
+            if(index == 8){
+                Toast.makeText(this, "오늘의 사진이 다 찼습니다", Toast.LENGTH_LONG).show()
+            }
+            else{
+                //showPictureDialog()
+                chooseImage()
+            }
+        }
+
+        test_btn.setOnClickListener {
+            uploadImage()
+        }
     }
 
-//    fun dispatchCameraIntent(){
-//        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//        if(intent.resolveActivity(packageManager) != null){
-//            var photoFile: File? = null
-//            try{
-//                photoFile = createImage()
-//            }
-//            catch(e: IOException){ }
-//            if(photoFile != null){
-//                var photoUri = FileProvider.getUriForFile(this,
-//                    "com.coutocode.caneraexample.fileprovider", photoFile)
-//                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
-//                startActivityForResult(intent, TAKE_PICTURE)
-//            }
-//        }
-//    }
-//
-//    fun createImage(): File{
-//        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Data())
-//        val imageName = "JPEG_" + timeStamp + "_"
-//        var storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-//        var image = File.createTempFile(imageName, ".jpg", storageDir)
-//        currentPath = image.absolutePath
-//        return image
-//    }
+    private fun chooseImage(){
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action= Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
+
+    }
+
+    //사진 데이터 저장
+    private fun uploadImage(){
+        if(filePath != null){
+            val progressDialog = ProgressDialog(this)
+            progressDialog.setTitle("Uploading...")
+            progressDialog.show()
+
+            val imageRef = storageReference!!.child("images/"+UUID.randomUUID().toString())
+            imageRef.putFile(filePath!!)
+                .addOnSuccessListener {
+                    Toast.makeText(applicationContext, "File Uploaded", Toast.LENGTH_LONG).show()
+                }
+                .addOnFailureListener{
+                    Toast.makeText(applicationContext, "Failed", Toast.LENGTH_LONG).show()
+                }
+                .addOnProgressListener {taskSnapshot ->
+                    val progress = 100.0 * taskSnapshot.bytesTransferred/taskSnapshot.totalByteCount
+                    progressDialog.setMessage("Uploaded" + progress.toInt() + "%...")
+                }
+        }
+    }
+
+    //키보드 내리기
+    @RequiresApi(Build.VERSION_CODES.CUPCAKE)
+    private fun closeKeyboard()
+    {
+        var view = this.currentFocus
+        if(view != null) {
+            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
+
+    //혈당 수치 데이터 저장
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun addBloodSugarData(){
+
+        var bloodSugar = txt_bloodSugarNumber.text.toString() //입력받은 혈당수치(data)
+
+        //아무것도 적지 않고 입력버튼을 누른 경우
+        if(txt_bloodSugarNumber.text.isEmpty()){
+            Toast.makeText(this, "혈당 수치를 입력해주세요", Toast.LENGTH_LONG).show()
+        }
+
+        firestore?.collection("record")?.document(date.toString())
+            ?.set(bloodSugar)
+            ?.addOnCompleteListener {
+                    task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
+                }
+            }
+
+
+
+        //        val docRef = firestore?.collection("record")?.document("date")
+        //        docRef?.get()
+        //            ?.addOnSuccessListener { document ->
+        //                if(document != null){
+        //                    Log.d("exist", "not null")
+        //                } else{
+        //                    Log.d("noexist", "is null")
+        //                }
+        //            }
+        //            ?.addOnFailureListener { exception -> Log.d("is error", "got failed with", exception) }
+
+    }
 
 
     //오늘의 혈당 그래프 - 추가
     private fun chartAdd(value : Float) {
-        val entricount = entries.count().toFloat() //이걸 식전, 식후로 만들기
+        val entricount = entries.count().toFloat()
         entries.add(Entry(entricount, value))
 
         val lineDataSet = LineDataSet(entries, "오늘의 혈당 수치")
@@ -206,7 +345,7 @@ class RecordFunctions : AppCompatActivity() {
         lineDataSet.setDrawValues(false)
 
         val lineData = LineData(lineDataSet)
-        lineChart?.data = lineData
+        lineChart!!.data = lineData
         lineChart?.invalidate()
     }
 
@@ -230,58 +369,41 @@ class RecordFunctions : AppCompatActivity() {
         val lineData = LineData(lineDataSet)
         lineChart?.data = lineData
 
-//        val xValsDateLabel = ArrayList<String>()
-
-//        val xValsOriginalMillis = ArrayList<Long>()
-//        xValsOriginalMillis.add(1554875423736L)
-//        xValsOriginalMillis.add(1555285494836L)
-//        xValsOriginalMillis.add(1555295494896L)
-//
-//        for (i in xValsOriginalMillis) {
-//            val mm = i / 60 % 60
-//            val hh = i / (60 * 60) % 24
-//            val mDateTime = "$hh:$mm"
-//            xValsDateLabel.add(mDateTime)
-//        }
-
-//        //식전일 때
-//        if(check1 == 1 || check2 == 0){
-//            xValue = "식전"
-//        }
-//
-//        //식후일 때
-//        else if(check1 == 0 || check2 == 1){
-//            xValue = "식후"
-//        }
-
         val xAxis: XAxis? = lineChart!!.xAxis
         xAxis?.position = XAxis.XAxisPosition.BOTTOM
         xAxis?.granularity = 1f
         xAxis?.textColor = Color.BLACK
+        xAxis?.setDrawGridLines(false)
         xAxis?.enableGridDashedLine(8f, 24f, 0f)
-        xAxis?.valueFormatter = IndexAxisValueFormatter(xAxisValues)
-//        xAxis?.setValueFormatter { value, axis ->
-//            if(xValsDateLabel.size-1 < value)
-//                "0"
-//            else
-//                xValsDateLabel.get(value.toInt())
-//        }
+        //
+        //        xAxis?.setValueFormatter { value, axis ->xAxis?.valueFormatter = IndexAxisValueFormatter(xAxisValues)
+        //            if(xValsDateLabel.size-1 < value)
+        //                "0"
+        //            else
+        //                xValsDateLabel.get(value.toInt())
+        //        }
 
         val yLAxis: YAxis? = lineChart?.axisLeft
         yLAxis?.textColor = Color.BLACK
+        yLAxis?.granularity = 1f
+        yLAxis?.setDrawGridLines(false)
 
         val yRAxis: YAxis? = chart_bloodSugar?.axisRight
-        yRAxis?.setDrawLabels(false)
-        yRAxis?.setDrawAxisLine(false)
-        yRAxis?.setDrawGridLines(false)
+        yRAxis?.isEnabled = false
+        //        yRAxis?.setDrawLabels(false)
+        //        yRAxis?.setDrawAxisLine(false)
+        //        yRAxis?.setDrawGridLines(false)
 
         val description = Description()
         description.text = ""
 
-        lineChart?.isDoubleTapToZoomEnabled = false
-        lineChart?.setDrawGridBackground(false)
-        lineChart?.description = description
-        lineChart?.animateY(2000, Easing.EasingOption.EaseInCubic)
+        //        lineChart?.isDoubleTapToZoomEnabled = false
+        //        lineChart?.setDrawGridBackground(false)
+        //        lineChart?.description = description
+        //        lineChart?.animateY(2000, Easing.EasingOption.EaseInCubic)
+        lineChart!!.legend.isEnabled = false
+        lineChart!!.description.isEnabled = false
+
         lineChart?.invalidate()
     }
 
@@ -326,6 +448,95 @@ class RecordFunctions : AppCompatActivity() {
             btn.setImageResource(R.drawable.record_medi_checked)
             array[index] = false
         }
+    }
+
+
+
+    //체중 데이터 저장
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun addWeightData(){
+
+        var weight = txt_weight.text.toString() //입력받은 체중값(data)
+
+        //아무것도 적지 않고 입력버튼을 누른 경우
+        if(txt_bloodSugarNumber.text.isEmpty()){
+            Toast.makeText(this, "체중을 입력해주세요", Toast.LENGTH_LONG).show()
+        }
+
+        firestore?.collection("record")?.document(date.toString())
+            ?.set(weight)?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "저장되었습니다", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this, "오류가 발생했습니다", Toast.LENGTH_LONG).show()
+                }
+            }
+    }
+
+    //사진,앨범 다이얼로그
+    private fun showPictureDialog(){
+        val dialogP = AlertDialog.Builder(this)
+        dialogP.setTitle("Select File")
+        val pictureDialogItems = arrayOf("gallery", "camera")
+        dialogP.setItems(pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+                0 -> fromGallary()
+                1 -> fromCamera()
+            }
+        }
+        dialogP.show()
+    }
+
+    private fun fromGallary() {
+        val galleryIntent = Intent(Intent.ACTION_PICK,
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(galleryIntent, GALLERY)
+    }
+
+    private fun fromCamera() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent, CAMERA)
+    }
+
+    var index:Int = 0 //사진 들어갈 자리 인덱스
+
+    public override fun onActivityResult(requestCode:Int, resultCode:Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        var imageArray = arrayOf(mealImage1, mealImage2, mealImage3, mealImage4, mealImage5, mealImage6, mealImage7, mealImage8)
+
+        //        if (requestCode == GALLERY) {
+        //            filePath = data!!.data
+        //            val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, filePath)
+        //            imageArray[index]!!.setImageBitmap(bitmap)
+        //            imageArray[index].visibility = View.VISIBLE
+        //            index += 1
+        //        }
+
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data!=null){
+
+            filePath = data!!.data
+            try{
+                val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, filePath)
+                imageArray[index]!!.setImageBitmap(bitmap)
+                imageArray[index].visibility = View.VISIBLE
+                index += 1
+            }
+            catch(e:IOException){
+                e.printStackTrace()
+            }
+        }
+
+        else if (requestCode == CAMERA) {
+            val thumbnail = data!!.extras!!.get("data") as Bitmap
+            imageArray[index]!!.setImageBitmap(thumbnail)
+            imageArray[index].visibility = View.VISIBLE
+            index += 1
+        }
+    }
+
+    companion object {
+        private val IMAGE_DIRECTORY = "/demonuts"
     }
 
 }
