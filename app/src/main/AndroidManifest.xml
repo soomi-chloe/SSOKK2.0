@@ -21,7 +21,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Info_content_know_5"></activity>
+        <activity android:name=".ui.info.InfoNorm5"></activity>
+        <activity android:name=".ui.info.InfoNorm4" />
+        <activity android:name=".ui.info.InfoNorm3" />
+        <activity android:name=".ui.info.InfoNorm2" />
+        <activity android:name=".ui.info.InfoNorm1" />
+        <activity android:name=".ui.info.InfoNorm" />
+        <activity android:name=".ui.info.InfoNews" />
+        <activity android:name=".Info_content_know_5" />
         <activity android:name=".Info_content_know_4" />
         <activity android:name=".Info_content_know_3" />
         <activity android:name=".Info_content_know_2" />

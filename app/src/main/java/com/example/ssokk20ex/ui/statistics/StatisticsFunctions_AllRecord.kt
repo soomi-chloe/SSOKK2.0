@@ -50,14 +50,14 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
                 bsStatArray[index].text = "-"
         }
 
-        for(i in 0..weightList.size-1) {
-            if(weightList.get(i).recordDate == date) {
-                txt_weightOfDay.text = weightList.get(i).recordWeight
-                break
-            }
-            else
-                txt_weightOfDay.text = "-"
-        }
+//        for(i in 0..weightList.size-1) {
+//            if(weightList.get(i).recordDate == date) {
+//                txt_weightOfDay.text = weightList.get(i).recordWeight
+//                break
+//            }
+//            else
+//                txt_weightOfDay.text = "-"
+//        }
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager?
 
@@ -88,11 +88,11 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
                     bsStatArray[index].text = "-"
             }
 
-            for(i in 0 until weightList.size) {
-                if(weightList.get(i).toString() == (""+year + "-" + (month+1)+ "-" + dayOfMonth)) {
-                    txt_weightOfDay.text = weightList.get(i).recordWeight + " kg"
-                }
-            }
+//            for(i in 0 until weightList.size) {
+//                if(weightList.get(i).toString() == (""+year + "-" + (month+1)+ "-" + dayOfMonth)) {
+//                    txt_weightOfDay.text = weightList.get(i).recordWeight + " kg"
+//                }
+//            }
         }
     }
 

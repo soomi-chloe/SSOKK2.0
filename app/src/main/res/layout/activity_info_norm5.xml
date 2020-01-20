@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".ui.info.Info_content_know_1">
+    tools:context=".ui.info.InfoNorm5">
 
     <LinearLayout
         android:layout_width="398dp"
@@ -40,7 +40,7 @@
             android:layout_marginTop="-544.3dp"
             android:layout_marginRight="339.7dp"
             android:lineSpacingExtra="2sp"
-            android:text="당뇨병은 유전병이다?"
+            android:text="담배는 피우지 말아라?"
             android:textColor="#707070"
             android:textSize="15.7sp" />
 
@@ -49,8 +49,8 @@
             android:layout_width="match_parent"
             android:layout_height="426dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/know3"
-            app:srcCompat="@drawable/know3" />
+            android:src="@drawable/know5"
+            app:srcCompat="@drawable/know5" />
 
 
     </LinearLayout>

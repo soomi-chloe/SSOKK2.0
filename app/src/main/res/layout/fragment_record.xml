@@ -49,37 +49,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
-                android:id="@+id/record_feedback"
-                android:layout_width="match_parent"
-                android:layout_height="68dp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
-                android:background="@drawable/record_good"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/feedback_face"
-                    android:layout_width="44.7dp"
-                    android:layout_height="44.7dp"
-                    android:layout_marginLeft="29.7dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/good_face" />
-
-                <TextView
-                    android:id="@+id/feedback_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="23.3dp"
-                    android:layout_marginTop="18.7dp"
-                    android:lineSpacingExtra="1.7sp"
-                    android:text="내용"
-                    android:textColor="#ffffff"
-                    android:textSize="13.3sp" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/layout_bloodsugar"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
