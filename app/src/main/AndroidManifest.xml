@@ -23,13 +23,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".ui.info.InfoNorm5"></activity>
-        <activity android:name=".ui.info.InfoNorm4" />
-        <activity android:name=".ui.info.InfoNorm3" />
-        <activity android:name=".ui.info.InfoNorm2" />
-        <activity android:name=".ui.info.InfoNorm1" />
-        <activity android:name=".ui.info.InfoNorm" />
-        <activity android:name=".ui.info.InfoNews" />
         <activity android:name=".ui.info.InfoNorm5"
             tools:ignore="DuplicateActivity" />
         <activity android:name=".ui.info.InfoNorm4"
@@ -40,15 +33,14 @@
             tools:ignore="DuplicateActivity" />
         <activity android:name=".ui.info.InfoNorm1"
             tools:ignore="DuplicateActivity" />
-
-        <activity android:name=".ui.info.InfoNorm"
-            tools:ignore="DuplicateActivity" />
-        <activity android:name=".ui.info.InfoNews"
-            tools:ignore="DuplicateActivity" />
         <activity android:name="ui.record.RecordImageDTO" />
         <activity android:name=".UserInfo" />
         <activity android:name="ui.record.RecordWeightDTO" />
         <activity android:name=".ui.record.RecordBloodSugarDTO" />
+        <activity android:name=".ui.info.InfoNorm"
+            android:theme="@style/noAnimTheme"/>
+        <activity android:name=".ui.info.InfoNews"
+            android:theme="@style/noAnimTheme"/>
         <activity
             android:name=".ui.statistics.StatisticsFunctions_monthly"
             android:theme="@style/noAnimTheme" />

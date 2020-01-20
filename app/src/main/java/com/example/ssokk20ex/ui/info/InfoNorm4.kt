@@ -9,5 +9,6 @@ class InfoNorm4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_norm4)
+        supportActionBar?.hide()
     }
 }
