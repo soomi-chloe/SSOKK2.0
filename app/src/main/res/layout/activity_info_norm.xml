@@ -97,6 +97,7 @@
 
             <Button
                 android:id="@+id/btn_know_1"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="336dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="29.7dp"
@@ -117,6 +118,7 @@
 
             <Button
                 android:id="@+id/btn_know_2"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="336dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="29.7dp"
@@ -138,6 +140,7 @@
 
             <Button
                 android:id="@+id/btn_know_3"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="336dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="29.7dp"
@@ -160,6 +163,7 @@
 
             <Button
                 android:id="@+id/btn_know_4"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="336dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="29.7dp"
@@ -182,6 +186,7 @@
 
             <Button
                 android:id="@+id/btn_know_5"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="336dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="29.7dp"
@@ -189,7 +194,7 @@
                 android:layout_marginRight="344dp"
                 android:layout_marginBottom="518.7dp"
                 android:background="@android:color/transparent"
-                android:text="담배는 피우지 말아라?"
+                android:text="별다른 증상이 없으면 병원에 다닐 필요가 없다?"
                 tools:ignore="DuplicateIds" />
 
             <ImageView
@@ -204,6 +209,7 @@
 
             <Button
                 android:id="@+id/btn_know_6"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="336dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="29.7dp"
@@ -211,7 +217,7 @@
                 android:layout_marginRight="344dp"
                 android:layout_marginBottom="518.7dp"
                 android:background="@android:color/transparent"
-                android:text="당뇨병 환자의 피부관리"
+                android:text="당뇨병에는 양악보다 민간요법이 더 좋다?"
                 tools:ignore="DuplicateIds" />
 
             <ImageView
@@ -226,6 +232,7 @@
 
             <Button
                 android:id="@+id/btn_know_7"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="336dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="29.7dp"
@@ -248,6 +255,7 @@
 
             <Button
                 android:id="@+id/btn_know_8"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="336dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="29.7dp"
@@ -255,7 +263,7 @@
                 android:layout_marginRight="344dp"
                 android:layout_marginBottom="518.7dp"
                 android:background="@android:color/transparent"
-                android:text="보호자 주의사항"
+                android:text="자료 더보기"
                 tools:ignore="DuplicateIds" />
 
             <ImageView

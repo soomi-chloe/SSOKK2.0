@@ -41,40 +41,54 @@
         android:background="@drawable/biggest_box"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="29dp"
+            app:srcCompat="@drawable/dot_after_meal" />
+
         <TextView
             android:id="@+id/txt_info_content_know"
             android:layout_width="56dp"
             android:layout_height="13.5dp"
-            android:layout_marginLeft="29.7dp"
-            android:layout_marginTop="27.7dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="-13dp"
             android:layout_marginRight="314dp"
             android:layout_marginBottom="559.7dp"
             android:lineSpacingExtra="1.7sp"
             android:text="당뇨병 상식"
-            android:textColor="#9a9a9a"
+            android:textColor="@color/colorAccent"
             android:textSize="11.3sp" />
 
 
         <TextView
             android:id="@+id/txt_info_content_title"
-            android:layout_width="221dp"
-            android:layout_height="17.9dp"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
             android:layout_marginLeft="29.7dp"
-            android:layout_marginTop="-544.3dp"
+            android:layout_marginTop="-530dp"
             android:layout_marginRight="339.7dp"
             android:lineSpacingExtra="2sp"
-            android:text="담배는 피우지 말아라?"
+            android:text="별다른 증상이 없으면 병원에 다닐 필요가 없다?"
             android:textColor="#707070"
-            android:textSize="15.7sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="426dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/know5"
-            app:srcCompat="@drawable/know5" />
-
+        <TextView
+            android:id="@+id/info1"
+            android:layout_width="wrap_content"
+            android:layout_height="450dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="29dp"
+            android:lineSpacingExtra="7sp"
+            android:text=" 집에서 자가 혈당측정기로 혈당을 측정하면 병원에 가서 혈당 검사를 할 필요가 없다고 생각하기 쉬운데, 자가 혈당측정기로 측정한 혈당치는 실제보다 낮게 측정될 수 있다. 자가 혈당측정 결과가 과연 정확한지 반드시 정기적으로 병원에서 혈당 검사를 하여 비교해 봐야 하며 혈당조절이 과연 잘되고 있는지를 알아보기 위해 당화혈색소를 측정해 봐야 한다.
+ 당뇨병은 아무 자각증상도 없어서 전에는 당뇨병인 것을 거의 모르다가 합병증이 나타나고 나서야 병원에 가서 우연히 당뇨병인 것을 발견하는 경우가 많은데, 일단 합병증이 나타난 후에는 정상으로 회복시키는 데 한계가 있다.
+당뇨병 자체는 사망의 원인이 되지 않지만, 그로 인한 합병증이 생기면 사망률이 높아진다. 인슐린이 발견되기 전인 1920년대만 해도 당뇨병으로 인한 혼수가 제일 큰 사망원인이었고, 40년대까지는 당뇨병으로 인한 감염증이 사망원인 1위였지만 50년대에 항생제 개발로 많이 줄어들었고, 지금은 심장혈관계통의 합병증이 당뇨병으로 인한 전체 사망률의 75%를 차지하고 있다."
+            android:textColor="#707070"
+            android:textSize="14sp" />
 
     </LinearLayout>
 </LinearLayout>

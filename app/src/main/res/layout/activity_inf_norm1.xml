@@ -41,39 +41,52 @@
         android:background="@drawable/biggest_box"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="29dp"
+            app:srcCompat="@drawable/dot_after_meal" />
+
         <TextView
             android:id="@+id/txt_info_content_know"
             android:layout_width="56dp"
             android:layout_height="13.5dp"
-            android:layout_marginLeft="29.7dp"
-            android:layout_marginTop="27.7dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="-13dp"
             android:layout_marginRight="314dp"
             android:layout_marginBottom="559.7dp"
             android:lineSpacingExtra="1.7sp"
             android:text="당뇨병 상식"
-            android:textColor="#9a9a9a"
+            android:textColor="@color/chart_bloodSugar_color"
             android:textSize="11.3sp" />
 
 
         <TextView
             android:id="@+id/txt_info_content_title"
-            android:layout_width="221dp"
-            android:layout_height="17.9dp"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
             android:layout_marginLeft="29.7dp"
-            android:layout_marginTop="-544.3dp"
+            android:layout_marginTop="-530dp"
             android:layout_marginRight="339.7dp"
             android:lineSpacingExtra="2sp"
-            android:text="당뇨환자는 잡곡밥만 먹어야 한다?"
+            android:text="당뇨 환자는 잡곡밥만 먹어야 한다?"
             android:textColor="#707070"
-            android:textSize="15.7sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="426dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/know1"
-            app:srcCompat="@drawable/know1" />
+        <TextView
+            android:id="@+id/info1"
+            android:layout_width="wrap_content"
+            android:layout_height="450dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="29dp"
+            android:lineSpacingExtra="7sp"
+            android:text="가장 흔한 오해 중 하나는 당뇨병 환자는 현미밥이나 보리밥과 같은 잡곡밥만을 먹어야 한다는 것입니다. 실제로는 쌀밥이나 현미밥이나 보리밥이나 뱃속에서 소화되고 나면 열량과 작용에 별로 다를 것이 없습니다. 곡류 군으로 분류되고 있는 음식에는 쌀밥, 현미밥, 보리밥, 국수, 떡, 옥수수, 감자, 고구마, 식빵 등이 있는데, 이러한 음식들은 가지고 있는 영양소와 열량이 비슷해 어떤 음식을 섭취하더라도 같은 양을 먹을 때는 동일한 효과를 냅니다.  다만 혼식은 과식을 줄이고 여러 섬유질과 약간의 비타민이 조금 더 들어있어 백미보다 권장되고 있습니다. 그러므로 특별히 보리밥을 좋아하지 않는다면, 맛없는 보리밥을 마지못해 먹는 것보다는 쌀밥을 맛있게 적당량을 먹는 것이 더 나은 선택입니다."
+            android:textColor="#707070"
+            android:textSize="14sp" />
 
 
     </LinearLayout>

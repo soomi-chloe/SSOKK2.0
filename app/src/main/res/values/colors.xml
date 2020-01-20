@@ -2,10 +2,9 @@
 <resources>
     <color name="colorPrimary">#4A94FF</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#F16161</color>
     <color name="chart_bloodSugar_color">#f16161</color>
     <color name="text_color">#707070</color>
     <color name="mainBlue_color">#4A94FF</color>
     <color name="intro_dot">#4A94FF</color>
-
 </resources>
