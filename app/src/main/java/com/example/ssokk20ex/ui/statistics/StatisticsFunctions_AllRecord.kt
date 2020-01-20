@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ssokk20ex.R
-import com.example.ssokk20ex.RecordBloodSugarDTO
 import com.example.ssokk20ex.ui.statistics.StatisticsFunctions.Companion.bsList
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.all_records.*
