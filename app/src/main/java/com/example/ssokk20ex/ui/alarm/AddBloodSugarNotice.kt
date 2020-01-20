@@ -268,7 +268,7 @@ class AddBloodSugarNotice : AppCompatActivity() {
         var strDate = date.format(DateTimeFormatter.ofPattern("yy-MM-dd H:mm"))
 
         var bloodSugarDTO = BloodSugarDTO(
-            strDate,
+            "user1",
             txt_bunN.text.toString(),
 
             alarm_1,

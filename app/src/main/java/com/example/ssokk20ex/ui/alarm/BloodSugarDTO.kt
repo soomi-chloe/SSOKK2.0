@@ -1,6 +1,6 @@
 package com.example.ssokk20ex.ui.alarm
 
-data class BloodSugarDTO(var alarmDate: String? = null,
+data class BloodSugarDTO(var userName: String? = null,
                          var alarmTotalN: String? = null,
 
                          var alarm_1:String? = null,
