@@ -32,7 +32,7 @@ class info_test : AppCompatActivity(){
                 val buildFactory = DocumentBuilderFactory.newInstance()
                 val docBuilder = buildFactory.newDocumentBuilder()
                 val doc = docBuilder.parse(body, null)
-                val nList = doc.getElementsByTagName("item")
+                val nList = doc.getElementsByTagName("row")
 
                 for (n in 0 until nList.length) {
                     val element = nList.item(n) as Element
@@ -75,8 +75,8 @@ class info_test : AppCompatActivity(){
 
         return Request.Builder()
             .url(httpUrl)
-            .addHeader("Content-Type",
-                "application/x-www-form-urlencoded; text/xml; charset=utf-8")
+//            .addHeader("Content-Type",
+//                "application/x-www-form-urlencoded; text/xml; charset=utf-8")
             .build()
     }
 
