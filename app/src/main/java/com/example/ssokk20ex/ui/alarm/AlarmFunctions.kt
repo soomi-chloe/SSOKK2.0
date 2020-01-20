@@ -1,7 +1,17 @@
 package com.example.ssokk20ex.ui.alarm
 
+import android.annotation.SuppressLint
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.widget.RemoteViews
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ssokk20ex.R
@@ -17,6 +27,13 @@ import kotlinx.android.synthetic.main.activity_blood_sugar_notice.txt_startingTi
 import kotlinx.android.synthetic.main.activity_medicine_notice.*
 
 class AlarmFunctions : AppCompatActivity() {
+
+    //for alarm notification
+    lateinit var notificationManager : NotificationManager
+    lateinit var notificationChannel: NotificationChannel
+    lateinit var builder : Notification.Builder
+    private val channelId = "package com.example.myapplication"
+    private val description = "혈당 체크할 시간입니다"
 
     //    private var adapter: BloodSugarAdapter? = null
     private var firestore : FirebaseFirestore? = null
@@ -50,10 +67,61 @@ class AlarmFunctions : AppCompatActivity() {
 
     var isChecked_delete: Boolean = false
 
+    @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_blood_sugar_notice)
         supportActionBar?.hide()
+
+        //alarm
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        btn_notify.setOnClickListener {
+
+            val intent = Intent(this, AlarmFunctions::class.java)
+            val pendingIntent = PendingIntent.getActivity(this, 0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+            //layout
+            val contentView = RemoteViews(packageName, R.layout.notification_layout)
+            contentView.setTextViewText(R.id.tv_title, "CodeAndroid")
+            contentView.setTextViewText(R.id.tv_content, "Text notification")
+            //layout
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel =
+                    NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
+                notificationChannel.enableLights(true)
+                notificationChannel.lightColor = Color.GREEN
+                notificationChannel.enableVibration(false)
+                notificationManager.createNotificationChannel(notificationChannel)
+
+                builder = Notification.Builder(this, channelId)
+                    .setContentTitle("CodeAndroid")
+                    .setContentText("Test Notification")
+                    .setSmallIcon(R.drawable.ic_launcher_round)
+                    .setLargeIcon(
+                        BitmapFactory.decodeResource(
+                            this.resources,
+                            R.drawable.ic_launcher
+                        )
+                    )
+                    .setContentIntent(pendingIntent)
+            }else {
+                builder = Notification.Builder(this)
+                    .setContent(contentView)
+//                    .setContentTitle("CodeAndroid")
+//                    .setContentText("Test Notification")
+                    .setSmallIcon(R.drawable.ic_launcher_round)
+                    .setLargeIcon(
+                        BitmapFactory.decodeResource(
+                            this.resources,
+                            R.drawable.ic_launcher
+                        )
+                    )
+                    .setContentIntent(pendingIntent)
+            }
+            notificationManager.notify(1234,builder.build())
+
+        }
 
         tab_blood_sugar.setOnClickListener {
             startActivity(Intent(this, AlarmFunctions::class.java))

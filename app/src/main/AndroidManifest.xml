@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.info.InfoNorm6"></activity>
+        <activity android:name=".ui.info.InfoNorm6" />
         <activity
             android:name=".ui.info.InfoNorm5"
             tools:ignore="DuplicateActivity" />
@@ -78,7 +78,7 @@
         <activity android:name=".info_test" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
         <activity android:name=".FirstPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -93,7 +93,7 @@
             android:theme="@style/noAnimTheme" />
         <activity
             android:name=".ui.statistics.StatisticsFunctions_AllRecord"
-            android:theme="@style/noAnimTheme"></activity>
+            android:theme="@style/noAnimTheme" />
     </application>
 
 </manifest>

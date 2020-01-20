@@ -394,6 +394,14 @@
                 android:text="8 : 00 AM" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_notify"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
     </LinearLayout>
 
 </LinearLayout>
