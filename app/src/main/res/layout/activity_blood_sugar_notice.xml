@@ -258,14 +258,33 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txt_howManyTimes"
+            android:id="@+id/txt_howManyTimes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="29.7dp"
+            android:lineSpacingExtra="2sp"
+            android:textColor="#707070"
+            android:textSize="16sp"
+            android:text="하루 " />
+
+            <TextView
+                android:id="@+id/txt_howManyTimes1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="29.7dp"
                 android:lineSpacingExtra="2sp"
                 android:textColor="#707070"
                 android:textSize="16sp"
-                android:text="하루 6번" />
+                android:text="6" />
+
+            <TextView
+                android:id="@+id/txt_howManyTimes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:lineSpacingExtra="2sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                android:text="번" />
 
         </LinearLayout>
 
