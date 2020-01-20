@@ -30,7 +30,7 @@
                 android:background="#FFFFFF"
                 android:lineSpacingExtra="1.7sp"
                 android:text="당뇨병 상식"
-                android:textColor="#cbcbcb"
+                android:textColor="@android:color/darker_gray"
                 android:textSize="13.3sp" />
 
             <Button
@@ -40,7 +40,6 @@
                 android:background="#FFFFFF"
                 android:lineSpacingExtra="1.7sp"
                 android:text="당뇨병 뉴스"
-                android:textColor="#707070"
                 android:textSize="13.3sp" />
 
         </LinearLayout>
@@ -148,7 +147,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/imageButton4"
+                    android:id="@+id/imageButton3"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginLeft="17dp"
@@ -181,7 +180,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/imageButton5"
+                    android:id="@+id/imageButton4"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginLeft="17dp"

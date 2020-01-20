@@ -1,5 +1,6 @@
 package com.example.ssokk20ex.ui.info
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,5 +24,11 @@ class InfoFragment : Fragment() {
             ViewModelProviders.of(this).get(InfoViewModel::class.java)
         val root = inflater.inflate(R.layout.activity_info_norm, container, false)
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        startActivity(Intent(activity, InfoNorm::class.java))
     }
 }
