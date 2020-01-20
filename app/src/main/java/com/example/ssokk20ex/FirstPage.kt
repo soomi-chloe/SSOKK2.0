@@ -2,6 +2,8 @@ package com.example.ssokk20ex
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -12,8 +14,9 @@ class FirstPage : AppCompatActivity() {
         setContentView(R.layout.first_page)
         supportActionBar?.hide()
 
-        //Thread.sleep(10000)
-
-        startActivity(Intent(this, IntroActivity::class.java))
+        Handler().postDelayed(Runnable {
+            startActivity(Intent(this, IntroActivity::class.java))
+            this.finish()
+        }, 3000)
     }
 }
