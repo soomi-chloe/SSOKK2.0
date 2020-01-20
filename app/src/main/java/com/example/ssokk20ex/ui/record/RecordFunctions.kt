@@ -1,5 +1,8 @@
 package com.example.ssokk20ex.ui.record
 
+import android.Manifest
+import android.annotation.TargetApi
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -9,7 +12,10 @@ import android.provider.MediaStore
 import android.view.View
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.pm.PackageManager
+import android.icu.text.SimpleDateFormat
 import android.net.Uri
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
 import android.widget.TextView
@@ -17,6 +23,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.ssokk20ex.R
 import com.example.ssokk20ex.ui.alarm.BloodSugarDTO
 import com.github.mikephil.charting.charts.LineChart
@@ -31,6 +39,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.fragment_record.*
+import java.io.ByteArrayOutputStream
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -50,16 +59,9 @@ class RecordFunctions : AppCompatActivity() {
     private var array = booleanArrayOf(true, true, true, true, true)
     private var filePath: Uri? = null
     private var storage: FirebaseStorage? = null
-    private var storageReference: StorageReference? = null
     private var firestore : FirebaseFirestore? = null
-    private val GALLERY = 1
-    private val CAMERA = 2
-    private var PICK_IMAGE_REQUEST = 1234
-
     private val GALLERY_PERMISSIONS_REQUEST = 0
     private val GALLERY_IMAGE_REQUEST = 1
-
-
     var xAxisValues: List<String> = java.util.ArrayList(
         listOf("                                              ")
     )
@@ -180,10 +182,13 @@ class RecordFunctions : AppCompatActivity() {
             else{
                 var weight = findViewById<TextView>(R.id.txt_weight) //입력받은 체중값
                 var date= LocalDateTime.now(ZoneId.of("Asia/Seoul"))
-                var document = date.format(DateTimeFormatter.ofPattern("yyyy-M-dd"))
+                var strNow = date.format(DateTimeFormatter.ofPattern("yyyy-M-dd"))
+                var document = strNow.toString()
 
-
-                val data = RecordWeightDTO(weight.text.toString())
+                val data = RecordWeightDTO(
+                    weight.text.toString(),
+                    strNow.toString()
+                )
 
                 firestore = FirebaseFirestore.getInstance()
                 firestore?.collection("record_weight")?.document(document)
@@ -205,135 +210,139 @@ class RecordFunctions : AppCompatActivity() {
                 Toast.makeText(this, "오늘의 사진이 다 찼습니다", Toast.LENGTH_LONG).show()
             }
             else{
-                showPictureDialog()
-                //chooseImage()
-                //uploadImage()
-//                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), GALLERY_PERMISSIONS_REQUEST)
-//                startGalleryChooser()
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), GALLERY_PERMISSIONS_REQUEST)
+                startGalleryChooser()
             }
         }
     }
 
-
-
-
-//    //갤러리 호출
-//    private fun startGalleryChooser() {
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-//            Log.d("permissionChecker", "checkSelfPermission is already setted")
-//            val intent = Intent(Intent.ACTION_GET_CONTENT)
-//            intent.type = "image/*"
-//            startActivityForResult(intent, GALLERY_IMAGE_REQUEST)
-//        }
-//    }
-
-
-
-
-//    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//    //혈당수치 피드백
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    private fun feedback(){
+//        val bs = arrayListOf<String>()
 //
-//        when (requestCode) {
-//            GALLERY_PERMISSIONS_REQUEST  ->
-//                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    Log.d("onRequestPermission", "GALLERY_PERMISSIONS_REQUEST is granted")
-//                    startGalleryChooser()
-//                }
-//                else {
-//                    Toast.makeText(this, "퍼미션이 설정되지 않았습니다. 앱을 종료하고 다시 실행하세요", Toast.LENGTH_LONG).show()
+//        firestore = FirebaseFirestore.getInstance()
+//        var date= LocalDateTime.now(ZoneId.of("Asia/Seoul"))
+//        var strnow = date.format(DateTimeFormatter.ofPattern("yyyy-M-dd"))
+//
+//        for (n in 1..12){
+//            var document = strnow + "-" + n
+//
+//            firestore?.collection("record_bloodSugar")?.document(document)
+//                ?.get()?.addOnCompleteListener{task ->
+//                    if (task.isSuccessful) {
+//                        val total = task.result?.toObject(RecordBloodSugarDTO::class.java)
+//                        val bs_day= total?.bloodSugar.toString() //오늘 적은 혈당 수치
+//                        val meal= total?.whetherMeal.toString() //식전인지 식후인지
+//
+//                        bs[n] = bs_day
+//                    }
 //                }
 //        }
-//    }
-
-
-
-//    @TargetApi(Build.VERSION_CODES.O)
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
 //
-//        //갤러리로 연결할 경우
-//        if (requestCode == GALLERY_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
-//            val imageUri = data?.data
-//            Log.d("onActivityResult", imageUri.toString())
-//
-//            mealImage1.setImageURI(imageUri)
-//            mealImage1.visibility = View.VISIBLE
-//
-////            imageArray[index].setImageURI(imageUri)
-////            imageArray[index].visibility = View.VISIBLE
-////            index += 1
-//            imageUploader(imageUri)
-//        }
-////
-////        //카메라로 연결할 경우
-////        else if (requestCode == CAMERA && resultCode == RESULT_OK) {
-////            val thumbnail = data!!.extras!!.get("data") as Bitmap
-////            imageArray[index]!!.setImageBitmap(thumbnail)
-////            imageArray[index].visibility = View.VISIBLE
-////            index += 1
-////
-////            //업로드 어떻게?
+////        for(n in 1..6){
+////            Log.d("ad", bs[n])
 ////        }
 //    }
 
-//    //사진 데이터 저장하기
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    private fun imageUploader (imageUri: Uri?) {
-//        storage = FirebaseStorage.getInstance()
-//        firestore = FirebaseFirestore.getInstance()
-//
-//        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-//        val imageFileName = "JPEG_" + timeStamp + "_.png"
-//        val storageRef = storage?.reference?.child("images")?.child(imageFileName)
-//
-//        storageRef?.putFile(imageUri!!)?.continueWithTask{
-//            storageRef.downloadUrl
-//        }?.addOnSuccessListener { taskSnapshot ->
-//            val downloadUrl = taskSnapshot.toString()
-//            var date= LocalDate.now()
-//            var document = date.format(DateTimeFormatter.ofPattern("yyyy-m-dd"))
-//            val imageDTO = RecordImageDTO(document, downloadUrl)
-//            firestore?.collection("record_Meal")?.document(document)
-//                ?.set(imageDTO)?.addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        Toast.makeText(this, "storage and firestore insert success", Toast.LENGTH_LONG).show()
-//                    }
-//                    else {
-//                        Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
-//                    }
-//                }
-//        }
-//    }
+    //약
+    private fun makeAlermIcon(key:String){
+        var number:String? = null
 
+        firestore = FirebaseFirestore.getInstance()
+        var document = key
+        val countDownLatch = CountDownLatch(1)
+        firestore?.collection("bloodSugarAlarm")?.document(document)
+            ?.get()?.addOnCompleteListener{task ->
+                if (task.isSuccessful) {
+                    val total = task.result?.toObject(BloodSugarDTO::class.java)
+                    number= total?.alarmTotalN.toString() //오늘 알람 개수
+                    countDownLatch.countDown()
+                }
+            }
+        countDownLatch.await()
 
+        var pillArray = arrayOf(btn_todayPill1, btn_todayPill2, btn_todayPill3, btn_todayPill4, btn_todayPill5)
 
-
-    private fun chooseImage(){
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action= Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
+        for(n in 1..number!!.toInt()){
+            pillArray[n].visibility = View.VISIBLE
+        }
 
     }
 
-    //사진 데이터 저장
-    private fun uploadImage(){
-        if(filePath != null){
-            val progressDialog = ProgressDialog(this)
-            progressDialog.setTitle("Uploading...")
-            progressDialog.show()
 
-            val imageRef = storageReference!!.child("images/"+UUID.randomUUID().toString())
-            imageRef.putFile(filePath!!)
-                .addOnSuccessListener {
-                    Toast.makeText(applicationContext, "File Uploaded", Toast.LENGTH_LONG).show()
+    //갤러리 호출
+    private fun startGalleryChooser() {
+        //ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), GALLERY_PERMISSIONS_REQUEST)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            Log.d("permissionChecker", "checkSelfPermission is already setted")
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            startActivityForResult(intent, GALLERY_IMAGE_REQUEST)
+        }
+    }
+
+
+    //갤러리 권한
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            GALLERY_PERMISSIONS_REQUEST  ->
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d("onRequestPermission", "GALLERY_PERMISSIONS_REQUEST is granted")
+                    startGalleryChooser()
                 }
-                .addOnFailureListener{
-                    Toast.makeText(applicationContext, "Failed", Toast.LENGTH_LONG).show()
+                else {
+                    Toast.makeText(this, "퍼미션이 설정되지 않았습니다. 앱을 종료하고 다시 실행하세요", Toast.LENGTH_LONG).show()
                 }
-                .addOnProgressListener {taskSnapshot ->
-                    val progress = 100.0 * taskSnapshot.bytesTransferred/taskSnapshot.totalByteCount
-                    progressDialog.setMessage("Uploaded" + progress.toInt() + "%...")
+        }
+    }
+
+    var index:Int = 0 //사진 들어갈 자리 인덱스
+
+    @TargetApi(Build.VERSION_CODES.O)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        var imageArray = arrayOf(mealImage1, mealImage2, mealImage3, mealImage4, mealImage5, mealImage6, mealImage7, mealImage8)
+
+        //갤러리로 연결할 경우
+        if (requestCode == GALLERY_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            val imageUri = data?.data
+            Log.d("onActivityResult", imageUri.toString())
+
+            imageArray[index].setImageURI(imageUri)
+            imageArray[index].visibility = View.VISIBLE
+            index += 1
+            imageUploader(imageUri)
+        }
+    }
+
+    //사진 데이터 저장하기
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun imageUploader (imageUri: Uri?) {
+        storage = FirebaseStorage.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+
+        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val imageFileName = "JPEG_" + timeStamp + "_.png"
+        val storageRef = storage?.reference?.child("images")?.child(imageFileName)
+
+        storageRef?.putFile(imageUri!!)?.continueWithTask{
+            storageRef.downloadUrl
+        }?.addOnSuccessListener { taskSnapshot ->
+            val downloadUrl = taskSnapshot.toString()
+            var date= LocalDate.now()
+            var document = date.format(DateTimeFormatter.ofPattern("yyyy-m-dd"))
+            val imageDTO = RecordImageDTO(document, downloadUrl)
+            firestore?.collection("record_Meal")?.document(document)
+                ?.set(imageDTO)?.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "storage and firestore insert success", Toast.LENGTH_LONG).show()
+                    }
+                    else {
+                        Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
+                    }
                 }
         }
     }
@@ -348,9 +357,6 @@ class RecordFunctions : AppCompatActivity() {
             inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
-
-
-
 
     //오늘의 혈당 그래프
     private fun chartAdd(value : Float) {
@@ -438,7 +444,6 @@ class RecordFunctions : AppCompatActivity() {
         }
     }
 
-
     // 알약 아이콘
     private fun pillClicked(btn: ImageButton, index: Int){
         if(array[index] == false){
@@ -450,74 +455,4 @@ class RecordFunctions : AppCompatActivity() {
             array[index] = false
         }
     }
-
-
-    //사진,앨범 선택 다이얼로그
-    private fun showPictureDialog(){
-        val dialogP = AlertDialog.Builder(this)
-        dialogP.setTitle("Select File")
-        val pictureDialogItems = arrayOf("gallery", "camera")
-        dialogP.setItems(pictureDialogItems
-        ) { dialog, which ->
-            when (which) {
-                0 -> fromGallary()
-                1 -> fromCamera()
-            }
-        }
-        dialogP.show()
-    }
-
-
-    private fun fromGallary() {
-        val galleryIntent = Intent(Intent.ACTION_PICK,
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(galleryIntent, GALLERY)
-    }
-
-    //카메라 연결
-    private fun fromCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, CAMERA)
-    }
-
-    var index:Int = 0 //사진 들어갈 자리 인덱스
-
-    public override fun onActivityResult(requestCode:Int, resultCode:Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        var imageArray = arrayOf(mealImage1, mealImage2, mealImage3, mealImage4, mealImage5, mealImage6, mealImage7, mealImage8)
-
-        if (requestCode == GALLERY) {
-            filePath = data!!.data
-            val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, filePath)
-            imageArray[index]!!.setImageBitmap(bitmap)
-            imageArray[index].visibility = View.VISIBLE
-            index += 1
-        }
-
-//        if(requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data!=null){
-//
-//            filePath = data!!.data
-//            try{
-//                val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, filePath)
-//                imageArray[index]!!.setImageBitmap(bitmap)
-//                imageArray[index].visibility = View.VISIBLE
-//                index += 1
-//            }
-//            catch(e:IOException){
-//                e.printStackTrace()
-//            }
-//        }
-
-        else if (requestCode == CAMERA) {
-            val thumbnail = data!!.extras!!.get("data") as Bitmap
-            imageArray[index]!!.setImageBitmap(thumbnail)
-            imageArray[index].visibility = View.VISIBLE
-            index += 1
-        }
-    }
-
-    companion object {
-        private val IMAGE_DIRECTORY = "/demonuts"
-    }
-
 }

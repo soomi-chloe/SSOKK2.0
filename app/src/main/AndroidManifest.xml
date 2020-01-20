@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="ui.record.RecordWeightDTO"></activity>
+        <activity android:name="ui.record.RecordImageDTO"></activity>
+        <activity android:name="ui.record.RecordWeightDTO" />
         <activity android:name=".ui.record.RecordBloodSugarDTO" />
         <activity
             android:name=".ui.statistics.StatisticsFunctions_monthly"
@@ -58,7 +59,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".FirstPage">
             <intent-filter>
