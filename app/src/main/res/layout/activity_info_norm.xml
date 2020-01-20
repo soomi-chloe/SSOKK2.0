@@ -19,7 +19,9 @@
             android:layout_width="22.3dp"
             android:layout_height="22.3dp"
             android:layout_marginLeft="361.7dp"
-            android:layout_marginTop="23.7dp"
+            android:layout_marginTop="37dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginBottom="23.7dp"
             android:padding="0dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +44,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
 
             <Button
                 android:id="@+id/btn_know_inKnow"
