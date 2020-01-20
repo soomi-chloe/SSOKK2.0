@@ -14,8 +14,6 @@
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp">
 
-
-
         <ImageButton
             android:id="@+id/setting"
             android:layout_width="22.3dp"
@@ -33,80 +31,66 @@
             app:srcCompat="@drawable/setting_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <LinearLayout
+        android:layout_width="398dp"
+        android:layout_height="600dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="62.3dp"
+        android:background="@drawable/biggest_box"
+        android:orientation="vertical">
 
-    <ScrollView
-        android:id="@+id/record_scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="29dp"
+            app:srcCompat="@drawable/dot_after_meal" />
 
-
-
-        <LinearLayout
-            android:layout_width="398dp"
-            android:layout_height="600dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginBottom="62.3dp"
-            android:background="@drawable/biggest_box"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_marginTop="29dp"
-                app:srcCompat="@drawable/dot_after_meal" />
-
-            <TextView
-                android:id="@+id/txt_info_content_know"
-                android:layout_width="56dp"
-                android:layout_height="13.5dp"
-                android:layout_marginLeft="45dp"
-                android:layout_marginTop="-13dp"
-                android:layout_marginRight="314dp"
-                android:layout_marginBottom="559.7dp"
-                android:lineSpacingExtra="1.7sp"
-                android:text="당뇨병 상식"
-                android:textColor="@color/chart_bloodSugar_color"
-                android:textSize="11.3sp" />
+        <TextView
+            android:id="@+id/txt_info_content_know"
+            android:layout_width="56dp"
+            android:layout_height="13.5dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="-13dp"
+            android:layout_marginRight="314dp"
+            android:layout_marginBottom="559.7dp"
+            android:lineSpacingExtra="1.7sp"
+            android:text="당뇨병 상식"
+            android:textColor="@color/chart_bloodSugar_color"
+            android:textSize="11.3sp" />
 
 
-            <TextView
-                android:id="@+id/txt_info_content_title"
-                android:layout_width="300dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_marginTop="-530dp"
-                android:layout_marginRight="339.7dp"
-                android:lineSpacingExtra="2sp"
-                android:text="당뇨병은 유전병이다?"
-                android:textColor="#707070"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_info_content_title"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="-530dp"
+            android:layout_marginRight="339.7dp"
+            android:lineSpacingExtra="2sp"
+            android:text="당뇨병은 유전병이다?"
+            android:textColor="#707070"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/info1"
-                android:layout_width="wrap_content"
-                android:layout_height="450dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="29dp"
-                android:lineSpacingExtra="7sp"
-                android:text=" 흔히 당뇨병은 유전이라고 생각하는 이들이 많습니다. 하지만 부모가 당뇨병이 있다고 해서 반드시 자식이 당뇨병이 생기는 것은 아닙니다. 반대로 부모가 당뇨병이 없다고 해서 자신은 당뇨병이 생기지 않을 것이라는 기대는 더욱 더 위험합니다.
-    직계가족 중 당뇨병이 있다면 확실히 위험이 증가하므로 당뇨병은 유전자의 영향을 많이 받는 병에 속합니다.
-     당뇨병은 유전적 원인뿐만 아니라 여러 환경적 원인들이 복합적으로 작용하기 때문에 원인이 다양하고 복잡하다고 할 수 있습니다. 더군다나 근래에 와서 제2형 당뇨병이 급격하게 증가하고 있는데, 이는 생활방식의 변화와 비만 유병률의 증가와 밀접한 관계가 있습니다. 따라서 유전적 요인뿐만 아니라 환경적 인자도 크게 영향을 미칩니다.
-     당뇨병이 있는 부모가 젊은 나이에 당뇨병이 생겼다면 자녀가 살아가는 중에 당뇨병이 생길 확률이 높습니다. 하지만 유전적 성향이 강해도 모두가 당뇨병이 되지는 않기 때문에 당뇨병 내력이 깊은 집안일수록 비만, 운동 부족, 과식 및 약물복용 등과 같은 환경적인 요인을 피할 수 있도록 노력해야 합니다. 아울러 정기적으로 혈당 검사를 해서 당뇨병을 조기에 발견할 수 있도록 하는 것이 중요합니다.
-    또한 당뇨병 환자가 임신을 하게 되면 철저한 혈당관리를 받아야 합니다. 그래야만 아이와 산모가 모두 건강 할 수 있습니다."
-                android:textColor="#707070"
-                android:textSize="14sp" />
+        <TextView
+            android:id="@+id/info1"
+            android:layout_width="wrap_content"
+            android:layout_height="490dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="29dp"
+            android:lineSpacingExtra="7sp"
+            android:text=" 흔히 당뇨병은 유전이라고 생각하는 이들이 많습니다. 하지만 부모가 당뇨병이 있다고 해서 반드시 자식이 당뇨병이 생기는 것은 아닙니다. 반대로 부모가 당뇨병이 없다고 해서 자신은 당뇨병이 생기지 않을 것이라는 기대는 더욱 더 위험합니다.
+직계가족 중 당뇨병이 있다면 확실히 위험이 증가하므로 당뇨병은 유전자의 영향을 많이 받는 병에 속합니다.
+ 당뇨병은 유전적 원인뿐만 아니라 여러 환경적 원인들이 복합적으로 작용하기 때문에 원인이 다양하고 복잡하다고 할 수 있습니다. 더군다나 근래에 와서 제2형 당뇨병이 급격하게 증가하고 있는데, 이는 생활방식의 변화와 비만 유병률의 증가와 밀접한 관계가 있습니다. 따라서 유전적 요인뿐만 아니라 환경적 인자도 크게 영향을 미칩니다.
+ 당뇨병이 있는 부모가 젊은 나이에 당뇨병이 생겼다면 자녀가 살아가는 중에 당뇨병이 생길 확률이 높습니다. 하지만 유전적 성향이 강해도 모두가 당뇨병이 되지는 않기 때문에 당뇨병 내력이 깊은 집안일수록 비만, 운동 부족, 과식 및 약물복용 등과 같은 환경적인 요인을 피할 수 있도록 노력해야 합니다. 아울러 정기적으로 혈당 검사를 해서 당뇨병을 조기에 발견할 수 있도록 하는 것이 중요합니다.
+또한 당뇨병 환자가 임신을 하게 되면 철저한 혈당관리를 받아야 합니다. 그래야만 아이와 산모가 모두 건강 할 수 있습니다."
+            android:textColor="#707070"
+            android:textSize="14sp" />
 
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 </LinearLayout>
