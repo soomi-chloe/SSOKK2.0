@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".ui.info.Info_content_know_1">
+    tools:context=".ui.info.InfoNorm2">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
