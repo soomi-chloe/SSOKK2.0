@@ -2,14 +2,19 @@ package com.example.ssokk20ex.ui.alarm
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
-import com.example.ssokk20ex.ui.alarm.BloodSugarDTO
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_blood_sugar_notice.*
+import kotlinx.android.synthetic.main.activity_blood_sugar_notice.btn_deleteMedicineNotice
+import kotlinx.android.synthetic.main.activity_blood_sugar_notice.tab_blood_sugar
+import kotlinx.android.synthetic.main.activity_blood_sugar_notice.tab_pill
+import kotlinx.android.synthetic.main.activity_blood_sugar_notice.txt_leftHour
+import kotlinx.android.synthetic.main.activity_blood_sugar_notice.txt_startingTime1
+import kotlinx.android.synthetic.main.activity_blood_sugar_notice.txt_startingTime2
+import kotlinx.android.synthetic.main.activity_blood_sugar_notice.txt_startingTime3
+import kotlinx.android.synthetic.main.activity_medicine_notice.*
 
 class AlarmFunctions : AppCompatActivity() {
 
@@ -48,12 +53,20 @@ class AlarmFunctions : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_blood_sugar_notice)
+        supportActionBar?.hide()
+
+        tab_blood_sugar.setOnClickListener {
+            startActivity(Intent(this, AlarmFunctions::class.java))
+        }
+
+        tab_pill.setOnClickListener {
+            startActivity(Intent(this, MedicineNotice::class.java))
+        }
 
         updateUI("user1")
 
-        var setting = findViewById<ImageButton>(R.id.setting)
-        setting.setOnClickListener {
-            startActivity(Intent(this, MyPage::class.java))
+        btn_fixBloodSugarNotice.setOnClickListener {
+            startActivity(Intent(this, AddBloodSugarNotice::class.java))
         }
 
         btn_deleteMedicineNotice.setOnClickListener {
@@ -64,7 +77,6 @@ class AlarmFunctions : AppCompatActivity() {
     }
 
     private fun updateUI(key: String) {
-//        progressBarView.visibility = View.VISIBLE
         if (isChecked_delete == false) {
             firestore = FirebaseFirestore.getInstance()
             firestore?.collection("bloodSugarAlarm")?.document(key)?.get()

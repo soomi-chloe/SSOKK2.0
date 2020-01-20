@@ -85,7 +85,7 @@ class AddBloodSugarNotice : AppCompatActivity() {
                 if(txt_bunN !=txt_aDayN) {
                     txt_bunN.setText(findViewById<TextView>(R.id.txt_aDayN).getText().toString())
                 }
-        }
+            }
         })
 
         btn_addNotice_beforeMeal.setOnClickListener {
@@ -179,7 +179,7 @@ class AddBloodSugarNotice : AppCompatActivity() {
             else{am_pm=" AM"}
             textView.text = hour.toString() +" : "+ minute.toString() + am_pm
         })
-        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun modifyData() {
@@ -317,4 +317,4 @@ class AddBloodSugarNotice : AppCompatActivity() {
             }
     }//add dB
 
-    }
+}
