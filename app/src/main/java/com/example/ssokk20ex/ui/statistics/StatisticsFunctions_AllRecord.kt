@@ -103,7 +103,6 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
 
         if(stepSensor != null)
             sensorManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_NORMAL)
-        else Toast.makeText(this, "만보기 오류", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPause() {

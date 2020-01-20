@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_blood_sugar_notice.*
@@ -24,6 +26,11 @@ class AlarmFunctions : AppCompatActivity() {
 
         // 알람수를 가져온다
         updateUI("user1")
+
+        var setting = findViewById<ImageButton>(R.id.setting)
+        setting.setOnClickListener {
+            startActivity(Intent(this, MyPage::class.java))
+        }
 
         tab_blood_sugar.setOnClickListener {
             startActivity(Intent(this, AlarmFunctions::class.java))

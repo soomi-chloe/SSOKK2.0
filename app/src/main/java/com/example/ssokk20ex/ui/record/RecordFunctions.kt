@@ -25,6 +25,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.example.ssokk20ex.ui.alarm.BloodSugarDTO
 import com.github.mikephil.charting.charts.LineChart
@@ -72,6 +73,11 @@ class RecordFunctions : AppCompatActivity() {
         setContentView(R.layout.fragment_record)
         supportActionBar?.hide()
         firestore = FirebaseFirestore.getInstance()
+
+        var setting = findViewById<ImageButton>(R.id.setting)
+        setting.setOnClickListener {
+            startActivity(Intent(this, MyPage::class.java))
+        }
 
         //1. 혈당 - 식전 버튼
         btn_beforeMeal.setOnClickListener {
