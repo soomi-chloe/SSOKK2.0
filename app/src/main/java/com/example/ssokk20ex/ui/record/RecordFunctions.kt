@@ -24,7 +24,9 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.example.ssokk20ex.ui.alarm.BloodSugarDTO
@@ -103,6 +105,37 @@ class RecordFunctions : AppCompatActivity() {
 
             //수치가 있을 경우 - 데이터 저장
             else {
+                val num = txt_bloodSugarNumber.text.toString().toInt()
+                if(check1 == 1) {
+                    if (num <= 100) {
+                        record_feedback.setBackgroundResource(R.drawable.record_good)
+                        feedback_face.setImageResource(R.drawable.good_face)
+                        feedback_status.setText("정상 수치군요! 이대로 쭈욱 유지해봐요~")
+                    } else if (num <= 125) {
+                        record_feedback.setBackgroundResource(R.drawable.record_soso)
+                        feedback_face.setImageResource(R.drawable.soso_face)
+                        feedback_status.setText("정상수치를 조금 넘었어요! 조심하세요!")
+                    } else {
+                        record_feedback.setBackgroundResource(R.drawable.record_bad)
+                        feedback_face.setImageResource(R.drawable.bad_face)
+                        feedback_status.setText("위험합니다! 혈당을 낮추도록 노력하세요!")
+                    }
+                } else {
+                    if (num <= 140) {
+                        record_feedback.setBackgroundResource(R.drawable.record_good)
+                        feedback_face.setImageResource(R.drawable.good_face)
+                        feedback_status.setText("정상 수치군요! 이대로 쭈욱 유지해봐요~")
+                    } else if (num <= 199) {
+                        record_feedback.setBackgroundResource(R.drawable.record_soso)
+                        feedback_face.setImageResource(R.drawable.soso_face)
+                        feedback_status.setText("정상수치를 조금 넘었어요! 조심하세요!")
+                    } else {
+                        record_feedback.setBackgroundResource(R.drawable.record_bad)
+                        feedback_face.setImageResource(R.drawable.bad_face)
+                        feedback_status.setText("위험합니다! 혈당을 낮추도록 노력하세요!")
+                    }
+                }
+
                 closeKeyboard()
 
                 if(check1.equals(0) && check2.equals(0)){
@@ -153,6 +186,8 @@ class RecordFunctions : AppCompatActivity() {
                     btn_afterMeal.setImageResource(R.drawable.after_meal)
                     btn_beforeMeal.setImageResource(R.drawable.before_meal)
                 }
+
+
             }
         }
 
