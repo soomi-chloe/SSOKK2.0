@@ -23,10 +23,7 @@ class AlarmFunctions : AppCompatActivity() {
         supportActionBar?.hide()
 
         // 알람수를 가져온다
-        viewDatabase()
-
-        if (alarmTotalN.toString() !=null){
-            txt_nextNotice_pillName3.setText(alarmTotalN.toString())}
+        updateUI("user1")
 
         tab_blood_sugar.setOnClickListener {
             startActivity(Intent(this, AlarmFunctions::class.java))
@@ -42,19 +39,18 @@ class AlarmFunctions : AppCompatActivity() {
 
     }
 
-    private fun viewDatabase() {
+    private fun updateUI(key: String) {
 //        progressBarView.visibility = View.VISIBLE
         firestore = FirebaseFirestore.getInstance()
-        firestore?.collection("Pet3")?.get()
+        firestore?.collection("bloodSugarAlarm")?.document(key)?.get()
             ?.addOnCompleteListener { task ->
-//                progressBarView.visibility = View.GONE
                 if (task.isSuccessful) {
-                    var bloodSugarList = ArrayList<BloodSugarDTO>()
-                    for (dc in task.result!!.documents) {
-                        var bloodSugarDTO = dc.toObject(BloodSugarDTO::class.java)
-                        bloodSugarList.add(bloodSugarDTO!!)
+                    var bloodSugarDTO = task.result?.toObject(BloodSugarDTO::class.java)
+                    alarmTotalN = bloodSugarDTO?.alarmTotalN
+                    runOnUiThread() {
+                        txt_nextNotice_pillName3.text = alarmTotalN
+
                     }
-                    alarmTotalN = bloodSugarList.get(1).toString()
                 }
                 else {
                     Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
