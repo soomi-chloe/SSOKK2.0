@@ -8,9 +8,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
-import android.app.ProgressDialog
 import android.content.Context
 import android.content.pm.PackageManager
 import android.icu.text.SimpleDateFormat
@@ -41,6 +39,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import io.opencensus.stats.Aggregation
 import kotlinx.android.synthetic.main.fragment_record.*
 import java.io.ByteArrayOutputStream
 import java.time.LocalDate
@@ -257,59 +256,30 @@ class RecordFunctions : AppCompatActivity() {
         }
     }
 
-//    //혈당수치 피드백
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    private fun feedback(){
-//        val bs = arrayListOf<String>()
+//    //약
+//    private fun makeAlermIcon(key:String){
+//        var number:String? = null
 //
 //        firestore = FirebaseFirestore.getInstance()
-//        var date= LocalDateTime.now(ZoneId.of("Asia/Seoul"))
-//        var strnow = date.format(DateTimeFormatter.ofPattern("yyyy-M-dd"))
-//
-//        for (n in 1..12){
-//            var document = strnow + "-" + n
-//
-//            firestore?.collection("record_bloodSugar")?.document(document)
-//                ?.get()?.addOnCompleteListener{task ->
-//                    if (task.isSuccessful) {
-//                        val total = task.result?.toObject(RecordBloodSugarDTO::class.java)
-//                        val bs_day= total?.bloodSugar.toString() //오늘 적은 혈당 수치
-//                        val meal= total?.whetherMeal.toString() //식전인지 식후인지
-//
-//                        bs[n] = bs_day
-//                    }
+//        var document = key
+//        val countDownLatch = CountDownLatch(1)
+//        firestore?.collection("bloodSugarAlarm")?.document(document)
+//            ?.get()?.addOnCompleteListener{task ->
+//                if (task.isSuccessful) {
+//                    val total = task.result?.toObject(BloodSugarDTO::class.java)
+//                    number= total?.alarmTotalN.toString() //오늘 알람 개수
+//                    countDownLatch.countDown()
 //                }
+//            }
+//        countDownLatch.await()
+//
+//        var pillArray = arrayOf(btn_todayPill1, btn_todayPill2, btn_todayPill3, btn_todayPill4, btn_todayPill5)
+//
+//        for(n in 1..number!!.toInt()){
+//            pillArray[n].visibility = View.VISIBLE
 //        }
 //
-////        for(n in 1..6){
-////            Log.d("ad", bs[n])
-////        }
 //    }
-
-    //약
-    private fun makeAlermIcon(key:String){
-        var number:String? = null
-
-        firestore = FirebaseFirestore.getInstance()
-        var document = key
-        val countDownLatch = CountDownLatch(1)
-        firestore?.collection("bloodSugarAlarm")?.document(document)
-            ?.get()?.addOnCompleteListener{task ->
-                if (task.isSuccessful) {
-                    val total = task.result?.toObject(BloodSugarDTO::class.java)
-                    number= total?.alarmTotalN.toString() //오늘 알람 개수
-                    countDownLatch.countDown()
-                }
-            }
-        countDownLatch.await()
-
-        var pillArray = arrayOf(btn_todayPill1, btn_todayPill2, btn_todayPill3, btn_todayPill4, btn_todayPill5)
-
-        for(n in 1..number!!.toInt()){
-            pillArray[n].visibility = View.VISIBLE
-        }
-
-    }
 
 
     //갤러리 호출
@@ -325,20 +295,20 @@ class RecordFunctions : AppCompatActivity() {
 
 
     //갤러리 권한
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        when (requestCode) {
-            GALLERY_PERMISSIONS_REQUEST  ->
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d("onRequestPermission", "GALLERY_PERMISSIONS_REQUEST is granted")
-                    startGalleryChooser()
-                }
-                else {
-                    Toast.makeText(this, "퍼미션이 설정되지 않았습니다. 앱을 종료하고 다시 실행하세요", Toast.LENGTH_LONG).show()
-                }
-        }
-    }
+//    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//
+//        when (requestCode) {
+//            GALLERY_PERMISSIONS_REQUEST  ->
+//                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    Log.d("onRequestPermission", "GALLERY_PERMISSIONS_REQUEST is granted")
+//                    startGalleryChooser()
+//                }
+//                else {
+//                    Toast.makeText(this, "퍼미션이 설정되지 않았습니다. 앱을 종료하고 다시 실행하세요", Toast.LENGTH_LONG).show()
+//                }
+//        }
+//    }
 
     var index:Int = 0 //사진 들어갈 자리 인덱스
 
@@ -369,23 +339,27 @@ class RecordFunctions : AppCompatActivity() {
         val imageFileName = "JPEG_" + timeStamp + "_.png"
         val storageRef = storage?.reference?.child("images")?.child(imageFileName)
 
+//        var countDownLatch = CountDownLatch(1)
         storageRef?.putFile(imageUri!!)?.continueWithTask{
             storageRef.downloadUrl
         }?.addOnSuccessListener { taskSnapshot ->
             val downloadUrl = taskSnapshot.toString()
             var date= LocalDate.now()
-            var document = date.format(DateTimeFormatter.ofPattern("yyyy-m-dd"))
+            var document = date.format(DateTimeFormatter.ofPattern("yyyy-M-dd"))
             val imageDTO = RecordImageDTO(document, downloadUrl)
             firestore?.collection("record_Meal")?.document(document)
                 ?.set(imageDTO)?.addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "storage and firestore insert success", Toast.LENGTH_LONG).show()
+//                        countDownLatch.countDown()
                     }
                     else {
                         Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
+//                        countDownLatch.countDown()
                     }
                 }
         }
+//        countDownLatch.await()
     }
 
     //키보드 내리기
