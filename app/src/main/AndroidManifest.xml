@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ssokk20ex">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -29,14 +30,21 @@
         <activity android:name=".ui.info.InfoNorm1" />
         <activity android:name=".ui.info.InfoNorm" />
         <activity android:name=".ui.info.InfoNews" />
-        <activity android:name=".Info_content_know_5" />
-        <activity android:name=".Info_content_know_4" />
-        <activity android:name=".Info_content_know_3" />
-        <activity android:name=".Info_content_know_2" />
-        <activity android:name=".Info_content_know_1" />
+        <activity android:name=".ui.info.InfoNorm5"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".ui.info.InfoNorm4"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".ui.info.InfoNorm3"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".ui.info.InfoNorm2"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".ui.info.InfoNorm1"
+            tools:ignore="DuplicateActivity" />
 
-        <activity android:name=".ui.info.Info_lists_know" />
-        <activity android:name=".ui.info.Info_lists_news" />
+        <activity android:name=".ui.info.InfoNorm"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".ui.info.InfoNews"
+            tools:ignore="DuplicateActivity" />
         <activity android:name="ui.record.RecordImageDTO" />
         <activity android:name=".UserInfo" />
         <activity android:name="ui.record.RecordWeightDTO" />
