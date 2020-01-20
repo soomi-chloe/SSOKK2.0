@@ -118,4 +118,7 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
                     Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
             }
     }
+
+
+
 }

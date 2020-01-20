@@ -617,12 +617,6 @@
                         android:textColor="#707070"
                         android:textSize="18.3sp" />
 
-                    <Button
-                        android:id="@+id/test_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="0dp"
-                        android:text="Button" />
 
                 </LinearLayout>
 
