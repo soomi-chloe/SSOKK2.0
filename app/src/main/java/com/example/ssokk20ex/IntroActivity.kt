@@ -28,12 +28,12 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
-//        if(!pref.getBoolean("isNew", true)) {
-//            if(pref.getBoolean("isSignedIn", false))
-//                startActivity(Intent(this, MainActivity::class.java))
-//            else
-//                startActivity(Intent(this, SignInActivity::class.java))
-//        }
+        if(!pref.getBoolean("isNew", true)) {
+            if(pref.getBoolean("isSignedIn", false))
+                startActivity(Intent(this, MainActivity::class.java))
+            else
+                startActivity(Intent(this, SignInActivity::class.java))
+        }
 
         setContentView(R.layout.activity_intro)
         supportActionBar?.hide()

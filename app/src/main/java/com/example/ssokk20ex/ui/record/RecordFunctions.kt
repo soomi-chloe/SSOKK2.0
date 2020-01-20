@@ -99,6 +99,18 @@ class RecordFunctions : AppCompatActivity() {
             else {
                 closeKeyboard()
 
+                var bloodSugar = findViewById<TextView>(R.id.txt_bloodSugarNumber)
+                var date= LocalDate.now()
+                var strnow = date.format(DateTimeFormatter.ofPattern("yyyy-M-d"))
+                var document = strnow + "-" + n
+
+                val RecordBloodSugarDTO =
+                    RecordBloodSugarDTO(
+                        strnow.toString(),
+                        n.toString(),
+                        bloodSugar.text.toString()
+                    )
+
                 if(check1.equals(0) && check2.equals(0)){
                     Toast.makeText(this, "식전/식후 중 선택해주세요", Toast.LENGTH_LONG).show()
                 }
@@ -116,6 +128,7 @@ class RecordFunctions : AppCompatActivity() {
                     else if(check1.equals(0) && check2.equals(1)){
                         mealState = "afterMeal"
                     }
+
 
                     val RecordBloodSugarDTO =
                         RecordBloodSugarDTO(
@@ -181,6 +194,7 @@ class RecordFunctions : AppCompatActivity() {
             //체중 수치를 적은 경우 - 데이터 저장
             else{
                 var weight = findViewById<TextView>(R.id.txt_weight) //입력받은 체중값
+              
                 var date= LocalDateTime.now(ZoneId.of("Asia/Seoul"))
                 var strNow = date.format(DateTimeFormatter.ofPattern("yyyy-M-dd"))
                 var document = strNow.toString()
