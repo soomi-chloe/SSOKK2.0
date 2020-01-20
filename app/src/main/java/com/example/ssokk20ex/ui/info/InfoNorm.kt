@@ -1,6 +1,7 @@
 package com.example.ssokk20ex.ui.info
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
@@ -42,6 +43,18 @@ class InfoNorm : AppCompatActivity() {
 
         btn_know_5.setOnClickListener {
             startActivity(Intent(this, InfoNorm5::class.java))
+        }
+
+        btn_know_6.setOnClickListener {
+            startActivity(Intent(this, InfoNorm6::class.java))
+        }
+
+        btn_know_7.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://bioinformaticsandme.tistory.com/108")))
+        }
+
+        btn_know_8.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://danggun.org/page/4/?s=%EB%8B%B9%EB%87%A8%EC%83%81%EC%8B%9D")))
         }
     }
 }

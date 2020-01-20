@@ -41,39 +41,52 @@
         android:background="@drawable/biggest_box"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="29dp"
+            app:srcCompat="@drawable/dot_after_meal" />
+
         <TextView
             android:id="@+id/txt_info_content_know"
             android:layout_width="56dp"
             android:layout_height="13.5dp"
-            android:layout_marginLeft="29.7dp"
-            android:layout_marginTop="27.7dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="-13dp"
             android:layout_marginRight="314dp"
             android:layout_marginBottom="559.7dp"
             android:lineSpacingExtra="1.7sp"
             android:text="당뇨병 상식"
-            android:textColor="#9a9a9a"
+            android:textColor="@color/chart_bloodSugar_color"
             android:textSize="11.3sp" />
 
 
         <TextView
             android:id="@+id/txt_info_content_title"
-            android:layout_width="221dp"
-            android:layout_height="17.9dp"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
             android:layout_marginLeft="29.7dp"
-            android:layout_marginTop="-544.3dp"
+            android:layout_marginTop="-530dp"
             android:layout_marginRight="339.7dp"
             android:lineSpacingExtra="2sp"
-            android:text="당뇨환자는 잡곡밥만 먹어야 한다?"
+            android:text="맥주는 나쁘고, 소주나 양주는 괜찮다?"
             android:textColor="#707070"
-            android:textSize="15.7sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="426dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/know4"
-            app:srcCompat="@drawable/know4" />
+        <TextView
+            android:id="@+id/info1"
+            android:layout_width="wrap_content"
+            android:layout_height="450dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="29dp"
+            android:lineSpacingExtra="7sp"
+            android:text="맥주는 보리술이니가 열량이 많아 나쁘지만 소주나 양주는 괜찮다고 생각한다. 하지만 실제로 소주나 양주는 같은 양일 경우 맥주에 비해 4배의 열량을 가지고 있어 더 해독을 줄 수 있다. 물론 고혈압, 당뇨병 환자라도 스스로 절제할 수 있고 열량을 계산해서 마신다면 하루에 한두 잔 정도는 마실 수 있다."
+            android:textColor="#707070"
+            android:textSize="14sp" />
 
 
     </LinearLayout>

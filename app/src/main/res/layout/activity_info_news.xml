@@ -114,12 +114,14 @@
 
                     <Button
                         android:id="@+id/btn_article_1"
-                        android:layout_width="wrap_content"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="260dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="30dp"
                         android:layout_marginRight="17dp"
                         android:background="@android:drawable/screen_background_light"
+                        android:gravity="top"
                         android:lineSpacingExtra="1.7sp"
                         android:text="당뇨병 초기 약 복용 거르면 사망률 최대 45% 높아져..." />
                 </LinearLayout>
@@ -128,8 +130,10 @@
 
             <ImageView
                 android:id="@+id/imageView1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="22.2dp"
+                android:layout_marginRight="22.2dp"
                 app:srcCompat="@drawable/split_line" />
 
             <LinearLayout
@@ -148,13 +152,15 @@
 
                 <Button
                     android:id="@+id/btn_article_2"
-                    android:layout_width="wrap_content"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="261dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="17dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:background="@android:drawable/screen_background_light"
+                    android:gravity="top"
                     android:lineSpacingExtra="1.7sp"
                     android:text='당뇨병성 신장병 원인 찾았다…UNIST "예방치료 가능"' />
 
@@ -162,8 +168,10 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="22.2dp"
+                android:layout_marginRight="22.2dp"
                 app:srcCompat="@drawable/split_line" />
 
             <LinearLayout
@@ -182,12 +190,13 @@
 
                 <Button
                     android:id="@+id/btn_article_3"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="17dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:background="@android:drawable/screen_background_light"
                     android:lineSpacingExtra="1.7sp"
                     android:text="한국인 당뇨병 특이 유전자 변이 찾았다" />
@@ -195,8 +204,10 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="22.2dp"
+                android:layout_marginRight="22.2dp"
                 app:srcCompat="@drawable/split_line" />
 
             <LinearLayout
@@ -215,12 +226,13 @@
 
                 <Button
                     android:id="@+id/btn_article_4"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="17dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:background="@android:drawable/screen_background_light"
                     android:lineSpacingExtra="1.7sp"
                     android:text="당뇨병 먹거리…좋음 5 Vs 나쁨 6" />
