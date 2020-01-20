@@ -62,8 +62,7 @@
         <activity android:name=".info_test" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" />
-        <activity android:name=".FirstPage">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW"/>
@@ -71,13 +70,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".FirstPage">
+
+        </activity>
         <activity android:name=".MyPage" />
         <activity
             android:name=".ui.statistics.StatisticsFunctions"
             android:theme="@style/noAnimTheme" />
         <activity
             android:name=".ui.statistics.StatisticsFunctions_AllRecord"
-            android:theme="@style/noAnimTheme" />
+            android:theme="@style/noAnimTheme" >
+
+        </activity>
     </application>
 
 </manifest>
