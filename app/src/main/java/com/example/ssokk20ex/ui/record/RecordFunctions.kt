@@ -350,7 +350,7 @@ class RecordFunctions : AppCompatActivity() {
             firestore?.collection("record_Meal")?.document(document)
                 ?.set(imageDTO)?.addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "storage and firestore insert success", Toast.LENGTH_LONG).show()
+                        //Toast.makeText(this, "storage and firestore insert success", Toast.LENGTH_LONG).show()
 //                        countDownLatch.countDown()
                     }
                     else {

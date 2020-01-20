@@ -43,6 +43,10 @@ class StatisticsFunctionsWeight_monthly : AppCompatActivity() {
 
         chart = findViewById<LineChart>(R.id.bmiGraph)
 
+        highestWeubg_value.text = stat.getBMI("2020-1-18").toString()
+        averageWeight_value.text = stat.getBMI("2020-1-15").toString()
+        lowestWeight_value.text = stat.getBMI("2020-1-16").toString()
+
         drawBmiChart()
 
         var setting = findViewById<ImageButton>(R.id.setting)
@@ -66,10 +70,10 @@ class StatisticsFunctionsWeight_monthly : AppCompatActivity() {
     }
 
     private fun drawBmiChart() {
-        entries.add(Entry(0f, stat.getBMI("2020-1-18")))
-        entries.add(Entry(1f, stat.getBMI("2020-1-19")))
-        entries.add(Entry(2f, stat.getBMI("2020-1-20")))
-        entries.add(Entry(3f, 0f))
+        entries.add(Entry(0f, stat.getBMI("2020-1-14")))
+        entries.add(Entry(1f, stat.getBMI("2020-1-16")))
+        entries.add(Entry(2f, stat.getBMI("2020-1-18")))
+        entries.add(Entry(3f, stat.getBMI("2020-1-20")))
 
         val dataSet = LineDataSet(entries, "BMI")
         dataSet.lineWidth = 2f
