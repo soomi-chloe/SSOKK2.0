@@ -37,7 +37,7 @@
         android:layout_marginLeft="7dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="7dp"
-        android:background="@drawable/alarm_background"
+        android:background="@drawable/biggest_box"
         android:orientation="vertical">
 
         <LinearLayout
