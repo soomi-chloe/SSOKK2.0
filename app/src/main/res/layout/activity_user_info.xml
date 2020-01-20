@@ -4,24 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_white"
     android:orientation="vertical"
     tools:context=".UserInfo">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="81.7dp"
-            android:layout_marginTop="105dp"
-            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/title01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="81.7dp"
+                android:layout_marginTop="80dp"
                 android:text="본인 정보를 알려주세요"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -30,6 +22,7 @@
                 android:id="@+id/title02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="81.7dp"
                 android:layout_marginTop="10dp"
                 android:text="관리를 도와드리기 위해 입력받는 정보입니다" />
 
@@ -37,13 +30,15 @@
                 android:id="@+id/gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="43.3dp"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="29.3dp"
                 android:text="성별" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8.3dp"
+                android:layout_marginLeft="81.7dp"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -68,14 +63,15 @@
                 android:id="@+id/age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30.3dp"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="29.3dp"
                 android:text="나이" />
 
             <EditText
                 android:id="@+id/ageTxt"
                 android:layout_width="249dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8.3dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="81.7dp"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -83,14 +79,15 @@
                 android:id="@+id/height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30.3dp"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="29.3dp"
                 android:text="키" />
 
             <EditText
                 android:id="@+id/heightTxt"
                 android:layout_width="249dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8.3dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="81.7dp"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -98,14 +95,15 @@
                 android:id="@+id/weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30.3dp"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="29.3dp"
                 android:text="몸무게" />
 
             <EditText
                 android:id="@+id/weightTxt"
                 android:layout_width="249dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8.3dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="81.7dp"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -113,7 +111,8 @@
                 android:id="@+id/nextBtn"
                 android:layout_width="249dp"
                 android:layout_height="33.3dp"
-                android:layout_marginTop="53.3dp"
+                android:layout_marginLeft="81.7dp"
+                android:layout_marginTop="40dp"
                 android:padding="0dp"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/next_btn" />
@@ -123,26 +122,22 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="104dp"
+                android:layout_marginLeft="85dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/havdID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="104dp"
                     android:text="계정이 있으신가요?" />
 
                 <Button
                     android:id="@+id/goSignInBtn2"
-                    android:layout_width="35dp"
-                    android:layout_height="11.3dp"
-                    android:layout_marginBottom="104dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:text="로그인"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>

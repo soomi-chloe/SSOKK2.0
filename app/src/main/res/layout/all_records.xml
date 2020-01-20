@@ -19,7 +19,7 @@
             android:layout_width="22.3dp"
             android:layout_height="22.3dp"
             android:layout_marginLeft="361.7dp"
-            android:layout_marginTop="23.7dp"
+            android:layout_marginTop="37dp"
             android:layout_marginRight="28dp"
             android:layout_marginBottom="23.7dp"
             android:padding="0dp"
@@ -31,309 +31,321 @@
             app:srcCompat="@drawable/setting_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/layout_allRecord"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/all_record_box"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/layout_allRecord"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:background="@drawable/all_record_box"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bloodSugarStatisticsBtn_allRecord"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="혈당 수치"
+                android:textColor="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/bmiStatisticsBtn_allRecord"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="BMI"
+                android:textColor="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/allRecordBtn"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="전체기록" />
+        </LinearLayout>
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            style="@android:style/Widget.DeviceDefault.CalendarView"
+            android:layout_width="338.7dp"
+            android:layout_height="300dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginRight="29.7dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66.7dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/bloodSugarStatisticsBtn_allRecord"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:text="혈당 수치"
-                    android:textColor="@android:color/darker_gray" />
-
-                <Button
-                    android:id="@+id/bmiStatisticsBtn_allRecord"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:text="BMI"
-                    android:textColor="@android:color/darker_gray" />
-
-                <Button
-                    android:id="@+id/allRecordBtn"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:text="전체기록" />
-            </LinearLayout>
-
-            <CalendarView
-                android:id="@+id/calendarView"
-                style="@android:style/Widget.DeviceDefault.CalendarView"
-                android:layout_width="338.7dp"
-                android:layout_height="300dp"
-                android:layout_marginLeft="29.7dp"
-                android:layout_marginTop="-10dp"
-                android:layout_marginRight="29.7dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="66.7dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txt_bloodSugar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="29.7dp"
-                    android:layout_marginTop="15dp"
-                    android:lineSpacingExtra="1.7sp"
-                    android:textColor="#707070"
-                    android:textSize="13.3sp"
-                    android:text="혈당" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="14dp"
-                    android:layout_marginLeft="29.7dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="29.7dp"
-                    android:layout_marginBottom="10.8dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/typeOf_bloodSugar1"
-                        android:layout_width="9.3dp"
-                        android:layout_height="9.3dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_weight="0"
-                        android:padding="0dp"
-                        app:srcCompat="@drawable/dot_before_meal" />
-
-                    <TextView
-                        android:id="@+id/txt_valueOfBS1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="-3dp"
-                        android:lineSpacingExtra="1.7sp"
-                        android:textColor="#707070"
-                        android:textSize="12sp"
-                        android:text="-" />
-
-                    <ImageView
-                        android:id="@+id/typeOf_bloodSugar2"
-                        android:layout_width="9.3dp"
-                        android:layout_height="9.3dp"
-                        android:layout_marginLeft="29dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_weight="0"
-                        app:srcCompat="@drawable/dot_after_meal" />
-
-                    <TextView
-                        android:id="@+id/txt_valueOfBS2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="-3dp"
-                        android:lineSpacingExtra="1.7sp"
-                        android:textColor="#707070"
-                        android:textSize="12sp"
-                        android:text="-" />
-
-                    <ImageView
-                        android:id="@+id/typeOf_bloodSugar3"
-                        android:layout_width="9.3dp"
-                        android:layout_height="9.3dp"
-                        android:layout_marginLeft="29dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_weight="0"
-                        app:srcCompat="@drawable/dot_before_meal" />
-
-                    <TextView
-                        android:id="@+id/txt_valueOfBS3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="-3dp"
-                        android:layout_weight="0"
-                        android:lineSpacingExtra="1.7sp"
-                        android:textColor="#707070"
-                        android:textSize="12sp"
-                        android:text="-" />
-
-                    <ImageView
-                        android:id="@+id/typeOf_bloodSugar4"
-                        android:layout_width="9.3dp"
-                        android:layout_height="9.3dp"
-                        android:layout_marginLeft="29dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_weight="0"
-                        app:srcCompat="@drawable/dot_after_meal" />
-
-                    <TextView
-                        android:id="@+id/txt_valueOfBS4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="-3dp"
-                        android:layout_weight="0"
-                        android:lineSpacingExtra="1.7sp"
-                        android:textColor="#707070"
-                        android:textSize="12sp"
-                        android:text="-" />
-
-                    <ImageView
-                        android:id="@+id/typeOf_bloodSugar5"
-                        android:layout_width="9.3dp"
-                        android:layout_height="9.3dp"
-                        android:layout_marginLeft="29dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_weight="0"
-                        app:srcCompat="@drawable/dot_before_meal" />
-
-                    <TextView
-                        android:id="@+id/txt_valueOfBS5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="-3dp"
-                        android:layout_weight="0"
-                        android:lineSpacingExtra="1.7sp"
-                        android:textColor="#707070"
-                        android:textSize="12sp"
-                        android:text="-" />
-
-                    <ImageView
-                        android:id="@+id/typeOf_bloodSugar6"
-                        android:layout_width="9.3dp"
-                        android:layout_height="9.3dp"
-                        android:layout_marginLeft="29dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_weight="0"
-                        app:srcCompat="@drawable/dot_after_meal" />
-
-                    <TextView
-                        android:id="@+id/txt_valueOfBS6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="-3dp"
-                        android:layout_weight="0"
-                        android:lineSpacingExtra="1.7sp"
-                        android:textColor="#707070"
-                        android:textSize="12sp"
-                        android:text="-" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="36.1dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="걸음수"
-                    android:layout_marginLeft="29.7dp"
-                    android:layout_marginTop="10dp"
-                    android:lineSpacingExtra="1.7sp"
-                    android:textColor="#707070"
-                    android:textSize="13.3sp" />
-
-                <TextView
-                    android:id="@+id/stepsTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="300 걸음"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginTop="9dp"
-                    android:lineSpacingExtra="1.7sp"
-                    android:textColor="#707070"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="36.1dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txt_weight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="29.7dp"
-                    android:layout_marginTop="10dp"
-                    android:lineSpacingExtra="1.7sp"
-                    android:textColor="#707070"
-                    android:textSize="13.3sp"
-                    android:text="체중" />
-
-                <TextView
-                    android:id="@+id/txt_weightOfDay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="26.7dp"
-                    android:layout_marginTop="9dp"
-                    android:lineSpacingExtra="1.7sp"
-                    android:textColor="#707070"
-                    android:textSize="12sp"
-                    tools:text="54 kg" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="36.1dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txt_bmi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="29.7dp"
-                    android:layout_marginTop="10dp"
-                    android:lineSpacingExtra="1.7sp"
-                    android:textColor="#707070"
-                    android:textSize="13.3sp"
-                    android:text="BMI" />
-
-                <TextView
-                    android:id="@+id/txt_bmiOfDay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="26.7dp"
-                    android:layout_marginTop="9dp"
-                    android:lineSpacingExtra="1.7sp"
-                    android:textColor="#707070"
-                    android:textSize="12sp"
-                    tools:text="22" />
-            </LinearLayout>
-
-
-            <ImageView
-                android:id="@+id/splitBar3"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txt_bloodSugar"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="29.7dp"
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="1.7sp"
+                android:textColor="#707070"
+                android:textSize="13.3sp"
+                android:text="혈당" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="14dp"
+                android:layout_marginLeft="29.7dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="29.7dp"
-                app:srcCompat="@drawable/split_line" />
+                android:layout_marginBottom="10.8dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/typeOf_bloodSugar1"
+                    android:layout_width="9.3dp"
+                    android:layout_height="9.3dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="0"
+                    android:padding="0dp"
+                    app:srcCompat="@drawable/dot_before_meal" />
+
+                <TextView
+                    android:id="@+id/txt_valueOfBS1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="-3dp"
+                    android:lineSpacingExtra="1.7sp"
+                    android:textColor="#707070"
+                    android:textSize="12sp"
+                    android:text="-" />
+
+                <ImageView
+                    android:id="@+id/typeOf_bloodSugar2"
+                    android:layout_width="9.3dp"
+                    android:layout_height="9.3dp"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="0"
+                    app:srcCompat="@drawable/dot_after_meal" />
+
+                <TextView
+                    android:id="@+id/txt_valueOfBS2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="-3dp"
+                    android:lineSpacingExtra="1.7sp"
+                    android:textColor="#707070"
+                    android:textSize="12sp"
+                    android:text="-" />
+
+                <ImageView
+                    android:id="@+id/typeOf_bloodSugar3"
+                    android:layout_width="9.3dp"
+                    android:layout_height="9.3dp"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="0"
+                    app:srcCompat="@drawable/dot_before_meal" />
+
+                <TextView
+                    android:id="@+id/txt_valueOfBS3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="-3dp"
+                    android:layout_weight="0"
+                    android:lineSpacingExtra="1.7sp"
+                    android:textColor="#707070"
+                    android:textSize="12sp"
+                    android:text="-" />
+
+                <ImageView
+                    android:id="@+id/typeOf_bloodSugar4"
+                    android:layout_width="9.3dp"
+                    android:layout_height="9.3dp"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="0"
+                    app:srcCompat="@drawable/dot_after_meal" />
+
+                <TextView
+                    android:id="@+id/txt_valueOfBS4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="-3dp"
+                    android:layout_weight="0"
+                    android:lineSpacingExtra="1.7sp"
+                    android:textColor="#707070"
+                    android:textSize="12sp"
+                    android:text="-" />
+
+                <ImageView
+                    android:id="@+id/typeOf_bloodSugar5"
+                    android:layout_width="9.3dp"
+                    android:layout_height="9.3dp"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="0"
+                    app:srcCompat="@drawable/dot_before_meal" />
+
+                <TextView
+                    android:id="@+id/txt_valueOfBS5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="-3dp"
+                    android:layout_weight="0"
+                    android:lineSpacingExtra="1.7sp"
+                    android:textColor="#707070"
+                    android:textSize="12sp"
+                    android:text="-" />
+
+                <ImageView
+                    android:id="@+id/typeOf_bloodSugar6"
+                    android:layout_width="9.3dp"
+                    android:layout_height="9.3dp"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="0"
+                    app:srcCompat="@drawable/dot_after_meal" />
+
+                <TextView
+                    android:id="@+id/txt_valueOfBS6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="-3dp"
+                    android:layout_weight="0"
+                    android:lineSpacingExtra="1.7sp"
+                    android:textColor="#707070"
+                    android:textSize="12sp"
+                    android:text="-" />
+
+            </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
+
+
+        <ImageView
+            android:id="@+id/splitBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginRight="29.7dp"
+            app:srcCompat="@drawable/split_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36.1dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="29.7dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="1.7sp"
+                android:text="걸음수"
+                android:textColor="#707070"
+                android:textSize="13.3sp" />
+
+            <TextView
+                android:id="@+id/stepsTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="9dp"
+                android:lineSpacingExtra="1.7sp"
+                android:text="300 걸음"
+                android:textColor="#707070"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/splitBar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginRight="29.7dp"
+            app:srcCompat="@drawable/split_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36.1dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="29.7dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="1.7sp"
+                android:text="체중"
+                android:textColor="#707070"
+                android:textSize="13.3sp" />
+
+            <TextView
+                android:id="@+id/txt_weightOfDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26.7dp"
+                android:layout_marginTop="9dp"
+                android:lineSpacingExtra="1.7sp"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                tools:text="54 kg" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/splitBar3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginRight="29.7dp"
+            app:srcCompat="@drawable/split_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36.1dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_bmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="29.7dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="1.7sp"
+                android:text="BMI"
+                android:textColor="#707070"
+                android:textSize="13.3sp" />
+
+            <TextView
+                android:id="@+id/txt_bmiOfDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26.7dp"
+                android:layout_marginTop="9dp"
+                android:lineSpacingExtra="1.7sp"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                tools:text="22" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_white"
     android:orientation="vertical"
     tools:context=".SignInActivity">
 
@@ -18,19 +19,19 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="126dp"
-            android:layout_height="126dp"
-            android:layout_marginLeft="123dp"
-            android:layout_marginTop="56.7dp"
-            android:background="@drawable/profile"
+            android:layout_width="59.5dp"
+            android:layout_height="87.7dp"
+            android:layout_marginLeft="176.2dp"
+            android:layout_marginTop="106.7dp"
+            android:background="@drawable/logo"
             app:srcCompat="@android:color/transparent" />
 
         <TextView
             android:id="@+id/signInTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="65dp"
-            android:layout_marginTop="56.7dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="86.7dp"
             android:text="로그인"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -39,7 +40,7 @@
             android:id="@+id/emailTxt"
             android:layout_width="248.7dp"
             android:layout_height="33.3dp"
-            android:layout_marginLeft="61.7dp"
+            android:layout_marginLeft="81.7dp"
             android:layout_marginTop="29.3dp"
             android:layout_marginRight="81.7dp"
             android:background="@drawable/sign_in_box"
@@ -51,7 +52,7 @@
             android:id="@+id/pwTxt"
             android:layout_width="248.7dp"
             android:layout_height="33.3dp"
-            android:layout_marginLeft="61.7dp"
+            android:layout_marginLeft="81.7dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="81.7dp"
             android:background="@drawable/sign_in_box"
@@ -63,16 +64,16 @@
             android:id="@+id/signInBtn"
             android:layout_width="248.7dp"
             android:layout_height="33.3dp"
-            android:layout_marginLeft="61.7dp"
+            android:layout_marginLeft="81.7dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/sign_in_btn" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="65dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="104dp"
+            android:layout_marginLeft="85dp"
             android:orientation="horizontal">
 
             <TextView
@@ -83,11 +84,11 @@
 
             <Button
                 android:id="@+id/createAccountBtn"
-                android:layout_width="70dp"
-                android:layout_height="12.7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:text="회원가입"
-                android:textSize="11.3sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 

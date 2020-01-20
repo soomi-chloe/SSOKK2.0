@@ -8,16 +8,6 @@
     android:orientation="vertical"
     tools:context=".MyPage">
 
-    <ScrollView
-        android:id="@+id/mypage_scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,7 +24,7 @@
                     android:layout_width="22.3dp"
                     android:layout_height="22.3dp"
                     android:layout_marginLeft="361.7dp"
-                    android:layout_marginTop="23.7dp"
+                    android:layout_marginTop="37dp"
                     android:layout_marginRight="28dp"
                     android:layout_marginBottom="23.7dp"
                     android:padding="0dp"
@@ -52,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/mypage_profile_box"
             android:orientation="vertical">
 
@@ -202,7 +193,5 @@
         </LinearLayout>
 
         </LinearLayout>
-
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
