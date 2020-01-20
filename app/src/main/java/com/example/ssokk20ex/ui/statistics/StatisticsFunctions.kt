@@ -51,6 +51,14 @@ class StatisticsFunctions : AppCompatActivity(){
 
         chartBS = findViewById<LineChart>(R.id.bsGraph)
 
+        lowestBloodSugar_value.text = getAvg("2020-1-18").toString()
+        averageBloodSugar_value.text = getAvg("2020-1-16").toString()
+        highestBloodsSugar_value.text = getAvg("2020-1-21").toString()
+
+        lowestBloodSugar_value2.text = getAvg("2020-1-18").toString()
+        averageBloodSugar_value2.text = getAvg("2020-1-15").toString()
+        highestBloodsSugar_value2.text = getAvg("2020-1-21").toString()
+
         drawBmiChartBS()
 
         var setting = findViewById<ImageButton>(R.id.setting)
@@ -75,13 +83,13 @@ class StatisticsFunctions : AppCompatActivity(){
     }
 
     private fun drawBmiChartBS() {
-        entries.add(Entry(0f, getAvg("2020-1-18")))
-        entries.add(Entry(1f, getAvg("2020-1-19")))
-        entries.add(Entry(2f, getAvg("2020-1-20")))
-        entries.add(Entry(3f, 0f))
-        entries.add(Entry(4f, 0f))
-        entries.add(Entry(5f, 0f))
-        entries.add(Entry(6f, 0f))
+        entries.add(Entry(0f, getAvg("2020-1-15")))
+        entries.add(Entry(1f, getAvg("2020-1-16")))
+        entries.add(Entry(2f, getAvg("2020-1-16")))
+        entries.add(Entry(3f, getAvg("2020-1-18")))
+        entries.add(Entry(4f, getAvg("2020-1-19")))
+        entries.add(Entry(5f, getAvg("2020-1-20")))
+        entries.add(Entry(6f, getAvg("2020-1-21")))
         Log.d("test2", bsList.size.toString())
         Log.d("test2", bsList.get(0).recordDate.toString())
     Log.d("test2", bsList.get(1).recordDate.toString())
@@ -112,21 +120,6 @@ class StatisticsFunctions : AppCompatActivity(){
         chartBS!!.description.isEnabled = false
 
         chartBS!!.invalidate()
-    }
-
-    fun getBloodSugarRecord() {
-        val firestore = FirebaseFirestore.getInstance()
-        firestore.collection("record_bloodSugar").get()
-            .addOnCompleteListener{ task ->
-                if(task.isSuccessful) {
-                    for(dc in task.result!!.documents) {
-                        bsList.add(dc.toObject(RecordBloodSugarDTO::class.java)!!)
-                    }
-                    Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
-                }
-                else
-                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
-            }
     }
 
     public fun getAvg(date : String) : Float {

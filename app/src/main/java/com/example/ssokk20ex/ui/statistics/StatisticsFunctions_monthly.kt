@@ -40,6 +40,14 @@ class StatisticsFunctions_monthly : AppCompatActivity() {
 
         chartBS = findViewById<LineChart>(R.id.bsGraph)
 
+        lowestBloodSugar_value.text = stat.getAvg("2020-1-16").toString()
+        averageBloodSugar_value.text = stat.getAvg("2020-1-19").toString()
+        highestBloodsSugar_value.text = stat.getAvg("2020-1-18").toString()
+
+        lowestBloodSugar_value2.text = stat.getAvg("2020-1-16").toString()
+        averageBloodSugar_value2.text = stat.getAvg("2020-1-19").toString()
+        highestBloodsSugar_value2.text = stat.getAvg("2020-1-18").toString()
+
         drawBmiChartBS()
 
         var setting = findViewById<ImageButton>(R.id.setting)
@@ -63,10 +71,10 @@ class StatisticsFunctions_monthly : AppCompatActivity() {
     }
 
     private fun drawBmiChartBS() {
-        entries.add(Entry(0f, stat.getAvg("2020-1-18")))
-        entries.add(Entry(1f, stat.getAvg("2020-1-19")))
-        entries.add(Entry(2f, stat.getAvg("2020-1-20")))
-        entries.add(Entry(3f, 0f))
+        entries.add(Entry(0f, stat.getAvg("2020-1-16")))
+        entries.add(Entry(1f, stat.getAvg("2020-1-18")))
+        entries.add(Entry(2f, stat.getAvg("2020-1-19")))
+        entries.add(Entry(3f, stat.getAvg("2020-1-20")))
 
         val dataSet = LineDataSet(entries, "Blood Sugar")
         dataSet.lineWidth = 2f
