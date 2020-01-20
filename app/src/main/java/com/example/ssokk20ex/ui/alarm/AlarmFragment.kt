@@ -1,6 +1,5 @@
 package com.example.ssokk20ex.ui.alarm
 
-import AlarmFunctions
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,6 +27,7 @@ class AlarmFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        startActivity(Intent(activity, AlarmFunctions::class.java))
+        var intent = Intent(this.context, AlarmFunctions::class.java)
+        startActivity(intent)
     }
 }

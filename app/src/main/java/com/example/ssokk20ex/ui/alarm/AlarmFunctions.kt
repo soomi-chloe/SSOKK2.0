@@ -1,8 +1,9 @@
+package com.example.ssokk20ex.ui.alarm
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ssokk20ex.ui.alarm.AddBloodSugarNotice
 import com.example.ssokk20ex.ui.alarm.BloodSugarDTO
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_blood_sugar_notice.*
@@ -43,6 +44,8 @@ class AlarmFunctions : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        updateUI("user1")
 
         btn_deleteMedicineNotice.setOnClickListener {
             isChecked_delete = true
@@ -207,7 +210,9 @@ class AlarmFunctions : AppCompatActivity() {
                         Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
                     }
                 }
-        } else if(isChecked_delete==true){
+        }
+
+        else if(isChecked_delete==true){
             firestore = FirebaseFirestore.getInstance()
             firestore?.collection("bloodSugarAlarm")?.document(key)?.delete()
                 ?.addOnCompleteListener { task ->

@@ -21,11 +21,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Info_content_know_5"></activity>
-        <activity android:name=".Info_content_know_4" />
-        <activity android:name=".Info_content_know_3" />
-        <activity android:name=".Info_content_know_2" />
-        <activity android:name=".Info_content_know_1" />
+<!--        <activity android:name=".Info_content_know_5"></activity>-->
+<!--        <activity android:name=".Info_content_know_4" />-->
+<!--        <activity android:name=".Info_content_know_3" />-->
+<!--        <activity android:name=".Info_content_know_2" />-->
+<!--        <activity android:name=".Info_content_know_1" />-->
         <activity android:name=".ui.info.Info_lists_know" />
         <activity android:name=".ui.info.Info_lists_news" />
         <activity android:name="ui.record.RecordImageDTO" />
@@ -66,6 +66,7 @@
         <activity android:name=".FirstPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
