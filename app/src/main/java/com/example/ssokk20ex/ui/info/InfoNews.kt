@@ -4,6 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
+import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import kotlinx.android.synthetic.main.activity_info_news.*
 
@@ -13,6 +15,11 @@ class InfoNews : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_news)
         supportActionBar?.hide()
+
+        var setting = findViewById<ImageButton>(R.id.setting)
+        setting.setOnClickListener {
+            startActivity(Intent(this, MyPage::class.java))
+        }
 
         btn_know_inNews.setOnClickListener {
             startActivity(Intent(this, InfoNorm::class.java))
