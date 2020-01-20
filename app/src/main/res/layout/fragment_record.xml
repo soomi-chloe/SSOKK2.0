@@ -75,7 +75,7 @@
                     android:layout_marginLeft="23.3dp"
                     android:layout_marginTop="18.7dp"
                     android:lineSpacingExtra="1.7sp"
-                    android:text="내용"
+                    android:text="오늘의 혈당 측정값을 입력해주세요."
                     android:textColor="#ffffff"
                     android:textSize="13.3sp" />
             </LinearLayout>
