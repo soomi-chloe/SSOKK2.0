@@ -15,11 +15,12 @@ import androidx.viewpager2.widget.ViewPager2
 import kotlinx.android.synthetic.main.activity_intro.*
 
 class IntroActivity : AppCompatActivity() {
-    private val introAapter = IntroAdapter(
+    private val introAdpter = IntroAdapter(
         listOf(
             IntroSlide(R.drawable.intro01),
             IntroSlide(R.drawable.intro02),
-            IntroSlide(R.drawable.intro03)
+            IntroSlide(R.drawable.intro03),
+            IntroSlide(R.drawable.intro04)
         )
     )
 
@@ -37,8 +38,9 @@ class IntroActivity : AppCompatActivity() {
         setContentView(R.layout.activity_intro)
         supportActionBar?.hide()
         previousBtn.visibility = View.INVISIBLE
+        startBtn.visibility = View.INVISIBLE
 
-        viewPager.adapter = introAapter
+        viewPager.adapter = introAdpter
         setDots()
         setCurrentDot(0)
         viewPager.registerOnPageChangeCallback(object :
@@ -49,6 +51,11 @@ class IntroActivity : AppCompatActivity() {
                 setCurrentDot(position)
                 if(position <= 0) previousBtn.visibility = View.INVISIBLE
                 else previousBtn.visibility = View.VISIBLE
+
+                if(position == introAdpter.itemCount-1)
+                    startBtn.visibility = View.VISIBLE
+                else
+                    startBtn.visibility = View.INVISIBLE
             }
         })
 
@@ -59,16 +66,23 @@ class IntroActivity : AppCompatActivity() {
                 previousBtn.visibility = View.VISIBLE
 
             viewPager.currentItem -= 1
+            startBtn.visibility = View.INVISIBLE
         }
 
         nextBtn.setOnClickListener {
-            if(viewPager.currentItem + 1 < introAapter.itemCount) {
+            if(viewPager.currentItem +1 == introAdpter.itemCount-1) {
+                viewPager.currentItem += 1
+                startBtn.visibility = View.VISIBLE
+            }
+            else if(viewPager.currentItem + 1 < introAdpter.itemCount) {
                 viewPager.currentItem += 1
                 previousBtn.visibility = View.VISIBLE
+                startBtn.visibility = View.INVISIBLE
             }
             else {
                 setNoMoreIntro(pref)
                 startActivity(Intent(this, SignInActivity::class.java))
+                startBtn.visibility = View.INVISIBLE
             }
         }
 
@@ -76,20 +90,24 @@ class IntroActivity : AppCompatActivity() {
             setNoMoreIntro(pref)
             startActivity(Intent(this, SignInActivity::class.java))
         }
+
+        startBtn.setOnClickListener {
+            startActivity(Intent(this, SignInActivity::class.java))
+        }
     }
 
     private fun setDots() {
-        val dots = arrayOfNulls<ImageView>(introAapter.itemCount)
+        val dots = arrayOfNulls<ImageView>(introAdpter.itemCount)
         val layoutParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
         layoutParams.setMargins(8, 0, 8, 0)
         for(i in dots.indices) {
             dots[i] = ImageView(applicationContext)
             dots[i].apply {
                 this?.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        applicationContext, R.drawable.dot_active
-                    )
+                ContextCompat.getDrawable(
+                    applicationContext, R.drawable.dot_active
                 )
+            )
                 this?.layoutParams = layoutParams
             }
             dotsContainer.addView(dots[i])

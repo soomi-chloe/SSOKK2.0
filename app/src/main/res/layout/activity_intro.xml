@@ -20,7 +20,20 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-70dp" />
+        android:layout_marginTop="-70dp" >
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <ImageButton
+        android:id="@+id/startBtn"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="81.7dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="30dp"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/start_btn" />
 
     <LinearLayout
         android:id="@+id/bottomContainer"

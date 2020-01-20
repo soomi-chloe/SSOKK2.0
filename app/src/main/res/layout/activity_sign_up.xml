@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="732dp"
     android:orientation="vertical"
     tools:context=".SignUpActivity">
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -22,31 +22,49 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="126dp"
-                android:layout_height="126dp"
-                android:layout_marginLeft="123dp"
-                android:layout_marginTop="56.7dp"
-                android:background="@drawable/profile"
-                app:srcCompat="@android:color/transparent" />
-
             <TextView
                 android:id="@+id/signUpTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="65dp"
-                android:layout_marginTop="56.7dp"
-                android:text="회원가입"
+                android:layout_marginTop="105dp"
+                android:text="계정 생성"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/signUpTxt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="10dp"
+                android:text="계정을 생성하기 위한 정보를 입력해주세요" />
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="29.3dp"
+                android:text="이름" />
+
+            <EditText
+                android:id="@+id/userNameTxt"
+                android:layout_width="248.7dp"
+                android:layout_height="33.3dp"
+                android:layout_marginLeft="61.7dp"
+                android:layout_marginTop="8.3dp"
+                android:layout_marginRight="81.7dp"
+                android:background="@drawable/sign_in_box"
+                android:ems="10"
+                android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="65dp"
-                android:layout_marginTop="29.3dp"
+                android:layout_marginTop="20dp"
                 android:text="이메일" />
 
             <EditText
@@ -111,43 +129,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="65dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/askAccountTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="계정이 없으신가요?" />
-
-                <Button
-                    android:id="@+id/createAccountBtn"
-                    android:layout_width="70dp"
-                    android:layout_height="12.7dp"
-                    android:background="@android:color/transparent"
-                    android:text="회원가입"
-                    android:textSize="11.3sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="65dp"
+                android:layout_marginBottom="104dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/findAccountTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="계정 찾기" />
+                    android:layout_marginBottom="104dp"
+                    android:text="이미 계정이 있으신가요?" />
 
                 <Button
-                    android:id="@+id/findPWBtn"
-                    android:layout_width="80dp"
+                    android:id="@+id/goSignInBtn"
+                    android:layout_width="35dp"
                     android:layout_height="11.3dp"
                     android:background="@android:color/transparent"
-                    android:text="비밀번호 찾기"
+                    android:text="로그인"
                     android:textSize="10sp" />
 
             </LinearLayout>

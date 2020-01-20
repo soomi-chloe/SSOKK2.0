@@ -23,7 +23,7 @@ class SignInActivity : AppCompatActivity() {
         }
 
         createAccountBtn.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
+            val intent = Intent(this, UserInfo::class.java)
             startActivityForResult(intent, 0)
         }
     }
