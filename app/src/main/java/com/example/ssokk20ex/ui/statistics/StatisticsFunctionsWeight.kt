@@ -4,7 +4,11 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
+import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
+import com.example.ssokk20ex.ui.record.RecordWeightDTO
+import com.example.ssokk20ex.ui.record.UserDTO
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
@@ -21,6 +25,8 @@ class StatisticsFunctionsWeight : AppCompatActivity() {
     companion object {
         var isChecked_monthly_weight: Boolean?=null
         var isChecked_weekly_weight: Boolean?=null
+        var weightList = ArrayList<RecordWeightDTO>()
+        var infoList = ArrayList<UserDTO>()
     }
     val stat = StatisticsFunctions()
     var chart :LineChart? = null
@@ -43,6 +49,11 @@ class StatisticsFunctionsWeight : AppCompatActivity() {
 
         drawBmiChart()
 
+        var setting = findViewById<ImageButton>(R.id.setting)
+        setting.setOnClickListener {
+            startActivity(Intent(this, MyPage::class.java))
+        }
+
         monthlyBtn_bmi.setOnClickListener {
             isChecked_weekly_weight = false
             isChecked_monthly_weight = true
@@ -59,9 +70,9 @@ class StatisticsFunctionsWeight : AppCompatActivity() {
     }
 
     private fun drawBmiChart() {
-        entries.add(Entry(0f, stat.getAvg("2020-01-19")))
-        entries.add(Entry(1f, 0f))
-        entries.add(Entry(2f, 0f))
+        entries.add(Entry(0f, getBMI("2020-1-18")))
+        entries.add(Entry(1f, getBMI("2020-1-19")))
+        entries.add(Entry(2f, getBMI("2020-1-20")))
         entries.add(Entry(3f, 0f))
         entries.add(Entry(4f, 0f))
         entries.add(Entry(5f, 0f))
@@ -72,6 +83,7 @@ class StatisticsFunctionsWeight : AppCompatActivity() {
         dataSet.circleRadius = 3f
         dataSet.setCircleColor(Color.parseColor("#f16161"))
         dataSet.color = Color.parseColor("#f16161")
+        dataSet.setDrawCircleHole(false)
         val lineData = LineData(dataSet)
         chart!!.data = lineData
 
@@ -92,5 +104,19 @@ class StatisticsFunctionsWeight : AppCompatActivity() {
         chart!!.description.isEnabled = false
 
         chart!!.invalidate()
+    }
+
+    public fun getBMI(date: String) : Float {
+        var bmi = 0f
+        var height = 0f
+        for(i in 0..weightList.size-1) {
+            if(weightList.get(i).recordDate == date) {
+                bmi = weightList.get(i).recordWeight.toString().toFloat()
+                height = infoList.get(0).height.toString().toFloat()
+                break
+            }
+        }
+        bmi = bmi / (height/100 * height/100)
+        return bmi
     }
 }

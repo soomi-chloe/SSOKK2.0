@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctionsWeight
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctionsWeight.Companion.infoList
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_mypage.*
 
@@ -17,6 +19,9 @@ class MyPage : AppCompatActivity(){
         setContentView(R.layout.activity_mypage)
         supportActionBar?.hide()
 
+        userNameTxt.text = infoList.get(0).name
+        userContactTxt.text = infoList.get(0).email
+
         auth = FirebaseAuth.getInstance()
 
         signOutBtn.setOnClickListener {
@@ -24,6 +29,14 @@ class MyPage : AppCompatActivity(){
         }
 
         withdrawalBtn.setOnClickListener {
+            deleteUser()
+        }
+
+        signOutBtn2.setOnClickListener {
+            signOut()
+        }
+
+        withdrawalBtn2.setOnClickListener {
             deleteUser()
         }
     }

@@ -11,11 +11,16 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.ssokk20ex.ui.record.RecordBloodSugarDTO
+import com.example.ssokk20ex.ui.record.RecordWeightDTO
+import com.example.ssokk20ex.ui.record.UserDTO
 import com.example.ssokk20ex.ui.statistics.StatisticsFunctions
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctionsWeight
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_record.*
+import java.util.concurrent.CountDownLatch
 
 class MainActivity : AppCompatActivity() {
+    val firestore = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,17 +42,43 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         getBloodSugarRecord()
+        getWeightRecord()
+        getUserInfo()
     }
 
     fun getBloodSugarRecord() {
-        val firestore = FirebaseFirestore.getInstance()
         firestore.collection("record_bloodSugar").get()
             .addOnCompleteListener{ task ->
                 if(task.isSuccessful) {
                     for(dc in task.result!!.documents) {
                         StatisticsFunctions.bsList.add(dc.toObject(RecordBloodSugarDTO::class.java)!!)
                     }
-                    Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
+                }
+                else
+                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    fun getWeightRecord() {
+        firestore.collection("record_weight").get()
+            .addOnCompleteListener{ task ->
+                if(task.isSuccessful) {
+                    for(dc in task.result!!.documents) {
+                        StatisticsFunctionsWeight.weightList.add(dc.toObject(RecordWeightDTO::class.java)!!)
+                    }
+                }
+                else
+                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    fun getUserInfo() {
+        firestore.collection("user_info").get()
+            .addOnCompleteListener{ task ->
+                if(task.isSuccessful) {
+                    for(dc in task.result!!.documents) {
+                        StatisticsFunctionsWeight.infoList.add(dc.toObject(UserDTO::class.java)!!)
+                    }
                 }
                 else
                     Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()

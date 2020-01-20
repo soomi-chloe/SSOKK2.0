@@ -103,7 +103,7 @@ class RecordFunctions : AppCompatActivity() {
 
                 var bloodSugar = findViewById<TextView>(R.id.txt_bloodSugarNumber)
                 var date= LocalDate.now()
-                var strnow = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                var strnow = date.format(DateTimeFormatter.ofPattern("yyyy-M-d"))
                 var document = strnow + "-" + n
 
                 val RecordBloodSugarDTO =
@@ -165,10 +165,10 @@ class RecordFunctions : AppCompatActivity() {
             else{
                 var weight = findViewById<TextView>(R.id.txt_weight) //입력받은 체중값
                 var date= LocalDate.now()
-                var document = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                var document = date.format(DateTimeFormatter.ofPattern("yyyy-m-d"))
 
                 val data =
-                    RecordWeughtDTO(weight.text.toString())
+                    RecordWeightDTO(weight.text.toString())
 
                 firestore = FirebaseFirestore.getInstance()
                 firestore?.collection("record_weight")?.document(document.toString())
