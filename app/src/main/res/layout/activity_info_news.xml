@@ -50,7 +50,7 @@
                 android:id="@+id/btn_know_inNews"
                 android:layout_width="199dp"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
+                android:background="@android:color/transparent"
                 android:lineSpacingExtra="1.7sp"
                 android:text="당뇨병 상식"
                 android:textColor="@android:color/darker_gray"
@@ -60,7 +60,7 @@
                 android:id="@+id/btn_news_inNews"
                 android:layout_width="199dp"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
+                android:background="@android:color/transparent"
                 android:lineSpacingExtra="1.7sp"
                 android:text="당뇨병 뉴스"
                 android:textSize="13.3sp" />
