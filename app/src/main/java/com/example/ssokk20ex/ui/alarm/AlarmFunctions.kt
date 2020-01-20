@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ssokk20ex.R
 import com.example.ssokk20ex.ui.alarm.BloodSugarDTO
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_blood_sugar_notice.*
@@ -44,6 +45,7 @@ class AlarmFunctions : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_blood_sugar_notice)
 
         updateUI("user1")
 
