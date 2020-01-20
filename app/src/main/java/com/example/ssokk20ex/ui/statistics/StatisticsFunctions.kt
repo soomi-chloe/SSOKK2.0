@@ -77,7 +77,7 @@ class StatisticsFunctions : AppCompatActivity(){
     private fun drawBmiChartBS() {
         entries.add(Entry(0f, getAvg("2020-1-18")))
         entries.add(Entry(1f, getAvg("2020-1-19")))
-        entries.add(Entry(2f, 0f))
+        entries.add(Entry(2f, getAvg("2020-1-20")))
         entries.add(Entry(3f, 0f))
         entries.add(Entry(4f, 0f))
         entries.add(Entry(5f, 0f))
