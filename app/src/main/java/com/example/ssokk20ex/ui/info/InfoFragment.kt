@@ -21,7 +21,7 @@ class InfoFragment : Fragment() {
     ): View? {
         infoViewModel =
             ViewModelProviders.of(this).get(InfoViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_info, container, false)
+        val root = inflater.inflate(R.layout.activity_info_lists_know, container, false)
         return root
     }
 }

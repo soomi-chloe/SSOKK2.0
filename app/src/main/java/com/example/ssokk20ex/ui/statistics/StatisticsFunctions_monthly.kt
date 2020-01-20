@@ -26,7 +26,7 @@ class StatisticsFunctions_monthly : AppCompatActivity() {
 
     var xAxisValues: List<String> = java.util.ArrayList(
         listOf(
-            "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"
+            "첫째주", "둘째주", "셋째주", "넷째주"
         )
     )
 
@@ -67,9 +67,6 @@ class StatisticsFunctions_monthly : AppCompatActivity() {
         entries.add(Entry(1f, stat.getAvg("2020-1-19")))
         entries.add(Entry(2f, stat.getAvg("2020-1-20")))
         entries.add(Entry(3f, 0f))
-        entries.add(Entry(4f, 0f))
-        entries.add(Entry(5f, 0f))
-        entries.add(Entry(6f, 0f))
 
         val dataSet = LineDataSet(entries, "Blood Sugar")
         dataSet.lineWidth = 2f
