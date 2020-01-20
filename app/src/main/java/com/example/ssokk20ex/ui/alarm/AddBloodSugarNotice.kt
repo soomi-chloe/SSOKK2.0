@@ -7,12 +7,10 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.TimePicker
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_blood_sugar_notice.*
@@ -62,6 +60,11 @@ class AddBloodSugarNotice : AppCompatActivity() {
         supportActionBar?.hide()
 
         OnClickTime()
+
+        var setting = findViewById<ImageButton>(R.id.setting)
+        setting.setOnClickListener {
+            startActivity(Intent(this, MyPage::class.java))
+        }
 
         txt_aDayN.addTextChangedListener(object: TextWatcher{
             //입력이 끝났을 때

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".ui.info.Info_content_know_1">
+
+    <LinearLayout
+        android:layout_width="398dp"
+        android:layout_height="600dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="69.7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="62.3dp"
+        android:background="@drawable/info_button"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_info_content_know"
+            android:layout_width="56dp"
+            android:layout_height="13.5dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="27.7dp"
+            android:layout_marginRight="314dp"
+            android:layout_marginBottom="559.7dp"
+            android:lineSpacingExtra="1.7sp"
+            android:text="당뇨병 상식"
+            android:textColor="#9a9a9a"
+            android:textSize="11.3sp" />
+
+
+        <TextView
+            android:id="@+id/txt_info_content_title"
+            android:layout_width="221dp"
+            android:layout_height="17.9dp"
+            android:layout_marginLeft="29.7dp"
+            android:layout_marginTop="-544.3dp"
+            android:layout_marginRight="339.7dp"
+            android:lineSpacingExtra="2sp"
+            android:text="당뇨병은 유전병이다?"
+            android:textColor="#707070"
+            android:textSize="15.7sp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="426dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/know3"
+            app:srcCompat="@drawable/know3" />
+
+
+    </LinearLayout>
+</LinearLayout>
