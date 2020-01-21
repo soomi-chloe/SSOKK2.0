@@ -294,7 +294,8 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="2dp"
                             android:layout_marginTop="15dp"
-                            app:srcCompat="@drawable/record_orange" />
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/record_mint" />
 
                         <ImageView
                             android:id="@+id/first_pill2"
@@ -302,7 +303,8 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="19dp"
                             android:layout_marginTop="-10.8dp"
-                            app:srcCompat="@drawable/record_orange" />
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/record_skyblue" />
 
                         <ImageView
                             android:id="@+id/first_pill3"
@@ -310,7 +312,8 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="2dp"
                             android:layout_marginTop="3.7dp"
-                            app:srcCompat="@drawable/record_orange" />
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/record_purple" />
 
                         <ImageView
                             android:id="@+id/first_pill4"
@@ -318,7 +321,8 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="19dp"
                             android:layout_marginTop="-10.8dp"
-                            app:srcCompat="@drawable/record_orange" />
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/record_pink" />
 
                     </LinearLayout>
 
@@ -345,7 +349,8 @@
                             android:layout_marginLeft="2dp"
                             android:layout_marginTop="15dp"
                             android:layout_weight="0"
-                            app:srcCompat="@drawable/record_orange" />
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/record_mint" />
 
                         <ImageView
                             android:id="@+id/second_pill2"
@@ -353,6 +358,7 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="19dp"
                             android:layout_marginTop="-10.8dp"
+                            android:visibility="invisible"
                             android:layout_weight="0"
                             app:srcCompat="@drawable/record_orange" />
 
@@ -362,8 +368,9 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="2dp"
                             android:layout_marginTop="3.7dp"
+                            android:visibility="invisible"
                             android:layout_weight="0"
-                            app:srcCompat="@drawable/record_orange" />
+                            app:srcCompat="@drawable/record_purple" />
 
                         <ImageView
                             android:id="@+id/second_pill4"
@@ -371,8 +378,9 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="19dp"
                             android:layout_marginTop="-10.8dp"
+                            android:visibility="invisible"
                             android:layout_weight="0"
-                            app:srcCompat="@drawable/record_orange" />
+                            app:srcCompat="@drawable/record_pink" />
 
                     </LinearLayout>
 
@@ -397,7 +405,8 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="2dp"
                             android:layout_marginTop="15dp"
-                            app:srcCompat="@drawable/record_orange" />
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/record_mint" />
 
                         <ImageView
                             android:id="@+id/fourth_pill2"
@@ -405,6 +414,7 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="19dp"
                             android:layout_marginTop="-10.8dp"
+                            android:visibility="invisible"
                             app:srcCompat="@drawable/record_orange" />
 
                         <ImageView
@@ -413,6 +423,7 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="2dp"
                             android:layout_marginTop="3.7dp"
+                            android:visibility="invisible"
                             app:srcCompat="@drawable/record_orange" />
 
                         <ImageView
@@ -421,6 +432,7 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="19dp"
                             android:layout_marginTop="-10.8dp"
+                            android:visibility="invisible"
                             app:srcCompat="@drawable/record_orange" />
 
                     </LinearLayout>
@@ -446,7 +458,8 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="2dp"
                             android:layout_marginTop="15dp"
-                            app:srcCompat="@drawable/record_orange" />
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/record_mint" />
 
                         <ImageView
                             android:id="@+id/fifth_pill2"
@@ -454,6 +467,7 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="19dp"
                             android:layout_marginTop="-10.8dp"
+                            android:visibility="invisible"
                             app:srcCompat="@drawable/record_orange" />
 
                         <ImageView
@@ -462,7 +476,8 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="2dp"
                             android:layout_marginTop="3.7dp"
-                            app:srcCompat="@drawable/record_orange" />
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/record_purple" />
 
                         <ImageView
                             android:id="@+id/fifth_pill4"
@@ -470,7 +485,8 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="19dp"
                             android:layout_marginTop="-10.8dp"
-                            app:srcCompat="@drawable/record_orange" />
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/record_pink" />
 
                     </LinearLayout>
 
@@ -495,7 +511,8 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="2dp"
                             android:layout_marginTop="15dp"
-                            app:srcCompat="@drawable/record_orange" />
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/record_mint" />
 
                         <ImageView
                             android:id="@+id/third_pill2"
@@ -503,7 +520,8 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="19dp"
                             android:layout_marginTop="-10.8dp"
-                            app:srcCompat="@drawable/record_orange" />
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/record_skyblue" />
 
                         <ImageView
                             android:id="@+id/third_pill3"
@@ -511,6 +529,7 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="2dp"
                             android:layout_marginTop="3.7dp"
+                            android:visibility="invisible"
                             app:srcCompat="@drawable/record_orange" />
 
                         <ImageView
@@ -519,6 +538,7 @@
                             android:layout_height="10.7dp"
                             android:layout_marginLeft="19dp"
                             android:layout_marginTop="-10.8dp"
+                            android:visibility="invisible"
                             app:srcCompat="@drawable/record_orange" />
 
                     </LinearLayout>

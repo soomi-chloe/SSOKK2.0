@@ -21,7 +21,9 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import com.example.ssokk20ex.MainActivity
 import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
@@ -53,7 +55,6 @@ class RecordFunctions : AppCompatActivity() {
     private val entries = ArrayList<Entry>()
     private var lineChart: LineChart?= null
     private var array = booleanArrayOf(true, true, true, true, true)
-    private var filePath: Uri? = null
     private var storage: FirebaseStorage? = null
     private var firestore : FirebaseFirestore? = null
     private val GALLERY_PERMISSIONS_REQUEST = 0
@@ -69,6 +70,42 @@ class RecordFunctions : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_record)
         supportActionBar?.hide()
+
+        //알약
+        var n1 = 0
+        var n2 = 0
+        var n3 = 0
+        var n4= 0
+        var n5= 0
+        var isChecked = true
+        var isChecked1 = true
+        var isChecked2 = true
+        var isChecked3 = true
+        var isChecked4 = true
+
+
+        btn_todayPill3.setOnClickListener {
+
+        }
+
+        btn_todayPill4.setOnClickListener {
+
+        }
+
+        btn_todayPill5.setOnClickListener {
+
+            isChecked == true
+            if(n5==0 && isChecked == true){
+                first_pill1.visibility = View.VISIBLE
+                n5++
+                isChecked == false
+            }
+            else if(n5==1&& isChecked == true){
+                first_pill2.visibility = View.VISIBLE
+            }
+            isChecked == false
+        }
+
         firestore = FirebaseFirestore.getInstance()
 
         var date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-M-d"))
@@ -96,6 +133,8 @@ class RecordFunctions : AppCompatActivity() {
         setting.setOnClickListener {
             startActivity(Intent(this, MyPage::class.java))
         }
+
+
 
         //1. 혈당 - 식전 버튼
         btn_beforeMeal.setOnClickListener {
@@ -213,18 +252,103 @@ class RecordFunctions : AppCompatActivity() {
         //2. 약 복용 버튼
         btn_todayPill1.setOnClickListener {
             pillClicked(btn_todayPill1, 0)
+            if(n1==0 && isChecked == true){
+                first_pill1.visibility = View.VISIBLE
+                n1=1
+                isChecked = false
+            }
+            else if(n1==1&& isChecked == true){
+                first_pill2.visibility = View.VISIBLE
+            }
+            isChecked = true
         }
         btn_todayPill2.setOnClickListener {
             pillClicked(btn_todayPill2, 1)
+            if(n2==0 && isChecked1 == true){
+                second_pill1.visibility = View.VISIBLE
+                n2=n2+1
+                isChecked1 = false
+            }
+            else if(n2==1 && isChecked1 == true){
+                second_pill2.visibility = View.VISIBLE
+                n2=n2+1
+                isChecked1 = false
+            }
+            else if(n2==2 && isChecked1 == true){
+                second_pill3.visibility = View.VISIBLE
+                n2=n2+1
+                isChecked1 = false
+            }
+            else if(n2==3 && isChecked1 == true){
+                second_pill4.visibility = View.VISIBLE
+            }
+            isChecked1 = true
         }
         btn_todayPill3.setOnClickListener {
             pillClicked(btn_todayPill3, 2)
+            if(n3==0 && isChecked2 == true){
+                third_pill1.visibility = View.VISIBLE
+                n3=n3+1
+                isChecked2 = false
+            }
+            else if(n3==1 && isChecked2 == true){
+                third_pill2.visibility = View.VISIBLE
+                n3=n3+1
+                isChecked2 = false
+            }
+            else if(n3==2 && isChecked2 == true){
+                third_pill3.visibility = View.VISIBLE
+                n3=n3+1
+                isChecked2 = false
+            }
+            else if(n3==3 && isChecked2 == true){
+                third_pill4.visibility = View.VISIBLE
+            }
+            isChecked2 = true
         }
         btn_todayPill4.setOnClickListener {
             pillClicked(btn_todayPill4, 3)
+            if(n3==0 && isChecked3 == true){
+                fourth_pill1.visibility = View.VISIBLE
+                n3=n3+1
+                isChecked3 = false
+            }
+            else if(n3==1 && isChecked3 == true){
+                fourth_pill2.visibility = View.VISIBLE
+                n3=n3+1
+                isChecked3 = false
+            }
+            else if(n3==2 && isChecked3 == true){
+                fourh_pill3.visibility = View.VISIBLE
+                n3=n3+1
+                isChecked3 = false
+            }
+            else if(n3==3 && isChecked3 == true){
+                fourth_pill4.visibility = View.VISIBLE
+            }
+            isChecked3 = true
         }
         btn_todayPill5.setOnClickListener {
             pillClicked(btn_todayPill5, 4)
+            if(n4==0 && isChecked4 == true){
+                fifth_pill1.visibility = View.VISIBLE
+                n4=n4+1
+                isChecked3 = false
+            }
+            else if(n4==1 && isChecked4 == true){
+                fifth_pill2.visibility = View.VISIBLE
+                n4=n4+1
+                isChecked3 = false
+            }
+            else if(n4==2 && isChecked4 == true){
+                fifth_pill3.visibility = View.VISIBLE
+                n4=n4+1
+                isChecked3 = false
+            }
+            else if(n4==3 && isChecked4 == true){
+                fifth_pill4.visibility = View.VISIBLE
+            }
+            isChecked4 = true
         }
 
         //3. 체중 - 입력 버튼
@@ -272,32 +396,6 @@ class RecordFunctions : AppCompatActivity() {
             }
         }
     }
-
-//    //약
-//    private fun makeAlermIcon(key:String){
-//        var number:String? = null
-//
-//        firestore = FirebaseFirestore.getInstance()
-//        var document = key
-//        val countDownLatch = CountDownLatch(1)
-//        firestore?.collection("bloodSugarAlarm")?.document(document)
-//            ?.get()?.addOnCompleteListener{task ->
-//                if (task.isSuccessful) {
-//                    val total = task.result?.toObject(BloodSugarDTO::class.java)
-//                    number= total?.alarmTotalN.toString() //오늘 알람 개수
-//                    countDownLatch.countDown()
-//                }
-//            }
-//        countDownLatch.await()
-//
-//        var pillArray = arrayOf(btn_todayPill1, btn_todayPill2, btn_todayPill3, btn_todayPill4, btn_todayPill5)
-//
-//        for(n in 1..number!!.toInt()){
-//            pillArray[n].visibility = View.VISIBLE
-//        }
-//
-//    }
-
 
     //갤러리 호출
     private fun startGalleryChooser() {

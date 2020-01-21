@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.info.InfoNorm6"></activity>
+        <activity android:name=".ui.info.InfoNorm6"
+            android:theme="@style/noAnimTheme"></activity>
         <activity
             android:name=".ui.info.InfoNorm5"
             tools:ignore="DuplicateActivity" />
@@ -38,10 +39,15 @@
         <activity
             android:name=".ui.info.InfoNorm1"
             tools:ignore="DuplicateActivity" />
-        <activity android:name="ui.record.RecordImageDTO" />
-        <activity android:name=".UserInfo" />
-        <activity android:name="ui.record.RecordWeightDTO" />
-        <activity android:name=".ui.record.RecordBloodSugarDTO" />
+
+        <activity android:name="ui.record.RecordImageDTO"
+            android:theme="@style/noAnimTheme"/>
+        <activity android:name=".UserInfo"
+            android:theme="@style/noAnimTheme"/>
+        <activity android:name="ui.record.RecordWeightDTO"
+            android:theme="@style/noAnimTheme"/>
+        <activity android:name=".ui.record.RecordBloodSugarDTO"
+            android:theme="@style/noAnimTheme"/>
         <activity
             android:name=".ui.info.InfoNorm"
             android:theme="@style/noAnimTheme" />
@@ -57,12 +63,18 @@
         <activity
             android:name=".ui.statistics.StatisticsFunctionsWeight"
             android:theme="@style/noAnimTheme" />
-        <activity android:name=".ui.record.RecordFunctions" />
-        <activity android:name=".IntroActivity" />
-        <activity android:name=".IntroSlide" />
-        <activity android:name=".IntroAdapter" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignInActivity" />
+        <activity android:name=".ui.record.RecordFunctions"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name=".IntroActivity"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name=".IntroSlide"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name=".IntroAdapter"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name=".SignUpActivity"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name=".SignInActivity"
+            android:theme="@style/noAnimTheme" />
         <activity
             android:name=".ui.alarm.AddMedicineNotice"
             android:theme="@style/noAnimTheme" />
@@ -78,8 +90,10 @@
         <activity android:name=".info_test" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"></activity>
-        <activity android:name=".FirstPage">
+            android:label="@string/app_name"
+            android:theme="@style/noAnimTheme"></activity>
+        <activity android:name=".FirstPage"
+            android:theme="@style/noAnimTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -87,7 +101,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyPage" />
+        <activity android:name=".MyPage"
+            android:theme="@style/noAnimTheme"/>
         <activity
             android:name=".ui.statistics.StatisticsFunctions"
             android:theme="@style/noAnimTheme" />
