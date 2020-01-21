@@ -269,7 +269,7 @@
                 android:layout_marginLeft="13dp"
                 android:layout_marginTop="9dp"
                 android:lineSpacingExtra="1.7sp"
-                android:text="300 걸음"
+                android:text="1532"
                 android:textColor="#707070"
                 android:textSize="12sp" />
         </LinearLayout>
