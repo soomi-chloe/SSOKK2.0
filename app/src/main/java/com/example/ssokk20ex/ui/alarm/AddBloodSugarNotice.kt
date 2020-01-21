@@ -14,6 +14,7 @@ import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_blood_sugar_notice.*
+import kotlinx.android.synthetic.main.blood_sugar_record_weekly.*
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
