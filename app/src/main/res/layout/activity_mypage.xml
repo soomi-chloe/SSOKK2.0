@@ -8,47 +8,33 @@
     android:orientation="vertical"
     tools:context=".MyPage">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="69.7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="69.7dp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp">
-
-                <Button
-                    android:id="@+id/homeBtn"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight = "110dp"
-                    android:background="@android:color/transparent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/setting"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <ImageButton
-                    android:id="@+id/setting"
-                    android:layout_width="22.3dp"
-                    android:layout_height="22.3dp"
-                    android:layout_marginLeft="361.7dp"
-                    android:layout_marginTop="37dp"
-                    android:layout_marginRight="28dp"
-                    android:layout_marginBottom="23.7dp"
-                    android:padding="0dp"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/setting_icon" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                android:id="@+id/setting"
+                android:layout_width="22.3dp"
+                android:layout_height="22.3dp"
+                android:layout_marginLeft="361.7dp"
+                android:layout_marginTop="37dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginBottom="23.7dp"
+                android:padding="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/setting_icon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:id="@+id/profileLayout"
@@ -126,30 +112,32 @@
 
                     <TextView
                         android:id="@+id/setPWTxt"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginTop="17dp"
                         android:text="@string/setPWTxt"
                         android:textSize="13.3sp" />
 
                     <Button
                         android:id="@+id/signOutBtn"
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="-17dp"
-                        android:layout_marginTop="18dp"
+                        android:layout_height="22dp"
+                        android:layout_marginLeft="-20dp"
+                        android:layout_marginTop="16dp"
                         android:background="@android:color/transparent"
                         android:text="로그아웃"
+                        android:textSize="12sp"
                         android:textStyle="normal" />
 
                     <Button
                         android:id="@+id/withdrawalBtn"
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="-17dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_height="22dp"
+                        android:layout_marginLeft="-18dp"
+                        android:layout_marginTop="13dp"
                         android:background="@android:color/transparent"
                         android:text="회원탈퇴"
+                        android:textSize="13sp"
                         android:textColor="@android:color/holo_red_dark" />
 
                 </LinearLayout>
@@ -174,7 +162,7 @@
                         android:id="@+id/setPWBtn"
                         android:layout_width="8dp"
                         android:layout_height="15.5dp"
-                        android:layout_marginTop="16.7dp"
+                        android:layout_marginTop="20dp"
                         android:adjustViewBounds="true"
                         android:background="@android:color/transparent"
                         android:scaleType="centerInside"
@@ -206,6 +194,6 @@
 
         </LinearLayout>
 
-        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
