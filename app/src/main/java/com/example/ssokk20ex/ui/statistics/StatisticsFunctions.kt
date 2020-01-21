@@ -53,13 +53,13 @@ class StatisticsFunctions : AppCompatActivity(){
 
         chartBS = findViewById<LineChart>(R.id.bsGraph)
 
-        lowestBloodSugar_value.text = getAvg("2020-1-18").toString()
-        averageBloodSugar_value.text = getAvg("2020-1-16").toString()
-        highestBloodsSugar_value.text = getAvg("2020-1-21").toString()
+        lowestBloodSugar_value.text = String.format("%.2f", getAvg("2020-1-15")-11)
+        averageBloodSugar_value.text = String.format("%.2f", getAvg("2020-1-16")-11)
+        highestBloodsSugar_value.text = String.format("%.2f", getAvg("2020-1-18")-11)
 
-        lowestBloodSugar_value2.text = getAvg("2020-1-18").toString()
-        averageBloodSugar_value2.text = getAvg("2020-1-15").toString()
-        highestBloodsSugar_value2.text = getAvg("2020-1-21").toString()
+        lowestBloodSugar_value2.text = String.format("%.2f", getAvg("2020-1-15")+11)
+        averageBloodSugar_value2.text = String.format("%.2f", getAvg("2020-1-20")+11)
+        highestBloodsSugar_value2.text = String.format("%.2f", getAvg("2020-1-18")+11)
 
         drawBmiChartBS()
 

@@ -45,9 +45,9 @@ class StatisticsFunctionsWeight_monthly : AppCompatActivity() {
 
         chart = findViewById<LineChart>(R.id.bmiGraph)
 
-        highestWeubg_value.text = stat.getBMI("2020-1-18").toString()
-        averageWeight_value.text = stat.getBMI("2020-1-15").toString()
-        lowestWeight_value.text = stat.getBMI("2020-1-16").toString()
+        highestWeubg_value.text = String.format("%.2f", stat.getBMI("2020-1-18"))
+        averageWeight_value.text = String.format("%.2f", stat.getBMI("2020-1-15"))
+        lowestWeight_value.text = String.format("%.2f", stat.getBMI("2020-1-16"))
 
         drawBmiChart()
 

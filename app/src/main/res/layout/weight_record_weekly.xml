@@ -147,7 +147,7 @@
                     android:layout_marginRight="28dp"
                     android:gravity="center_horizontal"
                     android:lineSpacingExtra="1.7sp"
-                    android:text="체중"
+                    android:text="BMI"
                     android:textColor="#4ab1ff"
                     android:textSize="13.3sp" />
 
