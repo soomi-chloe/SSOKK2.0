@@ -312,7 +312,7 @@
             <ImageView
                 android:id="@+id/medicineTime_beforeMeal"
                 android:layout_width="42.3dp"
-                android:layout_height="29.7dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="29.7dp"
                 android:layout_marginTop="2dp"
                 android:layout_weight="0"
@@ -365,7 +365,7 @@
             <ImageView
                 android:id="@+id/medicineTime_afterMeal"
                 android:layout_width="42.3dp"
-                android:layout_height="29.7dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="29.7dp"
                 android:layout_marginTop="2dp"
                 android:layout_weight="0"
