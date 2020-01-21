@@ -14,6 +14,7 @@ class InfoNorm6 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_norm6)
+        supportActionBar?.hide()
 
         var home = findViewById<Button>(R.id.homeBtn)
         home.setOnClickListener {

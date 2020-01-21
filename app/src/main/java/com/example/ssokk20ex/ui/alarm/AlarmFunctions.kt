@@ -11,11 +11,15 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.RemoteViews
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ssokk20ex.MainActivity
+import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_add_blood_sugar_notice.*
 import kotlinx.android.synthetic.main.activity_blood_sugar_notice.*
 import kotlinx.android.synthetic.main.activity_blood_sugar_notice.btn_deleteMedicineNotice
 import kotlinx.android.synthetic.main.activity_blood_sugar_notice.tab_blood_sugar
@@ -25,6 +29,7 @@ import kotlinx.android.synthetic.main.activity_blood_sugar_notice.txt_startingTi
 import kotlinx.android.synthetic.main.activity_blood_sugar_notice.txt_startingTime2
 import kotlinx.android.synthetic.main.activity_blood_sugar_notice.txt_startingTime3
 import kotlinx.android.synthetic.main.activity_medicine_notice.*
+import kotlinx.android.synthetic.main.blood_sugar_record_weekly.*
 
 class AlarmFunctions : AppCompatActivity() {
 
@@ -72,6 +77,15 @@ class AlarmFunctions : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_blood_sugar_notice)
         supportActionBar?.hide()
+
+        home_bs.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        var setting = findViewById<ImageButton>(R.id.setting)
+        setting.setOnClickListener {
+            startActivity(Intent(this, MyPage::class.java))
+        }
 
         //alarm
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

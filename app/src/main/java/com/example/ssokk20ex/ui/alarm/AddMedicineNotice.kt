@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.TimePicker
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.example.ssokk20ex.MainActivity
 import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.example.ssokk20ex.ui.alarm.AddMedicineNotice.Companion.isChecked_Mafter
@@ -21,6 +22,7 @@ import com.example.ssokk20ex.ui.alarm.AddMedicineNotice.Companion.isChecked_Mbef
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_blood_sugar_notice.*
 import kotlinx.android.synthetic.main.activity_add_medicine_notice.*
+import kotlinx.android.synthetic.main.blood_sugar_record_weekly.*
 
 class AddMedicineNotice : AppCompatActivity() {
 
@@ -57,6 +59,10 @@ class AddMedicineNotice : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_medicine_notice)
         supportActionBar?.hide()
+
+        home_medicine_notice.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         var setting = findViewById<ImageButton>(R.id.setting)
         setting.setOnClickListener {
