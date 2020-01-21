@@ -2,9 +2,11 @@ package com.example.ssokk20ex.ui.alarm
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ssokk20ex.MainActivity
 import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.example.ssokk20ex.ui.alarm.BloodSugarDTO
@@ -50,6 +52,10 @@ class AlarmFunctions : AppCompatActivity() {
         setContentView(R.layout.activity_blood_sugar_notice)
 
         updateUI("user1")
+
+        home_bs.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         var setting = findViewById<ImageButton>(R.id.setting)
         setting.setOnClickListener {

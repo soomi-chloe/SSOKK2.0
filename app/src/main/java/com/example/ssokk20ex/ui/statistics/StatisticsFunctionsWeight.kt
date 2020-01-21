@@ -4,7 +4,9 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
+import com.example.ssokk20ex.MainActivity
 import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.example.ssokk20ex.ui.record.RecordWeightDTO
@@ -51,6 +53,10 @@ class StatisticsFunctionsWeight : AppCompatActivity() {
         averageWeight_value.text = getBMI("2020-1-16").toString()
         lowestWeight_value.text = getBMI("2020-1-15").toString()
         drawBmiChart()
+
+        home_stat_weight.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         var setting = findViewById<ImageButton>(R.id.setting)
         setting.setOnClickListener {

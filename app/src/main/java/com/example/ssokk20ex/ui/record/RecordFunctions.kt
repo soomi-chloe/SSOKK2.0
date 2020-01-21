@@ -14,6 +14,7 @@ import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -21,8 +22,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.ssokk20ex.MainActivity
 import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
+import com.example.ssokk20ex.ui.statistics.StatisticsFunctions.Companion.bsList
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
@@ -58,6 +61,8 @@ class RecordFunctions : AppCompatActivity() {
     var xAxisValues: List<String> = java.util.ArrayList(
         listOf("                                              ")
     )
+    var iArray = arrayOf(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+    var isExist = false
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +70,27 @@ class RecordFunctions : AppCompatActivity() {
         setContentView(R.layout.fragment_record)
         supportActionBar?.hide()
         firestore = FirebaseFirestore.getInstance()
+
+        var date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-M-d"))
+
+        var index = 0
+
+        for(i in 0..bsList.size-1) {
+            if(bsList.get(i).recordDate == date) {
+                iArray[index] = i
+                index++
+                isExist = true
+            }
+        }
+
+        if(isExist) {
+            drawChartBS()
+        }
+
+        var home = findViewById<Button>(R.id.homeBtn)
+        home.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         var setting = findViewById<ImageButton>(R.id.setting)
         setting.setOnClickListener {
@@ -460,5 +486,91 @@ class RecordFunctions : AppCompatActivity() {
             btn.setImageResource(R.drawable.record_medi_checked)
             array[index] = false
         }
+    }
+
+    private fun drawChartBS() {
+        if(iArray[6] != null) {
+            entries.add(Entry(0f, bsList.get(iArray[0]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(1f, bsList.get(iArray[1]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(2f, bsList.get(iArray[2]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(3f, bsList.get(iArray[3]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(4f, bsList.get(iArray[4]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(5f, bsList.get(iArray[5]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(6f, bsList.get(iArray[6]).bloodSugar.toString().toFloat()))
+        }
+        else if(iArray[5] != null) {
+            entries.add(Entry(0f, bsList.get(iArray[0]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(1f, bsList.get(iArray[1]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(2f, bsList.get(iArray[2]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(3f, bsList.get(iArray[3]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(4f, bsList.get(iArray[4]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(5f, bsList.get(iArray[5]).bloodSugar.toString().toFloat()))
+        }
+        else if(iArray[4] != null) {
+            entries.add(Entry(0f, bsList.get(iArray[0]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(1f, bsList.get(iArray[1]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(2f, bsList.get(iArray[2]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(3f, bsList.get(iArray[3]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(4f, bsList.get(iArray[4]).bloodSugar.toString().toFloat()))
+        }
+        else if(iArray[3] != null) {
+            entries.add(Entry(0f, bsList.get(iArray[0]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(1f, bsList.get(iArray[1]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(2f, bsList.get(iArray[2]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(3f, bsList.get(iArray[3]).bloodSugar.toString().toFloat()))
+        }
+        else if(iArray[2] != null) {
+            entries.add(Entry(0f, bsList.get(iArray[0]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(1f, bsList.get(iArray[1]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(2f, bsList.get(iArray[2]).bloodSugar.toString().toFloat()))
+        }
+        else if(iArray[1] != null) {
+            entries.add(Entry(0f, bsList.get(iArray[0]).bloodSugar.toString().toFloat()))
+            entries.add(Entry(1f, bsList.get(iArray[1]).bloodSugar.toString().toFloat()))
+        }
+        else if(iArray[0] != null) {
+            entries.add(Entry(0f, bsList.get(iArray[0]).bloodSugar.toString().toFloat()))
+        }
+
+        lineChart = findViewById<LineChart>(R.id.chart_bloodSugar)
+
+
+        val lineDataSet = LineDataSet(entries, "오늘의 혈당 수치")
+        lineDataSet.lineWidth = 1f
+        lineDataSet.circleRadius = 3f
+        lineDataSet.setCircleColor(Color.parseColor("#f16161"))
+        lineDataSet.color = Color.parseColor("#f16161")
+        lineDataSet.setDrawCircleHole(false)
+        lineDataSet.setDrawCircles(true)
+        lineDataSet.setDrawHorizontalHighlightIndicator(false)
+        lineDataSet.setDrawHighlightIndicators(false)
+        lineDataSet.setDrawValues(false)
+
+        val lineData = LineData(lineDataSet)
+        lineChart?.data = lineData
+
+        val xAxis: XAxis? = lineChart!!.xAxis
+        xAxis?.valueFormatter = IndexAxisValueFormatter(xAxisValues)
+        xAxis?.position = XAxis.XAxisPosition.BOTTOM
+        xAxis?.granularity = 1f
+        xAxis?.textColor = Color.BLACK
+        xAxis?.setDrawGridLines(false)
+        xAxis?.enableGridDashedLine(8f, 24f, 0f)
+
+        val yLAxis: YAxis? = lineChart?.axisLeft
+        yLAxis?.textColor = Color.BLACK
+        yLAxis?.granularity = 1f
+        yLAxis?.setDrawGridLines(false)
+
+        val yRAxis: YAxis? = chart_bloodSugar?.axisRight
+        yRAxis?.isEnabled = false
+
+        val description = Description()
+        description.text = ""
+
+        lineChart!!.legend.isEnabled = false
+        lineChart!!.description.isEnabled = false
+
+        lineChart?.invalidate()
     }
 }

@@ -3,6 +3,7 @@ package com.example.ssokk20ex
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -24,6 +25,11 @@ class MyPage : AppCompatActivity(){
         userContactTxt.text = infoList.get(0).email
 
         auth = FirebaseAuth.getInstance()
+
+        var home = findViewById<Button>(R.id.homeBtn)
+        home.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         var setting = findViewById<ImageButton>(R.id.setting)
         setting.setOnClickListener {
