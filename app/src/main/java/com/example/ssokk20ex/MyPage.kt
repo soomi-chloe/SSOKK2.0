@@ -26,8 +26,7 @@ class MyPage : AppCompatActivity(){
 
         auth = FirebaseAuth.getInstance()
 
-        var home = findViewById<Button>(R.id.homeBtn)
-        home.setOnClickListener {
+        home_mypage.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
