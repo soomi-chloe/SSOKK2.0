@@ -373,7 +373,7 @@
             app:srcCompat="@drawable/plus_btn_active" />
 
         <Button
-            android:id="@+id/btn_notify"
+            android:id="@+id/btn_notifyM"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
