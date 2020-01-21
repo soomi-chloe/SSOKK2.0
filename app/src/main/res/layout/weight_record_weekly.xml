@@ -131,7 +131,7 @@
                     android:id="@+id/imageView"
                     android:layout_width="7.3dp"
                     android:layout_height="7.3dp"
-                    android:layout_marginLeft="70dp"
+                    android:layout_marginLeft="67dp"
                     android:layout_marginTop="27.1dp"
                     android:layout_marginBottom="46.3dp"
                     android:layout_weight="0"
