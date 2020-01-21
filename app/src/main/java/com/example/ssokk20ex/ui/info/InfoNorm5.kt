@@ -3,7 +3,9 @@ package com.example.ssokk20ex.ui.info
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
+import com.example.ssokk20ex.MainActivity
 import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 
@@ -13,6 +15,11 @@ class InfoNorm5 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_norm5)
         supportActionBar?.hide()
+
+        var home = findViewById<Button>(R.id.homeBtn)
+        home.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         var setting = findViewById<ImageButton>(R.id.setting)
         setting.setOnClickListener {

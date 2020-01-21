@@ -9,10 +9,12 @@ import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ssokk20ex.MainActivity
 import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.example.ssokk20ex.ui.record.RecordBloodSugarDTO
@@ -38,25 +40,10 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
         setContentView(R.layout.all_records)
         supportActionBar?.hide()
 
-        var bsStatArray = arrayOf(txt_valueOfBS1, txt_valueOfBS2, txt_valueOfBS3, txt_valueOfBS4, txt_valueOfBS5, txt_valueOfBS6)
 
         stepsTxt.text = (bsList.get((0..10).random()).bloodSugar.toString().toInt() + 1225).toString()
 
-        var index = 0
         var date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-M-d"))
-        Log.d("test", date)
-
-        for(i in 0 until bsList.size) {
-            if(bsList.get(i).recordDate == date) {
-                bsStatArray[index].text = bsList.get(index).bloodSugar
-                index++
-                Log.d("test3", bsList.get(i).recordDate)
-            }
-        }
-        if(index < 6) {
-            for(i in index..5)
-                bsStatArray[index].text = "-"
-        }
 
         for(i in 0 until weightList.size) {
             if(weightList.get(i).recordDate == date) {
@@ -66,6 +53,10 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
         }
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager?
+
+        home_stat_all.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         var setting = findViewById<ImageButton>(R.id.setting)
         setting.setOnClickListener {

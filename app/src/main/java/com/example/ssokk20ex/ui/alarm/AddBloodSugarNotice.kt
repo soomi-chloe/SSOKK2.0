@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ssokk20ex.MainActivity
 import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.google.firebase.firestore.FirebaseFirestore
@@ -59,6 +60,10 @@ class AddBloodSugarNotice : AppCompatActivity() {
         supportActionBar?.hide()
 
         OnClickTime()
+
+        home_bs_notice.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         var setting = findViewById<ImageButton>(R.id.setting)
         setting.setOnClickListener {

@@ -14,6 +14,20 @@
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp">
 
+        <Button
+            android:id="@+id/home_bs_notice"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight = "110dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/setting"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
         <ImageButton
             android:id="@+id/setting"
             android:layout_width="22.3dp"

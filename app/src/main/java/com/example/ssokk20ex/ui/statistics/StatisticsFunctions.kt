@@ -4,9 +4,11 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ssokk20ex.MainActivity
 import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
 import com.example.ssokk20ex.ui.record.RecordBloodSugarDTO
@@ -61,6 +63,10 @@ class StatisticsFunctions : AppCompatActivity(){
 
         drawBmiChartBS()
 
+        home_statistics.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
         var setting = findViewById<ImageButton>(R.id.setting)
         setting.setOnClickListener {
             startActivity(Intent(this, MyPage::class.java))
@@ -90,9 +96,6 @@ class StatisticsFunctions : AppCompatActivity(){
         entries.add(Entry(4f, getAvg("2020-1-19")))
         entries.add(Entry(5f, getAvg("2020-1-20")))
         entries.add(Entry(6f, getAvg("2020-1-21")))
-        Log.d("test2", bsList.size.toString())
-        Log.d("test2", bsList.get(0).recordDate.toString())
-    Log.d("test2", bsList.get(1).recordDate.toString())
 
         val dataSet = LineDataSet(entries, "Blood Sugar")
         dataSet.lineWidth = 2f
