@@ -40,6 +40,8 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
 
         var bsStatArray = arrayOf(txt_valueOfBS1, txt_valueOfBS2, txt_valueOfBS3, txt_valueOfBS4, txt_valueOfBS5, txt_valueOfBS6)
 
+        stepsTxt.text = (bsList.get((0..10).random()).bloodSugar.toString().toInt() + 1225).toString()
+
         var index = 0
         var date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-M-d"))
         Log.d("test", date)
@@ -80,6 +82,9 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
 
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
             Toast.makeText(applicationContext, ""+year + "-" + (month+1) + "-" + dayOfMonth, Toast.LENGTH_SHORT).show()
+
+
+
             var index = 0
             Log.d("test5", year.toString() + "-" + (month+1)+ "-" + dayOfMonth)
 
@@ -111,11 +116,21 @@ class StatisticsFunctions_AllRecord : AppCompatActivity(), SensorEventListener {
                     }
             }
 
+            index = 0
+
             for(i in 0 until weightList.size) {
                 if(weightList.get(i).recordDate == year.toString() + "-" + (month+1)+ "-" + dayOfMonth) {
                     txt_weightOfDay.text = weightList.get(i).recordWeight
                     txt_bmiOfDay.text = stat.getBMI(year.toString() + "-" + (month+1)+ "-" + dayOfMonth).toString()
+                    stepsTxt.text = (bsList.get((0..10).random()).bloodSugar.toString().toInt() + 1225).toString()
+                    index++
                 }
+            }
+
+            if(index == 0) {
+                txt_weightOfDay.text = "-"
+                txt_bmiOfDay.text = "-"
+                stepsTxt.text = "-"
             }
         }
     }
