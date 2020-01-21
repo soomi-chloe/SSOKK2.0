@@ -82,8 +82,8 @@ class AlarmFunctions : AppCompatActivity() {
 
             //layout
             val contentView = RemoteViews(packageName, R.layout.notification_layout)
-            contentView.setTextViewText(R.id.tv_title, "CodeAndroid")
-            contentView.setTextViewText(R.id.tv_content, "Text notification")
+            contentView.setTextViewText(R.id.tv_title, "혈당 체크할 시간입니다")
+            contentView.setTextViewText(R.id.tv_content, "오늘의 3번째 체크시간입니다.")
             //layout
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

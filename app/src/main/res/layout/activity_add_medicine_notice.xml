@@ -165,24 +165,25 @@
 
             <ImageButton
                 android:id="@+id/btn_addNotice_see"
-                android:layout_width="11.9dp"
-                android:layout_height="7dp"
+                android:layout_width="15.9dp"
+                android:layout_height="13dp"
                 android:layout_marginLeft="6.8dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="17dp"
                 android:padding="0dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/see_menu_under" />
 
         </LinearLayout>
 
-        <TimePicker
-            android:id="@+id/timePicker"
-            style="@style/Base.Theme.MaterialComponents.Light.DarkActionBar"
-            android:layout_width="match_parent"
-            android:layout_height="79dp"
-            android:layout_marginTop="15dp"
-            android:timePickerMode="spinner"
-            android:visibility="visible"></TimePicker>
+            <TimePicker
+                android:id="@+id/timePickerM"
+                style="@style/Base.Theme.MaterialComponents.Light.DarkActionBar"
+                android:layout_width="match_parent"
+                android:layout_height="79dp"
+                android:layout_marginTop="15dp"
+                android:timePickerMode="spinner"
+                android:visibility="visible"></TimePicker>
+
 
         <ImageView
             android:id="@+id/split"
@@ -193,11 +194,12 @@
             app:srcCompat="@drawable/split_line" />
 
         <TimePicker
-            android:id="@+id/timePicker2"
+            android:id="@+id/timePickerM2"
             style="@style/Base.Theme.MaterialComponents.Light.DarkActionBar"
             android:layout_width="match_parent"
             android:layout_height="79dp"
-            android:timePickerMode="spinner" />
+            android:timePickerMode="spinner"
+            android:visibility="visible" />
 
         <ImageView
             android:id="@+id/split2"
@@ -208,11 +210,12 @@
             app:srcCompat="@drawable/split_line" />
 
         <TimePicker
-            android:id="@+id/timePicker3"
+            android:id="@+id/timePickerM3"
             style="@style/Base.Theme.MaterialComponents.Light.DarkActionBar"
             android:layout_width="match_parent"
             android:layout_height="79dp"
-            android:timePickerMode="spinner" />
+            android:timePickerMode="spinner"
+            android:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -248,18 +251,21 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:visibility="invisible" />
 
 </LinearLayout>

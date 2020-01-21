@@ -1,14 +1,14 @@
 package com.example.ssokk20ex.ui.alarm
 
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.TimePicker
@@ -16,6 +16,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.ssokk20ex.MyPage
 import com.example.ssokk20ex.R
+import com.example.ssokk20ex.ui.alarm.AddMedicineNotice.Companion.isChecked_Mafter
+import com.example.ssokk20ex.ui.alarm.AddMedicineNotice.Companion.isChecked_Mbefore
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_blood_sugar_notice.*
 import kotlinx.android.synthetic.main.activity_add_medicine_notice.*
@@ -25,6 +27,7 @@ class AddMedicineNotice : AppCompatActivity() {
     companion object {
         var isChecked_Mbefore: Boolean = true
         var isChecked_Mafter: Boolean = true
+        var isChecked_in30m: Boolean = true
     }
 
     private var firestore : FirebaseFirestore? = null
@@ -49,7 +52,6 @@ class AddMedicineNotice : AppCompatActivity() {
     var pillName3: String? = null
     var pillName4: String? = null
 
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,48 +63,35 @@ class AddMedicineNotice : AppCompatActivity() {
             startActivity(Intent(this, MyPage::class.java))
         }
 
-//        editTxt_MaDayNum.addTextChangedListener(object: TextWatcher {
-//            val presentMAlarmN = findViewById<TextView>(R.id.editTxt_MaDayNum)
-//            var intPresentMAlarmN: Int = Integer.valueOf(presentMAlarmN.text.toString())
-//            val timePicker = findViewById<TimePicker>(R.id.timePicker)
-//            val timePicker2 = findViewById<TimePicker>(R.id.timePicker2)
-//            val timePicker3 = findViewById<TimePicker>(R.id.timePicker3)
-//
-//            //입력이 끝났을 때
-//            override fun afterTextChanged(s: Editable?) {
-//                if(intPresentMAlarmN==1){
-//                    timePicker.visibility = View.INVISIBLE
-//                    timePicker3.visibility = View.INVISIBLE
-//                } else if(intPresentMAlarmN==2){
-//                    timePicker2.visibility = View.INVISIBLE
-//                } else{
-//                }
-//                Toast.makeText(applicationContext, "가능한 알람의 최대 갯수는 3개까지입니다.", Toast.LENGTH_LONG).show()
-//            }
-//
-//            //입력하기 전에
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//                if(intPresentMAlarmN==1){
-//                    timePicker.visibility = View.INVISIBLE
-//                    timePicker3.visibility = View.INVISIBLE
-//                } else if(intPresentMAlarmN==2){
-//                    timePicker2.visibility = View.INVISIBLE
-//                } else{
-//                }
-//            }
-//
-//            //입력되는 텍스트에 변화가 있을 때
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//                if(intPresentMAlarmN==1){
-//                    timePicker.visibility = View.INVISIBLE
-//                    timePicker3.visibility = View.INVISIBLE
-//                } else if(intPresentMAlarmN==2){
-//                    timePicker2.visibility = View.INVISIBLE
-//                } else{
-//                }
-//            }
-//
-//        })
+        editTxt_MaDayNum.addTextChangedListener(object: TextWatcher {
+            //입력이 끝났을 때
+            override fun afterTextChanged(s: Editable?) {
+                Toast.makeText(applicationContext, "가능한 알람의 최대 갯수는 3개까지입니다.", Toast.LENGTH_LONG)
+                    .show()
+                }
+            //입력하기 전에
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            //입력되는 텍스트에 변화가 있을 때
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
+        btn_addNotice_see.setOnClickListener {
+            if(Integer.valueOf(editTxt_MaDayNum.text.toString())==1) {
+                     timePickerM.visibility = View.INVISIBLE
+                    timePickerM2.visibility = View.VISIBLE
+                    timePickerM3.visibility = View.INVISIBLE
+            }else if(Integer.valueOf(editTxt_MaDayNum.text.toString())==2){
+                timePickerM.visibility = View.VISIBLE
+                timePickerM2.visibility = View.INVISIBLE
+                timePickerM3.visibility = View.VISIBLE
+            }else if(Integer.valueOf(editTxt_MaDayNum.text.toString())==3) {
+                timePickerM.visibility = View.VISIBLE
+                timePickerM2.visibility = View.VISIBLE
+                timePickerM3.visibility = View.VISIBLE
+            }
+        }
 
         btn_addNotice_MbeforeMeal.setOnClickListener {
             if(AddMedicineNotice.isChecked_Mafter) {
@@ -124,6 +113,18 @@ class AddMedicineNotice : AppCompatActivity() {
             }
         }
 
+        txt_in_hour.setOnClickListener{
+            if(isChecked_in30m==true){
+                txt_in_hour.setText("30분 이후")
+                isChecked_in30m=false
+            }
+            else if(isChecked_in30m==false){
+                txt_in_hour.setText("30분 이전")
+                isChecked_in30m=true
+            }
+
+        }
+
         OnClickTime()
 
         var btn_cancel = findViewById<ImageButton>(R.id.btn_cancel)
@@ -143,7 +144,7 @@ class AddMedicineNotice : AppCompatActivity() {
 
     private fun OnClickTime() {
         val textView2 = findViewById<TextView>(R.id.textView2)
-        val timePicker = findViewById<TimePicker>(R.id.timePicker)
+        val timePicker = findViewById<TimePicker>(R.id.timePickerM)
         timePicker.setOnTimeChangedListener(TimePicker.OnTimeChangedListener { timePicker, hour, minute ->
             var hour = hour
             var am_pm: String ?=null
@@ -155,7 +156,7 @@ class AddMedicineNotice : AppCompatActivity() {
         })
 
         val textView3 = findViewById<TextView>(R.id.textView3)
-        val timePicker2 = findViewById<TimePicker>(R.id.timePicker2)
+        val timePicker2 = findViewById<TimePicker>(R.id.timePickerM2)
         timePicker2.setOnTimeChangedListener(TimePicker.OnTimeChangedListener { timePicker, hour, minute ->
             var hour = hour
             var am_pm: String ?=null
@@ -167,7 +168,7 @@ class AddMedicineNotice : AppCompatActivity() {
         })
 
         val textView4 = findViewById<TextView>(R.id.textView4)
-        val timePicker3 = findViewById<TimePicker>(R.id.timePicker3)
+        val timePicker3 = findViewById<TimePicker>(R.id.timePickerM3)
         timePicker3.setOnTimeChangedListener(TimePicker.OnTimeChangedListener { timePicker, hour, minute ->
             var hour = hour
             var am_pm: String ?=null
@@ -193,6 +194,12 @@ class AddMedicineNotice : AppCompatActivity() {
             MealBeforeOrAfter = "before"
         } else if (isChecked_Mafter == true) {
             MealBeforeOrAfter = "after"
+        }
+
+        if (isChecked_in30m == true) {
+            howMuchTimeBeforeOrAfter = "30분이내"
+        } else if (isChecked_Mafter == true) {
+            howMuchTimeBeforeOrAfter = "30분이후"
         }
 
         if (intPresentMAlarmN==1) {
@@ -239,19 +246,19 @@ class AddMedicineNotice : AppCompatActivity() {
                     if (task.isSuccessful) {
                         var pillTimeDTO = task.result?.toObject(PillTimeDTO::class.java)
                         if(pillTimeDTO != null) {
-                            if (pillTimeDTO?.pillName2==null){
+                            if (pillTimeDTO.pillName2 ==null){
                                 firestore?.collection("pillAlarm")?.document(document.toString())?.update("pillName2", document.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase1 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase1 update Failed", Toast.LENGTH_LONG).show() }
                             }//pillTimeDTO?.pillName2==null
 
-                            else if (pillTimeDTO?.pillName3==null){
+                            else if (pillTimeDTO.pillName3 ==null){
                                 firestore?.collection("pillAlarm")?.document(document.toString())?.update("pillName3", document.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase1 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase1 update Failed", Toast.LENGTH_LONG).show() }
                             }//pillTimeDTO?.pillName3==null
 
-                            else if (pillTimeDTO?.pillName4==null){
+                            else if (pillTimeDTO.pillName4 ==null){
                                 firestore?.collection("pillAlarm")?.document(document.toString())?.update("pillName4", document.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase1 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase1 update Failed", Toast.LENGTH_LONG).show() }
@@ -281,20 +288,20 @@ class AddMedicineNotice : AppCompatActivity() {
                         Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
                     }
                 }//fin of (intPresentMAlarmN==1) ?.addOnCompleteListener {
-//            firestore = FirebaseFirestore.getInstance()
-//            firestore?.collection("pillAlarm")?.document(document.toString())
-//                ?.set(pillDTO)?.addOnCompleteListener {
-//                        task ->
-//                    //progressBarAdd.visibility = View.GONE
-//                    if (task.isSuccessful) {
-//                        Toast.makeText(this, "Firebase1 Success", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = "Insert Success"
-//                    }
-//                    else {
-//                        Toast.makeText(this, "Firebase1 Failed", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = task.exception?.message
-//                    }
-//                }
+
+            firestore?.collection("pillAlarm")?.document(pillName.toString())
+                ?.set(pillDTO)?.addOnCompleteListener {
+                        task ->
+                    //progressBarAdd.visibility = View.GONE
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Firebase1 Success", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = "Insert Success"
+                    }
+                    else {
+                        Toast.makeText(this, "Firebase1 Failed", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = task.exception?.message
+                    }
+                }
         }//fin of (intPresentMAlarmN==1)
 
         else if (intPresentMAlarmN==2) {
@@ -305,7 +312,7 @@ class AddMedicineNotice : AppCompatActivity() {
                     if (task.isSuccessful) {
                         var pillTimeDTO = task.result?.toObject(PillTimeDTO::class.java)
                         if(pillTimeDTO != null) {
-                            if (pillTimeDTO?. pillName2== null) {
+                            if (pillTimeDTO.pillName2 == null) {
                                 firestore?.collection("pillAlarm")?.document(document1.toString())
                                     ?.update("pillName2", document1.toString())
                                     ?.addOnSuccessListener {
@@ -324,7 +331,7 @@ class AddMedicineNotice : AppCompatActivity() {
                                     }
                             }//pillTimeDTO?.pillName2==null
 
-                            else if (pillTimeDTO?.pillName3 == null) {
+                            else if (pillTimeDTO.pillName3 == null) {
                                 firestore?.collection("pillAlarm")?.document(document1.toString())
                                     ?.update("pillName3", document1.toString())
                                     ?.addOnSuccessListener {
@@ -343,7 +350,7 @@ class AddMedicineNotice : AppCompatActivity() {
                                     }
                             }//pillTimeDTO?.pillName3==null
 
-                            else if (pillTimeDTO?.pillName4 == null) {
+                            else if (pillTimeDTO.pillName4 == null) {
                                 firestore?.collection("pillAlarm")?.document(document1.toString())
                                     ?.update("pillName4", document1.toString())
                                     ?.addOnSuccessListener {
@@ -388,19 +395,18 @@ class AddMedicineNotice : AppCompatActivity() {
                     }
                 }//fin of (intPresentMAlarmN==2)-1 ?.addOnCompleteListener
 
-//            firestore = FirebaseFirestore.getInstance()
-//            firestore?.collection("pillAlarm")?.document(document1.toString())
-//                ?.set(pillDTO)?.addOnCompleteListener {
-//                        task ->
-//                    //progressBarAdd.visibility = View.GONE
-//                    if (task.isSuccessful) {
-//                        Toast.makeText(this, "Firebase2-1 Success", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = "Insert Success"
-//                    } else {
-//                        Toast.makeText(this, "Firebase2-1 Failed", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = task.exception?.message
-//                    }
-//                }
+            firestore?.collection("pillAlarm")?.document(pillName.toString())
+                ?.set(pillDTO)?.addOnCompleteListener {
+                        task ->
+                    //progressBarAdd.visibility = View.GONE
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Firebase2-1 Success", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = "Insert Success"
+                    } else {
+                        Toast.makeText(this, "Firebase2-1 Failed", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = task.exception?.message
+                    }
+                }
 
             val document2 = alarm_3_Time
             firestore2 = FirebaseFirestore.getInstance()
@@ -409,7 +415,7 @@ class AddMedicineNotice : AppCompatActivity() {
                     if (task.isSuccessful) {
                         var pillTimeDTO = task.result?.toObject(PillTimeDTO::class.java)
                         if(pillTimeDTO != null) {
-                            if (pillTimeDTO?.pillName2 == null) {
+                            if (pillTimeDTO.pillName2 == null) {
                                 firestore2?.collection("pillAlarm")
                                     ?.document(document2.toString())
                                     ?.update("pillName2", document2.toString())
@@ -429,7 +435,7 @@ class AddMedicineNotice : AppCompatActivity() {
                                     }
                             }//pillTimeDTO?.pillName2==null
 
-                            else if (pillTimeDTO?.pillName3 == null) {
+                            else if (pillTimeDTO.pillName3 == null) {
                                 firestore2?.collection("pillAlarm")
                                     ?.document(document2.toString())
                                     ?.update("pillName3", document2.toString())
@@ -449,7 +455,7 @@ class AddMedicineNotice : AppCompatActivity() {
                                     }
                             }//pillTimeDTO?.pillName3==null
 
-                            else if (pillTimeDTO?.pillName4 == null) {
+                            else if (pillTimeDTO.pillName4 == null) {
                                 firestore2?.collection("pillAlarm")
                                     ?.document(document2.toString())
                                     ?.update("pillName4", document2.toString())
@@ -498,19 +504,19 @@ class AddMedicineNotice : AppCompatActivity() {
                     }
                 }//fin of (intPresentMAlarmN==2)-2 ?.addOnCompleteListener
 
-//            firestore = FirebaseFirestore.getInstance()
-//            firestore?.collection("pillAlarm")?.document(document2.toString())
-//                ?.set(pillDTO)?.addOnCompleteListener {
-//                        task ->
-//                    //progressBarAdd.visibility = View.GONE
-//                    if (task.isSuccessful) {
-//                        Toast.makeText(this, "Firebase2-2 Success", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = "Insert Success"
-//                    } else {
-//                        Toast.makeText(this, "Firebase2-2 Failed", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = task.exception?.message
-//                    }
-//                }
+
+            firestore2?.collection("pillAlarm")?.document(pillName.toString())
+                ?.set(pillDTO)?.addOnCompleteListener {
+                        task ->
+                    //progressBarAdd.visibility = View.GONE
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Firebase2-2 Success", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = "Insert Success"
+                    } else {
+                        Toast.makeText(this, "Firebase2-2 Failed", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = task.exception?.message
+                    }
+                }
         }//fin of (intPresentMAlarmN==2)
 
         else if (intPresentMAlarmN >=3) {
@@ -521,19 +527,19 @@ class AddMedicineNotice : AppCompatActivity() {
                     if (task.isSuccessful) {
                         var pillTimeDTO = task.result?.toObject(PillTimeDTO::class.java)
                         if(pillTimeDTO != null) {
-                            if (pillTimeDTO?.pillName2==null){
+                            if (pillTimeDTO.pillName2 ==null){
                                 firestore?.collection("pillAlarm")?.document(document1.toString())?.update("pillName2", document1.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase3-1 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase3-1 update Failed", Toast.LENGTH_LONG).show() }
                             }//pillTimeDTO?.pillName2==null
 
-                            else if (pillTimeDTO?.pillName3==null){
+                            else if (pillTimeDTO.pillName3 ==null){
                                 firestore?.collection("pillAlarm")?.document(document1.toString())?.update("pillName3", document1.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase3-1 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase3-1 update Failed", Toast.LENGTH_LONG).show() }
                             }//pillTimeDTO?.pillName3==null
 
-                            else if (pillTimeDTO?.pillName4==null){
+                            else if (pillTimeDTO.pillName4 ==null){
                                 firestore?.collection("pillAlarm")?.document(document1.toString())?.update("pillName4", document1.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase3-1 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase3-1 update Failed", Toast.LENGTH_LONG).show() }
@@ -564,19 +570,19 @@ class AddMedicineNotice : AppCompatActivity() {
                         Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
                     }
                 }//fin of (intPresentMAlarmN==3)-1 ?.addOnCompleteListener
-//            firestore = FirebaseFirestore.getInstance()
-//            firestore?.collection("pillAlarm")?.document(document1.toString())
-//                ?.set(pillDTO)?.addOnCompleteListener {
-//                        task ->
-//                    //progressBarAdd.visibility = View.GONE
-//                    if (task.isSuccessful) {
-//                        Toast.makeText(this, "Firebase3-1 Success", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = "Insert Success"
-//                    } else {
-//                        Toast.makeText(this, "Firebase3-1 Failed", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = task.exception?.message
-//                    }
-//                }
+
+            firestore?.collection("pillAlarm")?.document(pillName.toString())
+                ?.set(pillDTO)?.addOnCompleteListener {
+                        task ->
+                    //progressBarAdd.visibility = View.GONE
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Firebase3-1 Success", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = "Insert Success"
+                    } else {
+                        Toast.makeText(this, "Firebase3-1 Failed", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = task.exception?.message
+                    }
+                }
 
             val document2 = alarm_2_Time
             firestore2 = FirebaseFirestore.getInstance()
@@ -585,19 +591,19 @@ class AddMedicineNotice : AppCompatActivity() {
                     if (task.isSuccessful) {
                         var pillTimeDTO = task.result?.toObject(PillTimeDTO::class.java)
                         if(pillTimeDTO != null) {
-                            if (pillTimeDTO?.pillName2==null){
+                            if (pillTimeDTO.pillName2 ==null){
                                 firestore2?.collection("pillAlarm")?.document(document2.toString())?.update("pillName2", document2.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase3-2 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase3-2 update Failed", Toast.LENGTH_LONG).show() }
                             }//pillTimeDTO?.pillName2==null
 
-                            else if (pillTimeDTO?.pillName3==null){
+                            else if (pillTimeDTO.pillName3 ==null){
                                 firestore2?.collection("pillAlarm")?.document(document2.toString())?.update("pillName3", document2.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase3-2 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase3-2 update Failed", Toast.LENGTH_LONG).show() }
                             }//pillTimeDTO?.pillName3==null
 
-                            else if (pillTimeDTO?.pillName4==null){
+                            else if (pillTimeDTO.pillName4 ==null){
                                 firestore2?.collection("pillAlarm")?.document(document2.toString())?.update("pillName4", document2.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase3-2 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase3-2 update Failed", Toast.LENGTH_LONG).show() }
@@ -628,19 +634,18 @@ class AddMedicineNotice : AppCompatActivity() {
                     }
                 }//fin of (intPresentMAlarmN==3)-2 ?.addOnCompleteListener
 
-//            firestore = FirebaseFirestore.getInstance()
-//            firestore?.collection("pillAlarm")?.document(document2.toString())
-//                ?.set(pillDTO)?.addOnCompleteListener {
-//                        task ->
-//                    //progressBarAdd.visibility = View.GONE
-//                    if (task.isSuccessful) {
-//                        Toast.makeText(this, "Firebase3-2 Success", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = "Insert Success"
-//                    } else {
-//                        Toast.makeText(this, "Firebase3-2 Failed", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = task.exception?.message
-//                    }
-//                }
+            firestore2?.collection("pillAlarm")?.document(pillName.toString())
+                ?.set(pillDTO)?.addOnCompleteListener {
+                        task ->
+                    //progressBarAdd.visibility = View.GONE
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Firebase3-2 Success", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = "Insert Success"
+                    } else {
+                        Toast.makeText(this, "Firebase3-2 Failed", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = task.exception?.message
+                    }
+                }
 
             val document3 = alarm_3_Time
             firestore3 = FirebaseFirestore.getInstance()
@@ -649,19 +654,19 @@ class AddMedicineNotice : AppCompatActivity() {
                     if (task.isSuccessful) {
                         var pillTimeDTO = task.result?.toObject(PillTimeDTO::class.java)
                         if(pillTimeDTO != null) {
-                            if (pillTimeDTO?.pillName2==null){
+                            if (pillTimeDTO.pillName2 ==null){
                                 firestore3?.collection("pillAlarm")?.document(document3.toString())?.update("pillName2", document3.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase3-3 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase3-3 update Failed", Toast.LENGTH_LONG).show() }
                             }//pillTimeDTO?.pillName2==null
 
-                            else if (pillTimeDTO?.pillName3==null){
+                            else if (pillTimeDTO.pillName3 ==null){
                                 firestore3?.collection("pillAlarm")?.document(document3.toString())?.update("pillName3", document3.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase3-3 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase3-3 update Failed", Toast.LENGTH_LONG).show() }
                             }//pillTimeDTO?.pillName3==null
 
-                            else if (pillTimeDTO?.pillName4==null){
+                            else if (pillTimeDTO.pillName4 ==null){
                                 firestore3?.collection("pillAlarm")?.document(document3.toString())?.update("pillName4", document3.toString())
                                     ?.addOnSuccessListener {  Toast.makeText(this, "Firebase3-3 update Success", Toast.LENGTH_LONG).show() }
                                     ?.addOnFailureListener {  Toast.makeText(this, "Firebase3-3 update Failed", Toast.LENGTH_LONG).show() }
@@ -693,19 +698,18 @@ class AddMedicineNotice : AppCompatActivity() {
                     }
                 }//fin of (intPresentMAlarmN==3)-3 ?.addOnCompleteListener
 
-//            firestore = FirebaseFirestore.getInstance()
-//            firestore?.collection("pillAlarm")?.document(document3.toString())
-//                ?.set(pillDTO)?.addOnCompleteListener {
-//                        task ->
-//                    //progressBarAdd.visibility = View.GONE
-//                    if (task.isSuccessful) {
-//                        Toast.makeText(this, "Firebase3-3 Success", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = "Insert Success"
-//                    } else {
-//                        Toast.makeText(this, "Firebase3-3 Failed", Toast.LENGTH_LONG).show()
-//                        //txtAddResult.text = task.exception?.message
-//                    }
-//                }
+            firestore3?.collection("pillAlarm")?.document(pillName.toString())
+                ?.set(pillDTO)?.addOnCompleteListener {
+                        task ->
+                    //progressBarAdd.visibility = View.GONE
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Firebase3-3 Success", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = "Insert Success"
+                    } else {
+                        Toast.makeText(this, "Firebase3-3 Failed", Toast.LENGTH_LONG).show()
+                        //txtAddResult.text = task.exception?.message
+                    }
+                }
         }//fin of (intPresentMAlarmN>=3)
 
     }
